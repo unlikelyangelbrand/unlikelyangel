@@ -46,7 +46,7 @@
     .products {
   padding: 60px 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -68,11 +68,13 @@
       padding: 40px;
       text-align: center;
     }
-   iframe {
-  width: 100%;
-  max-width: 600px;
-  height: 338px;
+  iframe {
+  display: block;
+  margin: 0 auto;width: 100%;
+  max-width: 700px;
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
+}
 }
     footer {
       padding: 20px;
