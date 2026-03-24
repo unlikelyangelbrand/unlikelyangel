@@ -4,173 +4,179 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unlikely Angel Brand</title>
+
   <style>
     body {
-       margin: 0;
+      margin: 0;
       font-family: Arial, sans-serif;
       background-color: #000;
       color: #fff;
     }
+
+    /* HERO */
     .hero {
-      height: 100vh;
-      background: url('https://via.placeholder.com/1500') center/cover no-repeat;
+      height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('hero.jpg');
+      background-size: cover;
+      background-position: center;
     }
-    h1 {
+
+    .hero h1 {
       font-size: 3rem;
+      margin-bottom: 10px;
       letter-spacing: 3px;
     }
-    p {
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
       max-width: 600px;
     }
+
+    /* BUTTONS */
     .btn {
+      display: inline-block;
       margin-top: 20px;
-      padding: 12px 24px;
+      padding: 10px 18px;
       border: 1px solid #fff;
       color: #fff;
       text-decoration: none;
       margin-right: 10px;
-       transition: all 0.3s ease;
-   .btn:hover {
-  background: white;
-  color: black;
-}
-    .product .btn {
-  display: inline-block;
-  margin-top: 12px;
-}
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .hero .btn {
+      background: white;
+      color: black;
+      font-weight: bold;
+    }
+
+    /* PRODUCTS */
     .products {
-  padding: 60px 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+      padding: 50px 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
     .product {
       text-align: center;
     }
+
     .product img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 8px;
-}
+      width: 100%;
+      max-width: 160px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+
     .product p {
-  margin: 14px 0 10px;
-  font-size: 1rem;
-}
+      margin: 12px 0 10px;
+      font-size: 0.95rem;
+    }
+
+    .product .btn {
+      margin-top: 10px;
+    }
+
+    /* SECTIONS */
     .section {
-      padding: 40px;
+      padding: 40px 20px;
       text-align: center;
     }
-  iframe {
-  display: block;
-  margin: 0 auto;width: 100%;
-  max-width: 700px;
-  aspect-ratio: 16 / 9;
-  border-radius: 8px;
-}
-}
+
+    /* VIDEO */
+    iframe {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 700px;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border-radius: 8px;
+    }
+
     footer {
       padding: 20px;
       text-align: center;
       font-size: 0.8rem;
     }
- .hero {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url('hero.jpg');
-  background-size: cover;
-  background-position: center;
-
-  color: white;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.hero .btn {
-  padding: 10px 20px;
-  background: white;
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-}
   </style>
 </head>
+
 <body>
 
- <section class="hero">
-  <h1>Be careful who you overlook.</h1>
-  <p>They might just be an angel.</p>
-  <a class="btn" href="#products">Shop Now</a>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Be careful who you overlook.</h1>
+    <p>They might just be an angel.</p>
+    <a class="btn" href="#products">Shop Now</a>
+  </section>
 
-<section id="products" class="products">
+  <!-- PRODUCTS -->
+  <section id="products" class="products">
 
-  <div class="product">
-    <img src="vertical-stripe-shirt.PNG">
-    <p>Oversized Vertical Stripe Tee</p>
-    <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe?ref=shop_home_active_15">Buy</a>
-  </div>
+    <div class="product">
+      <img src="vertical-stripe-shirt.PNG">
+      <p>Oversized Vertical Stripe Tee</p>
+      <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe?ref=shop_home_active_15">Buy</a>
+    </div>
 
-  <div class="product">
-    <img src="unlikely-angel-tee.PNG">
-    <p>Unlikely Angel Tee (Girl)</p>
-    <a class="btn" href="https://www.etsy.com/listing/4442483545/unlikely-angel-tee-girl?ref=shop_home_active_29">Buy</a>
-  </div>
+    <div class="product">
+      <img src="unlikely-angel-tee.PNG">
+      <p>Unlikely Angel Tee (Girl)</p>
+      <a class="btn" href="https://www.etsy.com/listing/4442483545/unlikely-angel-tee-girl?ref=shop_home_active_29">Buy</a>
+    </div>
 
-  <div class="product">
-    <img src="baseball-cap.JPG">
-    <p>Mid Profile Baseball Cap</p>
-    <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap?ref=shop_home_active_25">Buy</a>
-  </div>
+    <div class="product">
+      <img src="baseball-cap.JPG">
+      <p>Mid Profile Baseball Cap</p>
+      <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap?ref=shop_home_active_25">Buy</a>
+    </div>
 
-  <div class="product">
-    <img src="her-tote-bag.JPG">
-    <p>HER Tote Bag</p>
-    <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag?ref=shop_home_active_3">Buy</a>
-  </div>
+    <div class="product">
+      <img src="her-tote-bag.JPG">
+      <p>HER Tote Bag</p>
+      <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag?ref=shop_home_active_3">Buy</a>
+    </div>
 
-</section>
+  </section>
 
+  <!-- STORY -->
+  <section class="section">
+    <h2>OUR STORY</h2>
+    <p>This is more than a brand. This is what we stand for.</p>
 
-<section class="section">
-  <h2>OUR STORY</h2>
-  <p>This is more than a brand. This is what we stand for.</p>
+    <iframe 
+      src="https://www.youtube.com/embed/QN9gKIDo7XU"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </section>
 
-  <iframe 
-    width="100%" 
-    height="315" 
-    src="https://www.youtube.com/embed/QN9gKIDo7XU" 
-    frameborder="0" 
-    allowfullscreen>
-  </iframe>
-</section>
-
-
-<section class="section">
-  <h2>OUR MOVEMENT</h2>
-  <p>200 Care Packages Delivered • $1400+ Raised • 2 Outreach Days</p>
-</section>
+  <!-- MOVEMENT -->
+  <section class="section">
+    <h2>OUR MOVEMENT</h2>
+    <p>200 Care Packages Delivered • $1400+ Raised • 2 Outreach Days</p>
+  </section>
 
 </body>
 </html>
