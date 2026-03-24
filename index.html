@@ -36,17 +36,26 @@
       margin-right: 10px;
     }
     .products {
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
     .product {
       text-align: center;
     }
     .product img {
-      width: 100%;
-    }
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+    .product p {
+  margin: 14px 0 10px;
+  font-size: 1rem;
+}
     .section {
       padding: 40px;
       text-align: center;
