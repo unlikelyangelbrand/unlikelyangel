@@ -8,224 +8,251 @@
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 
   <style>
-    /* SMOOTH SCROLLING */
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --main-white: #f5f5f5;
+      --accent-gray: #333;
+      --glitch-speed: 0.3s;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: 'Special Elite', system-ui, serif;
       background-color: #000;
-      color: #fff;
+      /* Added a subtle grain texture */
+      background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+      color: var(--main-white);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* TOP ANNOUNCEMENT BAR */
+    /* ENHANCED ANNOUNCEMENT BAR */
     .announcement-bar {
-      background: #fff;
+      background: var(--main-white);
       color: #000;
       text-align: center;
-      padding: 5px 0;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
+      padding: 8px 0;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
       font-weight: bold;
+      border-bottom: 2px solid #555;
     }
 
-    /* NAVIGATION */
+    /* STICKY NAV WITH BLUR */
     nav {
       position: sticky;
       top: 0;
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
       display: flex;
       justify-content: center;
-      padding: 15px 0;
+      padding: 20px 0;
       z-index: 1000;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--accent-gray);
     }
 
     nav a {
-      color: #fff;
+      color: var(--main-white);
       text-decoration: none;
-      margin: 0 15px;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
+      margin: 0 20px;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      transition: opacity 0.3s;
+      transition: all 0.3s ease;
+      opacity: 0.7;
     }
 
     nav a:hover {
-      opacity: 0.6;
+      opacity: 1;
+      text-shadow: 0 0 8px rgba(255,255,255,0.5);
     }
 
-    /* HERO */
+    /* DYNAMIC HERO SECTION */
     .hero {
-      min-height: 85vh;
+      min-height: 90vh;
       padding: 60px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)),
                   url('hero.jpg');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed; /* Parallax effect */
     }
 
     .hero-logo {
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
       height: auto;
       margin-bottom: 30px;
+      filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
+      animation: fadeIn 2s ease;
     }
 
     .hero h1 {
-      font-size: clamp(1.8rem, 6vw, 3.5rem);
-      margin-bottom: 15px;
-      letter-spacing: 1px;
+      font-size: clamp(2rem, 8vw, 4rem);
+      margin-bottom: 10px;
+      letter-spacing: -1px;
       text-transform: uppercase;
-      color: #fff;
+      line-height: 1;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       margin-bottom: 40px;
-      max-width: 600px;
-      opacity: 0.8;
+      max-width: 700px;
+      opacity: 0.9;
+      font-style: italic;
     }
 
-    /* BUTTONS */
+    /* NEON-STYLE BUTTONS */
     .btn {
       display: inline-block;
-      padding: 14px 28px;
-      border: 1px solid #fff;
-      color: #fff;
+      padding: 16px 32px;
+      border: 2px solid var(--main-white);
+      color: var(--main-white);
       text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      font-size: 1rem;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      font-family: 'Special Elite', serif; 
+      background: transparent;
+      position: relative;
     }
 
     .btn:hover {
-      background: #fff;
+      background: var(--main-white);
       color: #000;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
+      transform: scale(1.05);
     }
 
-    .hero .btn {
-      background: #fff;
-      color: #000;
-      font-weight: bold;
-    }
-
-    /* PRODUCTS GRID */
+    /* GRID OVERHAUL */
     .products {
-      padding: 100px 20px;
+      padding: 120px 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 50px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     .product {
       text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .product.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-image-wrapper {
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid var(--accent-gray);
+      background: #111;
     }
 
     .product img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      margin-bottom: 15px;
-      transition: all 0.4s ease;
+      display: block;
+      transition: transform 0.6s ease, filter 0.6s ease;
+      filter: grayscale(20%);
     }
 
-    .product img:hover {
-      filter: brightness(0.7);
+    .product:hover img {
+      transform: scale(1.1);
+      filter: grayscale(0%);
     }
 
     .product p {
-      margin: 10px 0;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       letter-spacing: 1px;
-    }
-
-    /* SECTIONS */
-    .section {
-      padding: 100px 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .section h2 {
-      letter-spacing: 6px;
-      margin-bottom: 30px;
-      font-size: 1.8rem;
+      margin-bottom: 15px;
       text-transform: uppercase;
     }
 
-    /* VIDEO CONTAINER */
+    /* STORY SECTION */
+    .section {
+      padding: 120px 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid var(--accent-gray);
+    }
+
+    .section h2 {
+      letter-spacing: 10px;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      text-decoration: underline;
+      text-underline-offset: 10px;
+    }
+
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      margin-top: 40px;
-      border: 1px solid #333;
+      border: 1px solid var(--main-white);
+      box-shadow: 20px 20px 0px var(--accent-gray);
     }
 
     .video-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
+    }
+
+    /* MOVEMENT CARDS */
+    .movement-stats {
+      background: #111;
+      padding: 40px;
+      border: 1px dashed var(--main-white);
+      display: inline-block;
+      margin-top: 20px;
     }
 
     /* FOOTER */
     footer {
-      padding: 80px 20px;
+      padding: 100px 20px;
       text-align: center;
-      border-top: 1px solid #1a1a1a;
-      background-color: #050505;
-    }
-
-    .social-links {
-      margin-bottom: 30px;
+      background-color: #000;
+      border-top: 1px solid var(--accent-gray);
     }
 
     .social-links a {
-      color: #fff;
+      color: var(--main-white);
       text-decoration: none;
-      margin: 0 15px;
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      opacity: 0.6;
-      transition: opacity 0.3s;
+      margin: 0 20px;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      transition: 0.3s;
     }
 
-    .social-links a:hover {
-      opacity: 1;
+    .social-links a:hover { color: #888; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    .copyright {
-      font-size: 0.65rem;
-      opacity: 0.4;
-      letter-spacing: 2px;
-    }
   </style>
 </head>
 
 <body>
 
   <div class="announcement-bar">
-    New Drop Live Now • Worldwide Shipping Available
+    Limited Edition • Unlikely Angel Brand • Worldwide
   </div>
 
   <nav>
@@ -244,25 +271,33 @@
 
   <section id="products" class="products">
     <div class="product">
-      <img src="vertical-stripe-shirt.PNG" alt="Oversized Vertical Stripe Tee">
+      <div class="product-image-wrapper">
+        <img src="vertical-stripe-shirt.PNG" alt="Oversized Vertical Stripe Tee">
+      </div>
       <p>Oversized Vertical Stripe Tee</p>
       <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe">Buy</a>
     </div>
 
     <div class="product">
-      <img src="unlikely-angel-tee.PNG" alt="Unlikely Angel Tee (Girl)">
+      <div class="product-image-wrapper">
+        <img src="unlikely-angel-tee.PNG" alt="Unlikely Angel Tee (Girl)">
+      </div>
       <p>Unlikely Angel Tee (Girl)</p>
       <a class="btn" href="https://www.etsy.com/listing/4442483545/unlikely-angel-tee-girl">Buy</a>
     </div>
 
     <div class="product">
-      <img src="baseball-cap.JPG" alt="Mid Profile Baseball Cap">
+      <div class="product-image-wrapper">
+        <img src="baseball-cap.JPG" alt="Mid Profile Baseball Cap">
+      </div>
       <p>Mid Profile Baseball Cap</p>
       <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap">Buy</a>
     </div>
 
     <div class="product">
-      <img src="her-tote-bag.JPG" alt="HER Tote Bag">
+      <div class="product-image-wrapper">
+        <img src="her-tote-bag.JPG" alt="HER Tote Bag">
+      </div>
       <p>HER Tote Bag</p>
       <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag">Buy</a>
     </div>
@@ -278,8 +313,14 @@
 
   <section id="movement" class="section">
     <h2>OUR MOVEMENT</h2>
-    <p>300 Care Packages Delivered • $2000+ Raised • 3 Outreach Days</p>
-    <p style="margin-top: 30px; font-style: italic; opacity: 0.6; font-size: 0.9rem;">Join the movement. Change the narrative.</p>
+    <div class="movement-stats">
+      <p>300 Care Packages Delivered</p>
+      <p>•</p>
+      <p>$2000+ Raised</p>
+      <p>•</p>
+      <p>3 Outreach Days</p>
+    </div>
+    <p style="margin-top: 40px; font-style: italic; opacity: 0.6;">Join the movement. Change the narrative.</p>
   </section>
 
   <footer>
@@ -288,10 +329,23 @@
       <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
       <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
     </div>
-    <div class="copyright">
+    <div class="copyright" style="margin-top: 40px;">
       &copy; 2026 UNLIKELY ANGEL BRAND. ALL RIGHTS RESERVED.
     </div>
   </footer>
+
+  <script>
+    // Simple script to make products fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.product').forEach(p => observer.observe(p));
+  </script>
 
 </body>
 </html>
