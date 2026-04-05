@@ -13,6 +13,7 @@
       background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
       color: var(--white); line-height: 1.6; overflow-x: hidden;
     }
+    
     /* TOP BAR */
     .announcement-bar { background: var(--white); color: #000; text-align: center; padding: 8px 0; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; border-bottom: 2px solid #555; }
     
@@ -28,7 +29,7 @@
     .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
 
     /* BUTTONS */
-    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; }
+    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; cursor: pointer; }
     .btn:hover { background: var(--white); color: #000; transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
 
     /* SHOP GRID */
@@ -41,8 +42,9 @@
 
     /* VISIONARY SECTION */
     .founder-section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid var(--gray); }
-    .founder-image { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); }
-    .founder-image img { width: 100%; display: block; filter: grayscale(100%); }
+    .founder-image { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); background: #111; }
+    .founder-image img { width: 100%; display: block; filter: grayscale(100%); transition: 0.5s; }
+    .founder-image:hover img { filter: grayscale(0%); }
     .founder-text { flex: 1; text-align: left; }
     .founder-text h2 { letter-spacing: 5px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; }
     .founder-text p { margin-bottom: 20px; font-size: 1.1rem; opacity: 0.8; }
@@ -114,13 +116,13 @@
 
   <section id="visionary" class="founder-section">
     <div class="founder-image">
-      <img src="founder.jpg" alt="Founder">
+      <img src="founder.jpg?v=1" alt="The Visionary">
     </div>
     <div class="founder-text">
       <h2>The Visionary</h2>
-      <p>As a **photographer** and **personal stylist** based in California, my life has always been defined by the visual—finding the perfect frame and the right silhouette.</p>
-      <p>**Unlikely Angel Brand** is the raw combination of my two greatest loves. I realized that the same creative energy I use to style a client could be used to shine a light on the people society tries to keep out of focus.</p>
-      <p>For me, fashion is about the **dignity of being seen**. Every outreach day in Venice Beach is a reminder that when we change how we look at someone, we change the world they live in.</p>
+      <p>As a <strong>photographer</strong> and <strong>personal stylist</strong> based in California, my life has always been defined by the visual—finding the perfect frame and the right silhouette.</p>
+      <p><strong>Unlikely Angel Brand</strong> is the raw combination of my two greatest loves. I realized that the same creative energy I use to style a client could be used to shine a light on the people society tries to keep out of focus.</p>
+      <p>For me, fashion is about the <strong>dignity of being seen</strong>. Every outreach day in Venice Beach is a reminder that when we change how we look at someone, we change the world they live in.</p>
     </div>
   </section>
 
@@ -154,7 +156,6 @@
   </footer>
 
   <script>
-    // Product fade-in animation
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
