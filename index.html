@@ -11,7 +11,6 @@
     :root {
       --main-white: #f5f5f5;
       --accent-gray: #333;
-      --glitch-speed: 0.3s;
     }
 
     html { scroll-behavior: smooth; }
@@ -20,14 +19,13 @@
       margin: 0;
       font-family: 'Special Elite', system-ui, serif;
       background-color: #000;
-      /* Added a subtle grain texture */
       background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
       color: var(--main-white);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* ENHANCED ANNOUNCEMENT BAR */
+    /* ANNOUNCEMENT BAR */
     .announcement-bar {
       background: var(--main-white);
       color: #000;
@@ -40,7 +38,7 @@
       border-bottom: 2px solid #555;
     }
 
-    /* STICKY NAV WITH BLUR */
+    /* NAVIGATION */
     nav {
       position: sticky;
       top: 0;
@@ -69,7 +67,7 @@
       text-shadow: 0 0 8px rgba(255,255,255,0.5);
     }
 
-    /* DYNAMIC HERO SECTION */
+    /* HERO */
     .hero {
       min-height: 90vh;
       padding: 60px 20px;
@@ -82,7 +80,7 @@
                   url('hero.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* Parallax effect */
+      background-attachment: fixed;
     }
 
     .hero-logo {
@@ -91,15 +89,14 @@
       height: auto;
       margin-bottom: 30px;
       filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
-      animation: fadeIn 2s ease;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 8vw, 4rem);
+      font-size: clamp(1.8rem, 8vw, 4rem);
       margin-bottom: 10px;
       letter-spacing: -1px;
       text-transform: uppercase;
-      line-height: 1;
+      line-height: 1.1;
     }
 
     .hero p {
@@ -110,7 +107,7 @@
       font-style: italic;
     }
 
-    /* NEON-STYLE BUTTONS */
+    /* BUTTONS */
     .btn {
       display: inline-block;
       padding: 16px 32px;
@@ -122,7 +119,6 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       background: transparent;
-      position: relative;
     }
 
     .btn:hover {
@@ -132,7 +128,7 @@
       transform: scale(1.05);
     }
 
-    /* GRID OVERHAUL */
+    /* PRODUCTS GRID */
     .products {
       padding: 120px 20px;
       display: grid;
@@ -197,6 +193,7 @@
       font-size: 2.5rem;
       text-decoration: underline;
       text-underline-offset: 10px;
+      text-transform: uppercase;
     }
 
     .video-container {
@@ -213,13 +210,27 @@
       top: 0; left: 0; width: 100%; height: 100%;
     }
 
-    /* MOVEMENT CARDS */
+    /* MOVEMENT SECTION */
     .movement-stats {
       background: #111;
-      padding: 40px;
+      padding: 50px 30px;
       border: 1px dashed var(--main-white);
       display: inline-block;
       margin-top: 20px;
+      max-width: 600px;
+    }
+
+    .stat-item {
+      font-size: 1.5rem;
+      margin: 15px 0;
+      letter-spacing: 2px;
+      line-height: 1.3;
+    }
+
+    .divider {
+      font-size: 2rem;
+      margin: 10px 0;
+      opacity: 0.4;
     }
 
     /* FOOTER */
@@ -241,10 +252,7 @@
 
     .social-links a:hover { color: #888; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    .copyright { margin-top: 40px; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px; }
 
   </style>
 </head>
@@ -314,11 +322,11 @@
   <section id="movement" class="section">
     <h2>OUR MOVEMENT</h2>
     <div class="movement-stats">
-      <p>300 Care Packages Delivered</p>
-      <p>•</p>
-      <p>$2000+ Raised</p>
-      <p>•</p>
-      <p>3 Outreach Days</p>
+      <div class="stat-item">3 Outreach Days</div>
+      <div class="divider">•</div>
+      <div class="stat-item">$2000+ Raised</div>
+      <div class="divider">•</div>
+      <div class="stat-item">300 Care Packages Delivered to the Unhoused in Venice Beach</div>
     </div>
     <p style="margin-top: 40px; font-style: italic; opacity: 0.6;">Join the movement. Change the narrative.</p>
   </section>
@@ -329,13 +337,12 @@
       <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
       <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
     </div>
-    <div class="copyright" style="margin-top: 40px;">
+    <div class="copyright">
       &copy; 2026 UNLIKELY ANGEL BRAND. ALL RIGHTS RESERVED.
     </div>
   </footer>
 
   <script>
-    // Simple script to make products fade in on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
