@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unlikely Angel Brand</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
   <style>
     /* SMOOTH SCROLLING */
     html {
@@ -48,15 +50,15 @@
 
     /* HERO */
     .hero {
-      min-height: 80vh;
+      min-height: 85vh;
       padding: 60px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                  url('hero.jpg'); /* Ensure this file exists in your GitHub repo */
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                  url('hero.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -65,33 +67,37 @@
       width: 100%;
       max-width: 400px;
       height: auto;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
+    /* Applying the Gritty Font here */
     .hero h1 {
-      font-size: clamp(1.5rem, 5vw, 3rem);
-      margin-bottom: 10px;
-      letter-spacing: 3px;
+      font-family: 'Special Elite', system-ui, serif;
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      color: #e0e0e0; /* Slightly off-white for a weathered look */
     }
 
     .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
+      font-family: 'Special Elite', system-ui, serif;
+      font-size: 1.2rem;
+      margin-bottom: 40px;
       max-width: 600px;
-      opacity: 0.9;
+      opacity: 0.8;
     }
 
     /* BUTTONS */
     .btn {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 14px 28px;
       border: 1px solid #fff;
       color: #fff;
       text-decoration: none;
       transition: all 0.3s ease;
       font-size: 0.9rem;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
@@ -106,12 +112,11 @@
       font-weight: bold;
     }
 
-    /* PRODUCTS GRID (RESPONSIVE) */
+    /* PRODUCTS GRID */
     .products {
-      padding: 80px 20px;
+      padding: 100px 20px;
       display: grid;
-      /* This line makes it 4 columns on desktop, 2 on tablet, 1 on phone */
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 40px;
       max-width: 1100px;
       margin: 0 auto;
@@ -125,41 +130,43 @@
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 2px;
       margin-bottom: 15px;
-      transition: transform 0.4s ease;
+      transition: filter 0.3s ease;
     }
 
     .product img:hover {
-      transform: scale(1.02);
+      filter: grayscale(40%);
     }
 
     .product p {
       margin: 10px 0;
       font-size: 0.9rem;
-      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     /* SECTIONS */
     .section {
-      padding: 80px 20px;
+      padding: 100px 20px;
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
     }
 
     .section h2 {
-      letter-spacing: 4px;
+      letter-spacing: 6px;
       margin-bottom: 30px;
+      font-size: 1.8rem;
     }
 
-    /* VIDEO */
+    /* VIDEO CONTAINER */
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      margin-top: 30px;
+      margin-top: 40px;
+      border: 1px solid #333;
     }
 
     .video-container iframe {
@@ -168,26 +175,28 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 8px;
     }
 
     /* FOOTER */
     footer {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
-      border-top: 1px solid #222;
+      border-top: 1px solid #1a1a1a;
+      background-color: #050505;
     }
 
     .social-links {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .social-links a {
       color: #fff;
       text-decoration: none;
-      margin: 0 10px;
-      font-size: 0.8rem;
-      opacity: 0.7;
+      margin: 0 15px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
     }
 
     .social-links a:hover {
@@ -195,9 +204,9 @@
     }
 
     .copyright {
-      font-size: 0.7rem;
-      opacity: 0.5;
-      letter-spacing: 1px;
+      font-size: 0.65rem;
+      opacity: 0.4;
+      letter-spacing: 2px;
     }
   </style>
 </head>
@@ -215,7 +224,7 @@
     <img src="logo.png" class="hero-logo" alt="Unlikely Angel Logo">
     <h1>Be careful who you overlook.</h1>
     <p>They might just be an angel.</p>
-    <a class="btn" href="#products">Explore Collection</a>
+    <a class="btn" href="#products">Shop Collection</a>
   </section>
 
   <section id="products" class="products">
@@ -259,13 +268,13 @@
   <section id="movement" class="section">
     <h2>OUR MOVEMENT</h2>
     <p>200 Care Packages Delivered • $1400+ Raised • 2 Outreach Days</p>
-    <p style="margin-top: 20px; font-style: italic; opacity: 0.8;">Join us in making a difference.</p>
+    <p style="margin-top: 30px; font-style: italic; opacity: 0.6; font-size: 0.9rem;">Join the movement. Change the narrative.</p>
   </section>
 
   <footer>
     <div class="social-links">
-      <a href="https://instagram.com/yourprofile" target="_blank">INSTAGRAM</a>
-      <a href="https://tiktok.com/@yourprofile" target="_blank">TIKTOK</a>
+      <a href="https://www.instagram.com/unlikelyangelbrand/" target="_blank">INSTAGRAM</a>
+      <a href="https://www.tiktok.com/@unlikelyangelbrand?is_from_webapp=1&sender_device=pc" target="_blank">TIKTOK</a>
       <a href="mailto:hello@unlikelyangel.com">CONTACT</a>
     </div>
     <div class="copyright">
