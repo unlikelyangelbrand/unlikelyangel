@@ -4,274 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unlikely Angel Brand</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --main-white: #f5f5f5;
-      --accent-gray: #333;
-    }
-
+    :root { --white: #f5f5f5; --gray: #333; }
     html { scroll-behavior: smooth; }
-
     body {
-      margin: 0;
-      font-family: 'Special Elite', system-ui, serif;
-      background-color: #000;
+      margin: 0; font-family: 'Special Elite', serif; background-color: #000;
       background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
-      color: var(--main-white);
-      line-height: 1.6;
-      overflow-x: hidden;
+      color: var(--white); line-height: 1.6; overflow-x: hidden;
     }
-
-    /* ANNOUNCEMENT BAR */
-    .announcement-bar {
-      background: var(--main-white);
-      color: #000;
-      text-align: center;
-      padding: 8px 0;
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-weight: bold;
-      border-bottom: 2px solid #555;
-    }
-
-    /* NAVIGATION */
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(15px);
-      display: flex;
-      justify-content: center;
-      padding: 20px 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--accent-gray);
-    }
-
-    nav a {
-      color: var(--main-white);
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      opacity: 0.7;
-    }
-
-    nav a:hover {
-      opacity: 1;
-      text-shadow: 0 0 8px rgba(255,255,255,0.5);
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 90vh;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)),
-                  url('hero.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-
-    .hero-logo {
-      width: 100%;
-      max-width: 450px;
-      height: auto;
-      margin-bottom: 30px;
-      filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
-    }
-
-    .hero h1 {
-      font-size: clamp(1.8rem, 8vw, 4rem);
-      margin-bottom: 10px;
-      letter-spacing: -1px;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-
-    .hero p {
-      font-size: 1.4rem;
-      margin-bottom: 40px;
-      max-width: 700px;
-      opacity: 0.9;
-      font-style: italic;
-    }
-
-    /* BUTTONS */
-    .btn {
-      display: inline-block;
-      padding: 16px 32px;
-      border: 2px solid var(--main-white);
-      color: var(--main-white);
-      text-decoration: none;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      font-size: 1rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      background: transparent;
-    }
-
-    .btn:hover {
-      background: var(--main-white);
-      color: #000;
-      box-shadow: 0 0 20px rgba(255,255,255,0.4);
-      transform: scale(1.05);
-    }
-
-    /* PRODUCTS GRID */
-    .products {
-      padding: 120px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 50px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .product {
-      text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-
-    .product.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .product-image-wrapper {
-      overflow: hidden;
-      margin-bottom: 20px;
-      border: 1px solid var(--accent-gray);
-      background: #111;
-    }
-
-    .product img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease, filter 0.6s ease;
-      filter: grayscale(20%);
-    }
-
-    .product:hover img {
-      transform: scale(1.1);
-      filter: grayscale(0%);
-    }
-
-    .product p {
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-
-    /* STORY SECTION */
-    .section {
-      padding: 120px 20px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-      border-top: 1px solid var(--accent-gray);
-    }
-
-    .section h2 {
-      letter-spacing: 10px;
-      margin-bottom: 40px;
-      font-size: 2.5rem;
-      text-decoration: underline;
-      text-underline-offset: 10px;
-      text-transform: uppercase;
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border: 1px solid var(--main-white);
-      box-shadow: 20px 20px 0px var(--accent-gray);
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-    }
-
-    /* MOVEMENT SECTION */
-    .movement-stats {
-      background: #111;
-      padding: 50px 30px;
-      border: 1px dashed var(--main-white);
-      display: inline-block;
-      margin-top: 20px;
-      max-width: 600px;
-    }
-
-    .stat-item {
-      font-size: 1.5rem;
-      margin: 15px 0;
-      letter-spacing: 2px;
-      line-height: 1.3;
-    }
-
-    .divider {
-      font-size: 2rem;
-      margin: 10px 0;
-      opacity: 0.4;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 100px 20px;
-      text-align: center;
-      background-color: #000;
-      border-top: 1px solid var(--accent-gray);
-    }
-
-    .social-links a {
-      color: var(--main-white);
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 0.9rem;
-      letter-spacing: 3px;
-      transition: 0.3s;
-    }
-
-    .social-links a:hover { color: #888; }
-
-    .copyright { margin-top: 40px; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px; }
-
+    .announcement-bar { background: var(--white); color: #000; text-align: center; padding: 8px 0; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; }
+    nav { position: sticky; top: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px); display: flex; justify-content: center; padding: 20px 0; z-index: 1000; border-bottom: 1px solid var(--gray); }
+    nav a { color: var(--white); text-decoration: none; margin: 0 20px; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.7; }
+    .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px; }
+    .hero-logo { width: 100%; max-width: 450px; margin-bottom: 30px; }
+    .hero h1 { font-size: clamp(1.8rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 10px; }
+    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; }
+    .btn:hover { background: var(--white); color: #000; transform: scale(1.05); }
+    .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto; }
+    .product { text-align: center; opacity: 0; transform: translateY(30px); transition: 0.8s; }
+    .product.visible { opacity: 1; transform: translateY(0); }
+    .product img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--gray); filter: grayscale(20%); transition: 0.6s; }
+    .product:hover img { transform: scale(1.05); filter: grayscale(0%); border-color: var(--white); }
+    
+    /* VISIONARY SECTION */
+    .founder-section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid var(--gray); }
+    .founder-image { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); }
+    .founder-image img { width: 100%; display: block; filter: grayscale(100%); }
+    .founder-text { flex: 1; text-align: left; }
+    .founder-text h2 { letter-spacing: 5px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; }
+    
+    .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid var(--gray); }
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); margin-top: 40px; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .movement-stats { background: #111; padding: 50px 30px; border: 1px dashed var(--white); display: inline-block; margin-top: 20px; }
+    .stat-item { font-size: 1.4rem; margin: 15px 0; letter-spacing: 1px; }
+    footer { padding: 80px 20px; text-align: center; border-top: 1px solid var(--gray); }
+    .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; }
+    @media (max-width: 768px) { .founder-section { flex-direction: column; text-align: center; } .founder-text { text-align: center; } }
   </style>
 </head>
-
 <body>
-
-  <div class="announcement-bar">
-    Limited Edition • Unlikely Angel Brand • Worldwide
-  </div>
-
+  <div class="announcement-bar">Limited Edition • Unlikely Angel Brand • Worldwide</div>
   <nav>
     <a href="#">Home</a>
     <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
+    <a href="#visionary">Visionary</a>
     <a href="#story">Story</a>
     <a href="#movement">Movement</a>
   </nav>
 
   <section class="hero">
-    <img src="logo.png" class="hero-logo" alt="Unlikely Angel Logo">
+    <img src="logo.png" class="hero-logo" alt="Unlikely Angel">
     <h1>Be careful who you overlook...</h1>
     <p>They might just be an angel.</p>
     <a class="btn" href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop Collection</a>
@@ -279,41 +63,39 @@
 
   <section id="products" class="products">
     <div class="product">
-      <div class="product-image-wrapper">
-        <img src="vertical-stripe-shirt.PNG" alt="Oversized Vertical Stripe Tee">
-      </div>
+      <img src="vertical-stripe-shirt.PNG" alt="Product">
       <p>Oversized Vertical Stripe Tee</p>
       <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe">Buy</a>
     </div>
-
     <div class="product">
-      <div class="product-image-wrapper">
-        <img src="unlikely-angel-tee.PNG" alt="Unlikely Angel Tee (Girl)">
-      </div>
+      <img src="unlikely-angel-tee.PNG" alt="Product">
       <p>Unlikely Angel Tee (Girl)</p>
       <a class="btn" href="https://www.etsy.com/listing/4442483545/unlikely-angel-tee-girl">Buy</a>
     </div>
-
     <div class="product">
-      <div class="product-image-wrapper">
-        <img src="baseball-cap.JPG" alt="Mid Profile Baseball Cap">
-      </div>
+      <img src="baseball-cap.JPG" alt="Product">
       <p>Mid Profile Baseball Cap</p>
       <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap">Buy</a>
     </div>
-
     <div class="product">
-      <div class="product-image-wrapper">
-        <img src="her-tote-bag.JPG" alt="HER Tote Bag">
-      </div>
+      <img src="her-tote-bag.JPG" alt="Product">
       <p>HER Tote Bag</p>
       <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag">Buy</a>
     </div>
   </section>
 
+  <section id="visionary" class="founder-section">
+    <div class="founder-image"><img src="founder.jpg" alt="Founder"></div>
+    <div class="founder-text">
+      <h2>The Visionary</h2>
+      <p>As a **photographer** and **personal stylist** based in California, my life has always been defined by the visual—finding the perfect frame and the right silhouette.</p>
+      <p>**Unlikely Angel Brand** is the raw combination of my two greatest loves. I realized that the same creative energy I use to style a client could be used to shine a light on the people society tries to keep out of focus.</p>
+      <p>For me, fashion is about the **dignity of being seen**. Every outreach day in Venice Beach is a reminder that when we change how we look at someone, we change the world they live in.</p>
+    </div>
+  </section>
+
   <section id="story" class="section">
     <h2>OUR STORY</h2>
-    <p>This is more than a brand. This is what we stand for.</p>
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/QN9gKIDo7XU" frameborder="0" allowfullscreen></iframe>
     </div>
@@ -323,12 +105,11 @@
     <h2>OUR MOVEMENT</h2>
     <div class="movement-stats">
       <div class="stat-item">3 Outreach Days</div>
-      <div class="divider">•</div>
+      <div class="stat-item">•</div>
       <div class="stat-item">$2000+ Raised</div>
-      <div class="divider">•</div>
+      <div class="stat-item">•</div>
       <div class="stat-item">300 Care Packages Delivered to the Unhoused in Venice Beach</div>
     </div>
-    <p style="margin-top: 40px; font-style: italic; opacity: 0.6;">Join the movement. Change the narrative.</p>
   </section>
 
   <footer>
@@ -337,22 +118,14 @@
       <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
       <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
     </div>
-    <div class="copyright">
-      &copy; 2026 UNLIKELY ANGEL BRAND. ALL RIGHTS RESERVED.
-    </div>
+    <p style="margin-top: 30px; opacity: 0.3; font-size: 0.7rem;">&copy; 2026 UNLIKELY ANGEL BRAND.</p>
   </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.product').forEach(p => observer.observe(p));
   </script>
-
 </body>
 </html>
