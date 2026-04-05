@@ -6,81 +6,114 @@
   <title>Unlikely Angel Brand</title>
 
   <style>
+    /* SMOOTH SCROLLING */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background-color: #000;
       color: #fff;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
     }
 
     /* HERO */
     .hero {
-      min-height: 70vh;
-      padding: 40px 20px;
+      min-height: 80vh;
+      padding: 60px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                  url('hero.jpg');
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('hero.jpg'); /* Ensure this file exists in your GitHub repo */
       background-size: cover;
       background-position: center;
     }
 
+    .hero-logo {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 25px;
+    }
+
     .hero h1 {
-      font-size: 3rem;
+      font-size: clamp(1.5rem, 5vw, 3rem);
       margin-bottom: 10px;
       letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
       max-width: 600px;
+      opacity: 0.9;
     }
-
-    /*  HERO LOGO (UPDATED TO 400px) */
-    .hero-logo {
-  width: 400px;
-  max-width: none;
-  height: auto;
-  display: block;
-  margin: 0 auto 25px;
-}
 
     /* BUTTONS */
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 18px;
+      padding: 12px 24px;
       border: 1px solid #fff;
       color: #fff;
       text-decoration: none;
-      margin-right: 10px;
       transition: all 0.3s ease;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .btn:hover {
-      background: white;
-      color: black;
+      background: #fff;
+      color: #000;
     }
 
     .hero .btn {
-      background: white;
-      color: black;
+      background: #fff;
+      color: #000;
       font-weight: bold;
     }
 
-    /* PRODUCTS */
+    /* PRODUCTS GRID (RESPONSIVE) */
     .products {
-      padding: 50px 20px;
+      padding: 80px 20px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1000px;
+      /* This line makes it 4 columns on desktop, 2 on tablet, 1 on phone */
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -90,105 +123,155 @@
 
     .product img {
       width: 100%;
-      max-width: 160px;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      border-radius: 8px;
-      display: block;
-      margin: 0 auto;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      transition: transform 0.4s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.02);
     }
 
     .product p {
-      margin: 12px 0 10px;
-      font-size: 0.95rem;
-    }
-
-    .product .btn {
-      margin-top: 10px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-weight: bold;
     }
 
     /* SECTIONS */
     .section {
-      padding: 40px 20px;
+      padding: 80px 20px;
       text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      letter-spacing: 4px;
+      margin-bottom: 30px;
     }
 
     /* VIDEO */
-    iframe {
-      display: block;
-      margin: 0 auto;
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: 700px;
-      aspect-ratio: 16 / 9;
-      height: auto;
+      height: 100%;
       border-radius: 8px;
     }
 
+    /* FOOTER */
     footer {
-      padding: 20px;
+      padding: 60px 20px;
       text-align: center;
+      border-top: 1px solid #222;
+    }
+
+    .social-links {
+      margin-bottom: 20px;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
       font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .social-links a:hover {
+      opacity: 1;
+    }
+
+    .copyright {
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Shop</a>
+    <a href="#story">Story</a>
+    <a href="#movement">Movement</a>
+  </nav>
+
   <section class="hero">
     <img src="logo.png" class="hero-logo" alt="Unlikely Angel Logo">
-
     <h1>Be careful who you overlook.</h1>
     <p>They might just be an angel.</p>
-    <a class="btn" href="#products">Shop Now</a>
+    <a class="btn" href="#products">Explore Collection</a>
   </section>
 
-  <!-- PRODUCTS -->
   <section id="products" class="products">
-
     <div class="product">
-      <img src="vertical-stripe-shirt.PNG">
+      <img src="vertical-stripe-shirt.PNG" alt="Oversized Vertical Stripe Tee">
       <p>Oversized Vertical Stripe Tee</p>
-      <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe?ref=shop_home_active_15">Buy</a>
+      <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe">Buy</a>
     </div>
 
     <div class="product">
-      <img src="unlikely-angel-tee.PNG">
+      <img src="unlikely-angel-tee.PNG" alt="Unlikely Angel Tee (Girl)">
       <p>Unlikely Angel Tee (Girl)</p>
-      <a class="btn" href="https://www.etsy.com/listing/4442483545/unlikely-angel-tee-girl?ref=shop_home_active_29">Buy</a>
+      <a class="btn" href="https://www.etsy.com/listing/4442483545/unlikely-angel-tee-girl">Buy</a>
     </div>
 
     <div class="product">
-      <img src="baseball-cap.JPG">
+      <img src="baseball-cap.JPG" alt="Mid Profile Baseball Cap">
       <p>Mid Profile Baseball Cap</p>
-      <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap?ref=shop_home_active_25">Buy</a>
+      <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap">Buy</a>
     </div>
 
     <div class="product">
-      <img src="her-tote-bag.JPG">
+      <img src="her-tote-bag.JPG" alt="HER Tote Bag">
       <p>HER Tote Bag</p>
-      <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag?ref=shop_home_active_3">Buy</a>
+      <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag">Buy</a>
     </div>
-
   </section>
 
-  <!-- STORY -->
-  <section class="section">
+  <section id="story" class="section">
     <h2>OUR STORY</h2>
     <p>This is more than a brand. This is what we stand for.</p>
-
-    <iframe 
-      src="https://www.youtube.com/embed/QN9gKIDo7XU"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/QN9gKIDo7XU" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
   </section>
 
-  <!-- MOVEMENT -->
-  <section class="section">
+  <section id="movement" class="section">
     <h2>OUR MOVEMENT</h2>
     <p>200 Care Packages Delivered • $1400+ Raised • 2 Outreach Days</p>
+    <p style="margin-top: 20px; font-style: italic; opacity: 0.8;">Join us in making a difference.</p>
   </section>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://instagram.com/yourprofile" target="_blank">INSTAGRAM</a>
+      <a href="https://tiktok.com/@yourprofile" target="_blank">TIKTOK</a>
+      <a href="mailto:hello@unlikelyangel.com">CONTACT</a>
+    </div>
+    <div class="copyright">
+      &copy; 2026 UNLIKELY ANGEL BRAND. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
 
 </body>
 </html>
