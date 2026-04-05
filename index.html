@@ -14,33 +14,27 @@
       color: var(--white); line-height: 1.6; overflow-x: hidden;
     }
     
-    /* TOP BAR */
     .announcement-bar { background: var(--white); color: #000; text-align: center; padding: 8px 0; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; border-bottom: 2px solid #555; }
     
-    /* NAV */
     nav { position: sticky; top: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px); display: flex; justify-content: center; padding: 20px 0; z-index: 1000; border-bottom: 1px solid var(--gray); }
     nav a { color: var(--white); text-decoration: none; margin: 0 20px; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; }
     nav a:hover { opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
 
-    /* HERO */
     .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px; }
     .hero-logo { width: 100%; max-width: 450px; margin-bottom: 30px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)); }
     .hero h1 { font-size: clamp(1.8rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.1; }
     .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
 
-    /* BUTTONS */
     .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; cursor: pointer; }
     .btn:hover { background: var(--white); color: #000; transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
 
-    /* SHOP GRID */
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto; }
     .product { text-align: center; opacity: 0; transform: translateY(30px); transition: 0.8s; }
     .product.visible { opacity: 1; transform: translateY(0); }
     .product img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--gray); filter: grayscale(20%); transition: 0.6s; margin-bottom: 20px; }
     .product:hover img { transform: scale(1.05); filter: grayscale(0%); border-color: var(--white); }
-    .product p { font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
 
-    /* VISIONARY SECTION */
+    /* VISIONARY SECTION STYLES */
     .founder-section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid var(--gray); }
     .founder-image { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); background: #111; }
     .founder-image img { width: 100%; display: block; filter: grayscale(100%); transition: 0.5s; }
@@ -49,27 +43,19 @@
     .founder-text h2 { letter-spacing: 5px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; }
     .founder-text p { margin-bottom: 20px; font-size: 1.1rem; opacity: 0.8; }
 
-    /* STORY VIDEO */
     .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid var(--gray); }
-    .section h2 { letter-spacing: 10px; margin-bottom: 40px; font-size: 2.5rem; text-transform: uppercase; }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); margin-top: 40px; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-    /* MOVEMENT STATS */
     .movement-stats { background: #111; padding: 50px 30px; border: 1px dashed var(--white); display: inline-block; margin-top: 20px; max-width: 650px; }
     .stat-item { font-size: 1.4rem; margin: 15px 0; letter-spacing: 1px; }
     .divider { font-size: 2rem; margin: 10px 0; opacity: 0.4; }
 
-    /* FOOTER */
     footer { padding: 100px 20px; text-align: center; border-top: 1px solid var(--gray); background: #000; }
     .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
-    .social-links a:hover { opacity: 1; }
     .copyright { margin-top: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; }
 
-    @media (max-width: 768px) { 
-      .founder-section { flex-direction: column; text-align: center; } 
-      .founder-text { text-align: center; } 
-    }
+    @media (max-width: 768px) { .founder-section { flex-direction: column; text-align: center; } .founder-text { text-align: center; } }
   </style>
 </head>
 <body>
@@ -116,7 +102,7 @@
 
   <section id="visionary" class="founder-section">
     <div class="founder-image">
-      <img src="founder.jpg?v=1" alt="The Visionary">
+      <img src="./founder.jpg?v=2" alt="The Visionary" style="display:block !important; width:100%;">
     </div>
     <div class="founder-text">
       <h2>The Visionary</h2>
@@ -128,7 +114,6 @@
 
   <section id="story" class="section">
     <h2>OUR STORY</h2>
-    <p>This is more than a brand. This is what we stand for.</p>
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/QN9gKIDo7XU" frameborder="0" allowfullscreen></iframe>
     </div>
@@ -143,7 +128,6 @@
       <div class="divider">•</div>
       <div class="stat-item">300 Care Packages Delivered to the Unhoused in Venice Beach</div>
     </div>
-    <p style="margin-top: 40px; font-style: italic; opacity: 0.6;">Join the movement. Change the narrative.</p>
   </section>
 
   <footer>
@@ -152,18 +136,15 @@
       <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
       <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
     </div>
-    <div class="copyright">&copy; 2026 UNLIKELY ANGEL BRAND. ALL RIGHTS RESERVED.</div>
+    <div class="copyright">&copy; 2026 UNLIKELY ANGEL BRAND.</div>
   </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.product').forEach(p => observer.observe(p));
   </script>
 
