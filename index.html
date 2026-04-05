@@ -81,7 +81,6 @@
       max-width: 400px;
       height: auto;
       margin-bottom: 30px;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
     }
 
     .hero h1 {
@@ -90,8 +89,6 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #fff;
-      /* Subtle Gritty Glow */
-      text-shadow: 2px 2px 0px rgba(255,255,255,0.1);
     }
 
     .hero p {
@@ -118,7 +115,6 @@
     .btn:hover {
       background: #fff;
       color: #000;
-      transform: translateY(-2px);
     }
 
     .hero .btn {
@@ -145,15 +141,12 @@
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      border-radius: 0px; /* Sharp edges for streetwear look */
       margin-bottom: 15px;
       transition: all 0.4s ease;
-      border: 1px solid transparent;
     }
 
     .product img:hover {
-      filter: contrast(1.1) brightness(0.8);
-      border: 1px solid #fff;
+      filter: brightness(0.7);
     }
 
     .product p {
@@ -175,12 +168,9 @@
       margin-bottom: 30px;
       font-size: 1.8rem;
       text-transform: uppercase;
-      border-bottom: 1px solid #222;
-      display: inline-block;
-      padding-bottom: 10px;
     }
 
-    /* VIDEO CONTAINER */
+    /* VIDEO */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -229,12 +219,6 @@
       opacity: 0.4;
       letter-spacing: 2px;
     }
-
-    /* RESPONSIVE ADJUSTMENTS */
-    @media (max-width: 600px) {
-      .hero-logo { max-width: 280px; }
-      nav a { margin: 0 8px; font-size: 0.7rem; }
-    }
   </style>
 </head>
 
@@ -246,7 +230,7 @@
 
   <nav>
     <a href="#">Home</a>
-    <a href="#products">Shop</a>
+    <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
     <a href="#story">Story</a>
     <a href="#movement">Movement</a>
   </nav>
@@ -288,11 +272,7 @@
     <h2>OUR STORY</h2>
     <p>This is more than a brand. This is what we stand for.</p>
     <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/QN9gKIDo7XU" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://www.youtube.com/embed/QN9gKIDo7XU" frameborder="0" allowfullscreen></iframe>
     </div>
   </section>
 
@@ -305,7 +285,7 @@
   <footer>
     <div class="social-links">
       <a href="https://www.instagram.com/unlikelyangelbrand/" target="_blank">INSTAGRAM</a>
-      <a href="https://www.tiktok.com/@unlikelyangelbrand?is_from_webapp=1&sender_device=pc" target="_blank">TIKTOK</a>
+      <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
       <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
     </div>
     <div class="copyright">
