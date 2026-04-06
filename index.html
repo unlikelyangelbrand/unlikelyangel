@@ -16,41 +16,17 @@
     
     .announcement-bar { background: var(--white); color: #000; text-align: center; padding: 8px 0; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; border-bottom: 2px solid #555; }
     
-    /* UPDATED NAV FOR MOBILE SCROLLING */
     nav { 
-      position: sticky; 
-      top: 0; 
-      background: rgba(0, 0, 0, 0.9); 
-      backdrop-filter: blur(15px); 
-      display: flex; 
-      justify-content: flex-start; /* Changed from center to allow scrolling start */
-      padding: 15px 0; 
-      z-index: 1000; 
-      border-bottom: 1px solid var(--gray);
-      overflow-x: auto; 
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch; /* Smooth scroll on iPhones */
+      position: sticky; top: 0; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(15px); 
+      display: flex; justify-content: flex-start; padding: 15px 0; z-index: 1000; 
+      border-bottom: 1px solid var(--gray); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;
     }
-    
-    /* Hide scrollbar for Chrome, Safari and Opera */
     nav::-webkit-scrollbar { display: none; }
-    /* Hide scrollbar for IE, Edge and Firefox */
     nav { -ms-overflow-style: none; scrollbar-width: none; }
 
-    nav a { 
-      color: var(--white); 
-      text-decoration: none; 
-      margin: 0 18px; 
-      font-size: 0.8rem; 
-      letter-spacing: 2px; 
-      text-transform: uppercase; 
-      opacity: 0.7; 
-      transition: 0.3s;
-      flex: 0 0 auto; /* Prevents text from shrinking */
-    }
-    nav a:first-child { margin-left: 25px; } /* Extra space on the left */
-    nav a:last-child { margin-right: 25px; } /* Extra space on the right */
-    
+    nav a { color: var(--white); text-decoration: none; margin: 0 18px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; flex: 0 0 auto; }
+    nav a:first-child { margin-left: 25px; }
+    nav a:last-child { margin-right: 25px; }
     nav a:hover { opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
 
     .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px; }
@@ -66,18 +42,15 @@
     .product.visible { opacity: 1; transform: translateY(0); }
     .product img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--gray); filter: grayscale(20%); transition: 0.6s; margin-bottom: 20px; }
     .product:hover img { transform: scale(1.05); filter: grayscale(0%); border-color: var(--white); }
-    .product p { font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
 
-    /* VISIONARY SECTION */
-    .founder-section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid var(--gray); }
-    .founder-image { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); background: #111; }
-    .founder-image img { width: 100%; display: block; transition: 0.5s; min-height: 300px; }
-    .founder-text { flex: 1; text-align: left; }
-    .founder-text h2 { letter-spacing: 5px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; }
-    .founder-subtitle { font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; padding-bottom: 5px; }
-    .founder-text p { margin-bottom: 20px; font-size: 1.1rem; opacity: 0.8; }
+    /* LAYOUT BOXES */
+    .founder-section, .movement-content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid var(--gray); }
+    .image-box { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); background: #111; }
+    .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; }
+    .text-box { flex: 1; text-align: left; }
+    .text-box h2 { letter-spacing: 5px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; }
 
-    /* ARTICLES SECTION */
+    /* ARTICLES */
     .articles-section { padding: 100px 20px; text-align: center; background: #0a0a0a; border-top: 1px solid var(--gray); }
     .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
     .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
@@ -87,27 +60,24 @@
     .article-title { font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; font-style: italic; }
     .read-more { font-size: 0.8rem; letter-spacing: 2px; text-decoration: underline; text-transform: uppercase; }
 
+    /* STATS BOX */
+    .movement-stats { background: #111; padding: 30px; border: 1px dashed var(--white); display: block; margin-top: 30px; width: 100%; box-sizing: border-box; }
+    .stat-item { font-size: 1.2rem; margin: 10px 0; letter-spacing: 1px; }
+
+    /* VIDEO container */
     .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid var(--gray); }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px var(--gray); margin-top: 40px; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-    .movement-stats { background: #111; padding: 50px 30px; border: 1px dashed var(--white); display: inline-block; margin-top: 20px; max-width: 650px; }
-    .stat-item { font-size: 1.4rem; margin: 15px 0; letter-spacing: 1px; }
-    .divider { font-size: 2rem; margin: 10px 0; opacity: 0.4; }
 
     footer { padding: 100px 20px; text-align: center; border-top: 1px solid var(--gray); background: #000; }
     .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
     .copyright { margin-top: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; }
 
-    /* Desktop Centering adjustment */
-    @media (min-width: 769px) {
-      nav { justify-content: center; }
-      nav a:first-child { margin-left: 18px; }
-    }
-
+    @media (min-width: 769px) { nav { justify-content: center; } nav a:first-child { margin-left: 18px; } }
     @media (max-width: 768px) { 
-      .founder-section { flex-direction: column; text-align: center; } 
-      .founder-text { text-align: center; } 
+      .founder-section, .movement-content { flex-direction: column; text-align: center; } 
+      .text-box { text-align: center; } 
+      .image-box { width: 100%; order: 2; } /* Places image below text on mobile for Movement */
     }
   </style>
 </head>
@@ -155,22 +125,20 @@
   </section>
 
   <section id="visionary" class="founder-section">
-    <div class="founder-image">
+    <div class="image-box">
       <img src="visionary.jpg" alt="Gabby Binion">
     </div>
-    <div class="founder-text">
+    <div class="text-box">
       <h2>Gabby Binion</h2>
-      <div class="founder-subtitle">The Visionary</div>
+      <div style="font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; padding-bottom: 5px;">The Visionary</div>
       <p>As a <strong>photographer</strong> and <strong>personal stylist</strong> based in California, my life has always been defined by the visual—finding the perfect frame and the right silhouette.</p>
       <p><strong>Unlikely Angel Brand</strong> is the raw combination of my two greatest loves. I realized that the same creative energy I use to style a client could be used to shine a light on the people society tries to keep out of focus.</p>
-      <p>For me, fashion is about the <strong>dignity of being seen</strong>. Every outreach day in Venice Beach is a reminder that when we change how we look at someone, we change the world they live in.</p>
     </div>
   </section>
 
   <section id="articles" class="articles-section">
     <h2>FEATURED ARTICLES</h2>
     <div class="articles-grid">
-      
       <a href="https://voyagela.com/interview/meet-gabby-binion-of-winnetka" target="_blank" class="article-card">
         <div>
           <div class="article-source">VoyageLA</div>
@@ -178,7 +146,6 @@
         </div>
         <div class="read-more">Read Full Story</div>
       </a>
-
       <a href="https://boldjourney.com/meet-gabby-binion-2/" target="_blank" class="article-card">
         <div>
           <div class="article-source">BoldJourney</div>
@@ -186,15 +153,13 @@
         </div>
         <div class="read-more">Read Full Story</div>
       </a>
-
       <a href="https://boldjourney.com/meet-gabby-binion/" target="_blank" class="article-card">
         <div>
           <div class="article-source">BoldJourney</div>
-          <div class="article-title">"The Heart of Style: Gabby Binion on storytelling through fashion and community."</div>
+          <div class="article-title">"The Heart of Style: Storytelling through fashion and community."</div>
         </div>
         <div class="read-more">Read Full Story</div>
       </a>
-
     </div>
   </section>
 
@@ -205,14 +170,18 @@
     </div>
   </section>
 
-  <section id="movement" class="section">
-    <h2>OUR MOVEMENT</h2>
-    <div class="movement-stats">
-      <div class="stat-item">3 Outreach Days</div>
-      <div class="divider">•</div>
-      <div class="stat-item">$2000+ Raised</div>
-      <div class="divider">•</div>
-      <div class="stat-item">300 Care Packages Delivered to the Unhoused in Venice Beach</div>
+  <section id="movement" class="movement-content">
+    <div class="text-box">
+      <h2>OUR MOVEMENT</h2>
+      <p>Fashion is our medium, but <strong>human connection</strong> is our mission. We believe that everyone deserves to be seen, regardless of their circumstances.</p>
+      <div class="movement-stats">
+        <div class="stat-item">• 3 Outreach Days</div>
+        <div class="stat-item">• $2000+ Raised</div>
+        <div class="stat-item">• 300 Care Packages Delivered</div>
+      </div>
+    </div>
+    <div class="image-box">
+      <img src="outreach.JPG" alt="Unlikely Angel Outreach Movement">
     </div>
   </section>
 
