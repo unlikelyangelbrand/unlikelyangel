@@ -48,7 +48,7 @@
     .articles-section { padding: 100px 20px; text-align: center; background: #0a0a0a; border-top: 1px solid var(--gray); }
     .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
     .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-    .article-card { border: 1px solid var(--gray); padding: 40px 30px; transition: 0.4s; text-decoration: none; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; }
+    .article-card { border: 1px solid var(--gray); padding: 40px 30px; transition: 0.4s; text-decoration: none; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; min-height: 200px; }
     .article-card:hover { border-color: var(--white); background: #111; transform: translateY(-5px); }
     .article-source { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px; }
     .article-title { font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; font-style: italic; }
@@ -132,18 +132,26 @@
     <h2>FEATURED ARTICLES</h2>
     <div class="articles-grid">
       
-      <a href="https://boldjourney.com/meet-gabby-binion-2/" target="_blank" class="article-card">
+      <a href="https://voyagela.com/interview/meet-gabby-binion-of-winnetka" target="_blank" class="article-card">
         <div>
-          <div class="article-source">BoldJourney</div>
-          <div class="article-title">"Meet Gabby Binion: Discussing creative resilience and the mission behind the brand."</div>
+          <div class="article-source">VoyageLA</div>
+          <div class="article-title">"Exploring Life & Business with Gabby Binion: A focus on the Winnetka creative scene."</div>
         </div>
         <div class="read-more">Read Full Story</div>
       </a>
 
-      <a href="https://canvasrebel.com/meet-gabby-binion/" target="_blank" class="article-card">
+      <a href="https://boldjourney.com/meet-gabby-binion-2/" target="_blank" class="article-card">
         <div>
-          <div class="article-source">CanvasRebel</div>
-          <div class="article-title">"The Dignity of Being Seen: A conversation with stylist and photographer Gabby Binion."</div>
+          <div class="article-source">BoldJourney</div>
+          <div class="article-title">"Resilience & Creative Purpose: Navigating the mission behind Unlikely Angel Brand."</div>
+        </div>
+        <div class="read-more">Read Full Story</div>
+      </a>
+
+      <a href="https://boldjourney.com/meet-gabby-binion/" target="_blank" class="article-card">
+        <div>
+          <div class="article-source">BoldJourney</div>
+          <div class="article-title">"The Heart of Style: Gabby Binion on storytelling through fashion and community."</div>
         </div>
         <div class="read-more">Read Full Story</div>
       </a>
