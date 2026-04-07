@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unlikely Angel Brand</title>
+  
+  <title>Unlikely Angel Brand | by Gabby Binion</title>
+  <meta name="description" content="A California-based brand by photographer Gabby Binion. Streetwear with a mission: Outreach for the unhoused and visibility for the overlooked.">
+  <meta name="keywords" content="Unlikely Angel, Gabby Binion, Streetwear, California Stylist, Outreach, Fashion for Good">
+  
+  <meta property="og:title" content="Unlikely Angel Brand">
+  <meta property="og:description" content="Be careful who you overlook... they might just be an angel.">
+  <meta property="og:image" content="logo.png"> <meta property="og:url" content="https://unlikelyangelbrand.com">
+
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  
   <style>
     :root { 
       --white: #f5f5f5; 
       --gray: #333; 
       --black: #050505; 
+      --cursor-size: 20px;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; cursor: none; } /* Hide default cursor */
     
     /* THE BASEMENT: YOUR UPLOADED .PNG CRUMPLED PAPER */
     body {
@@ -26,6 +36,20 @@
       line-height: 1.6; 
       overflow-x: hidden;
       position: relative;
+    }
+
+    /* CUSTOM CURSOR ELEMENT */
+    #custom-cursor {
+      position: fixed;
+      width: var(--cursor-size);
+      height: var(--cursor-size);
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 100000;
+      mix-blend-mode: difference; /* This makes the cursor change color based on background */
+      transition: transform 0.15s ease-out;
+      transform: translate(-50%, -50%);
     }
 
     /* DIGITAL FILM GRAIN */
@@ -58,15 +82,15 @@
       border-bottom: 1px solid var(--gray); overflow-x: auto; white-space: nowrap;
     }
     nav a { color: var(--white); text-decoration: none; margin: 0 18px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; flex: 0 0 auto; }
-    nav a:hover { opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
+    nav a:hover { opacity: 1; }
 
     .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url('hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px; }
     .hero-logo { width: 100%; max-width: 450px; margin-bottom: 30px; }
     .hero h1 { font-size: clamp(1.8rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.1; letter-spacing: -2px; }
     .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
 
-    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; cursor: pointer; position: relative; z-index: 10000; }
-    .btn:hover { background: var(--white); color: #000; transform: scale(1.05); }
+    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; }
+    .btn:hover { background: var(--white); color: #000; }
 
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
     .product { text-align: center; opacity: 0; transform: translateY(30px); transition: 0.8s; }
@@ -81,9 +105,8 @@
     .text-box { flex: 1; text-align: left; }
     .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; line-height: 1.2; }
     
-    /* STYLING FOR THE NAME LINK */
     .visionary-link { color: var(--white); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
-    .visionary-link:hover { border-bottom: 1px solid var(--white); text-shadow: 0 0 10px rgba(255,255,255,0.4); }
+    .visionary-link:hover { border-bottom: 1px solid var(--white); }
 
     .articles-section { padding: 100px 20px; text-align: center; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
@@ -108,10 +131,14 @@
     @media (max-width: 768px) { 
       .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
       .image-box { width: 100%; order: 2; } 
+      #custom-cursor { display: none; } /* Disable cursor on mobile */
+      html { cursor: auto; }
     }
   </style>
 </head>
 <body>
+
+  <div id="custom-cursor"></div>
 
   <div class="announcement-bar">Limited Edition • Unlikely Angel Brand • Worldwide</div>
 
@@ -220,6 +247,25 @@
   </footer>
 
   <script>
+    // CURSOR LOGIC
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // GROW CURSOR ON LINKS
+    const links = document.querySelectorAll('a, .btn, .product');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(3)';
+      });
+      link.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    // SCROLL ANIMATION LOGIC
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
