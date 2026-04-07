@@ -18,18 +18,17 @@
       margin: 0; 
       font-family: 'Special Elite', serif; 
       background-color: var(--black);
-      /* Updated to look for the .PNG extension */
       background-image: url('paper.PNG'); 
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* Parallax effect */
+      background-attachment: fixed; 
       color: var(--white); 
       line-height: 1.6; 
       overflow-x: hidden;
       position: relative;
     }
 
-    /* THE ANIMATION: DIGITAL FILM GRAIN */
+    /* DIGITAL FILM GRAIN */
     body::before {
       content: "";
       position: fixed; 
@@ -81,6 +80,10 @@
     .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; }
     .text-box { flex: 1; text-align: left; }
     .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; line-height: 1.2; }
+    
+    /* STYLING FOR THE NAME LINK */
+    .visionary-link { color: var(--white); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
+    .visionary-link:hover { border-bottom: 1px solid var(--white); text-shadow: 0 0 10px rgba(255,255,255,0.4); }
 
     .articles-section { padding: 100px 20px; text-align: center; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
@@ -151,7 +154,7 @@
       <img src="visionary.jpg" alt="Gabby Binion">
     </div>
     <div class="text-box">
-      <h2>Gabby Binion</h2>
+      <h2><a href="https://linktr.ee/deeintanet" target="_blank" class="visionary-link">Gabby Binion</a></h2>
       <div style="font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; padding-bottom: 5px;">The Visionary</div>
       <p>As a <strong>photographer</strong> and <strong>personal stylist</strong> based in California, my life has always been defined by the visual—finding the perfect frame and the right silhouette.</p>
       <p><strong>Unlikely Angel Brand</strong> is the raw combination of my two greatest loves. I realized that the same creative energy I use to style a client could be used to shine a light on the people society tries to keep out of focus.</p>
