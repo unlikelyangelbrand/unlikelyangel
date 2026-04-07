@@ -9,34 +9,30 @@
     :root { 
       --white: #f5f5f5; 
       --gray: #333; 
-      --black: #0a0a0a; 
+      --black: #080808; 
     }
     html { scroll-behavior: smooth; }
     
-    /* THE BASEMENT: HEAVY CRUMPLED BLACK PAPER */
+    /* THE BASEMENT: WRINKLED DARK PAPER EFFECT */
     body {
       margin: 0; 
       font-family: 'Special Elite', serif; 
       background-color: var(--black);
-      /* Using a high-detail crumpled paper pattern */
-      background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"), 
-                        url("https://www.transparenttextures.com/patterns/dark-matter.png"),
-                        url("https://www.transparenttextures.com/patterns/criss-cross.png");
-      background-blend-mode: soft-light;
-      background-attachment: fixed;
+      /* This filter creates the physical 'bumps' and 'creases' */
+      filter: url(#crinkled); 
       color: var(--white); 
       line-height: 1.6; 
       overflow-x: hidden;
       position: relative;
     }
 
-    /* THE ANIMATION: DIGITAL FILM GRAIN/DUST OVERLAY */
+    /* THE ANIMATION: DIGITAL FILM GRAIN */
     body::before {
       content: "";
       position: fixed; 
       top: 0; left: 0; width: 100%; height: 100%;
       background-image: url("https://www.transparenttextures.com/patterns/film-grain.png");
-      opacity: 0.05; 
+      opacity: 0.06; 
       z-index: 9999; 
       pointer-events: none; 
       animation: grain 1.2s steps(6) infinite;
@@ -57,13 +53,9 @@
       position: sticky; top: 0; background: rgba(5, 5, 5, 0.9); 
       backdrop-filter: blur(10px); 
       display: flex; justify-content: flex-start; padding: 15px 0; z-index: 10000; 
-      border-bottom: 1px solid var(--gray); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;
+      border-bottom: 1px solid var(--gray); overflow-x: auto; white-space: nowrap;
     }
-    nav::-webkit-scrollbar { display: none; }
-    nav { -ms-overflow-style: none; scrollbar-width: none; }
-
     nav a { color: var(--white); text-decoration: none; margin: 0 18px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; flex: 0 0 auto; }
-    nav a:first-child { margin-left: 25px; } nav a:last-child { margin-right: 25px; }
     nav a:hover { opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
 
     .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px; }
@@ -72,7 +64,7 @@
     .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
 
     .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; cursor: pointer; position: relative; z-index: 10000; }
-    .btn:hover { background: var(--white); color: #000; transform: scale(1.05); box-shadow: 0 0 25px rgba(255,255,255,0.5); }
+    .btn:hover { background: var(--white); color: #000; transform: scale(1.05); }
 
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
     .product { text-align: center; opacity: 0; transform: translateY(30px); transition: 0.8s; }
@@ -83,7 +75,7 @@
 
     .founder-section, .movement-content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid var(--gray); position: relative; z-index: 100; }
     .image-box { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.8); background: #111; position: relative; }
-    .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; filter: sepia(5%) contrast(110%); }
+    .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; }
     .text-box { flex: 1; text-align: left; }
     .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; line-height: 1.2; }
 
@@ -107,17 +99,22 @@
     .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
     .copyright { margin-top: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; }
 
-    @media (min-width: 769px) { nav { justify-content: center; } nav a:first-child { margin-left: 18px; } }
-
     @media (max-width: 768px) { 
       .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
-      .text-box { text-align: center; } 
-      .image-box { width: 100%; order: 2; box-shadow: 15px 15px 0px rgba(0,0,0,0.8); } 
-      .text-box h2 { font-size: 1.8rem; }
+      .image-box { width: 100%; order: 2; } 
     }
   </style>
 </head>
 <body>
+
+  <svg style="display:none;">
+    <filter id="crinkled">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2">
+        <feDistantLight azimuth="45" elevation="60" />
+      </feDiffuseLighting>
+    </filter>
+  </svg>
 
   <div class="announcement-bar">Limited Edition • Unlikely Angel Brand • Worldwide</div>
 
