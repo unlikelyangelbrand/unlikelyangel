@@ -22,7 +22,7 @@
       --black: #050505; 
       --cursor-size: 20px;
     }
-    html { scroll-behavior: smooth; cursor: none; } /* Hide default cursor */
+    html { scroll-behavior: smooth; cursor: none; } 
     
     body {
       margin: 0; 
@@ -65,9 +65,7 @@
     @keyframes grain {
       0%, 100% { transform: translate(0, 0); }
       10% { transform: translate(-1%, -1%); }
-      30% { transform: translate(1%, 1%); }
       50% { transform: translate(-0.5%, 1.5%); }
-      70% { transform: translate(1.5%, -0.5%); }
       90% { transform: translate(-1.5%, -1%); }
     }
 
@@ -102,7 +100,6 @@
     .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; }
     .text-box { flex: 1; text-align: left; }
     .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; line-height: 1.2; }
-    
     .visionary-link { color: var(--white); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
     .visionary-link:hover { border-bottom: 1px solid var(--white); }
 
@@ -118,13 +115,13 @@
     .movement-stats { background: rgba(0,0,0,0.6); padding: 30px; border: 1px dashed var(--white); display: block; margin-top: 30px; width: 100%; box-sizing: border-box; }
     .stat-item { font-size: 1.2rem; margin: 10px 0; letter-spacing: 1px; line-height: 1.4; }
 
-    /* GAME SECTION STYLES */
+    /* GAME STYLING */
     #game-area { padding: 100px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     #game-container { 
       width: 100%; max-width: 800px; height: 400px; background: rgba(255,255,255,0.03); 
       border: 1px dashed var(--gray); margin: 40px auto; position: relative; overflow: hidden; display: none; 
     }
-    #halo { position: absolute; font-size: 45px; cursor: pointer; user-select: none; z-index: 101; line-height: 1; }
+    #halo { position: absolute; font-size: 50px; cursor: pointer; user-select: none; z-index: 101; line-height: 1; }
 
     .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); margin-top: 40px; }
@@ -146,7 +143,6 @@
 <body>
 
   <div id="custom-cursor"></div>
-
   <div class="announcement-bar">Limited Edition • Unlikely Angel Brand • Worldwide</div>
 
   <nav>
@@ -184,9 +180,7 @@
   </section>
 
   <section id="visionary" class="founder-section">
-    <div class="image-box">
-      <img src="visionary.jpg" alt="Gabby Binion">
-    </div>
+    <div class="image-box"><img src="visionary.jpg" alt="Gabby Binion"></div>
     <div class="text-box">
       <h2><a href="https://linktr.ee/deeintanet" target="_blank" class="visionary-link">Gabby Binion</a></h2>
       <div style="font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; padding-bottom: 5px;">The Visionary</div>
@@ -199,24 +193,15 @@
     <h2>FEATURED ARTICLES</h2>
     <div class="articles-grid">
       <a href="https://voyagela.com/interview/meet-gabby-binion-of-winnetka" target="_blank" class="article-card">
-        <div>
-          <div class="article-source">VoyageLA</div>
-          <div class="article-title">"Exploring Life & Business with Gabby Binion: A focus on the Winnetka creative scene."</div>
-        </div>
+        <div><div class="article-source">VoyageLA</div><div class="article-title">"Exploring Life & Business with Gabby Binion: A focus on the Winnetka creative scene."</div></div>
         <div class="read-more">Read Full Story</div>
       </a>
       <a href="https://boldjourney.com/meet-gabby-binion-2/" target="_blank" class="article-card">
-        <div>
-          <div class="article-source">BoldJourney</div>
-          <div class="article-title">"Resilience & Creative Purpose: Navigating the mission behind Unlikely Angel Brand."</div>
-        </div>
+        <div><div class="article-source">BoldJourney</div><div class="article-title">"Resilience & Creative Purpose: Navigating the mission behind Unlikely Angel Brand."</div></div>
         <div class="read-more">Read Full Story</div>
       </a>
       <a href="https://boldjourney.com/meet-gabby-binion/" target="_blank" class="article-card">
-        <div>
-          <div class="article-source">BoldJourney</div>
-          <div class="article-title">"The Heart of Style: Storytelling through fashion and community."</div>
-        </div>
+        <div><div class="article-source">BoldJourney</div><div class="article-title">"The Heart of Style: Storytelling through fashion and community."</div></div>
         <div class="read-more">Read Full Story</div>
       </a>
     </div>
@@ -232,24 +217,25 @@
   <section id="movement" class="movement-content">
     <div class="text-box">
       <h2>Unlikely Angel Outreach Days for the Unhoused</h2>
-      <p>Fashion is our medium, but <strong>human connection</strong> is our mission. We believe that everyone deserves to be seen, regardless of their circumstances.</p>
+      <p>Fashion is our medium, but <strong>human connection</strong> is our mission. We believe that everyone deserves to be seen.</p>
       <div class="movement-stats">
         <div class="stat-item">• 3 Outreach Days</div>
         <div class="stat-item">• $2000+ Raised</div>
-        <div class="stat-item">• 300 care packages given to the unhoused at the Venice Beach boardwalk</div>
+        <div class="stat-item">• 300 care packages given to the unhoused at Venice Beach</div>
       </div>
     </div>
-    <div class="image-box">
-      <img src="outreach.JPG" alt="Unlikely Angel Outreach Movement">
-    </div>
+    <div class="image-box"><img src="outreach.JPG" alt="Unlikely Angel Outreach"></div>
   </section>
 
   <section id="game-area">
     <h2 id="game-status">THE HALO TEST</h2>
     <p id="score-display">Halos Caught: 0</p>
     <button id="start-game" class="btn">Start Game</button>
-    <div id="game-container">
-        <div id="halo">😇</div>
+    <div id="game-container"><div id="halo">😇</div></div>
+    <div id="win-message" style="display:none; margin-top: 30px;">
+        <h3 style="color: gold; letter-spacing: 4px;">YOU ARE AN ANGEL</h3>
+        <p>15 Halos caught. Your 10% discount is applied.</p>
+        <a href="https://unlikelyangelbrand.etsy.com?coupon=ANGEL10" target="_blank" class="btn" style="background: white; color: black; border:none;">Claim Reward on Etsy</a>
     </div>
   </section>
 
@@ -263,7 +249,6 @@
   </footer>
 
   <script>
-    // CURSOR LOGIC
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
@@ -272,30 +257,22 @@
 
     const links = document.querySelectorAll('a, .btn, .product, #halo');
     links.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(3)';
-      });
-      link.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      });
+      link.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(3)');
+      link.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     });
 
-    // SCROLL ANIMATION LOGIC
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
 
-    // MINI GAME LOGIC
+    // GAME LOGIC
     const startGameBtn = document.getElementById('start-game');
     const gameContainer = document.getElementById('game-container');
     const halo = document.getElementById('halo');
     const scoreDisplay = document.getElementById('score-display');
     const gameStatus = document.getElementById('game-status');
+    const winMessage = document.getElementById('win-message');
 
     let score = 0;
     let gameActive = false;
@@ -308,40 +285,40 @@
         halo.style.top = y + 'px';
     }
 
-    halo.addEventListener('mousedown', (e) => {
+    const handleHit = (e) => {
         if (!gameActive) return;
         score++;
         scoreDisplay.innerText = `Halos Caught: ${score}`;
         moveHalo();
-    });
-    
-    // For mobile tap
-    halo.addEventListener('touchstart', (e) => {
-        if (!gameActive) return;
-        score++;
-        scoreDisplay.innerText = `Halos Caught: ${score}`;
-        moveHalo();
-        e.preventDefault();
-    });
+        if (e.type === 'touchstart') e.preventDefault();
+    };
+
+    halo.addEventListener('mousedown', handleHit);
+    halo.addEventListener('touchstart', handleHit);
 
     startGameBtn.addEventListener('click', () => {
         score = 0;
         scoreDisplay.innerText = `Halos Caught: 0`;
+        winMessage.style.display = 'none';
         gameActive = true;
-        gameStatus.innerText = "CATCH IT!";
+        gameStatus.innerText = "CATCH 15!";
         gameContainer.style.display = 'block';
         startGameBtn.style.display = 'none';
         moveHalo();
 
         setTimeout(() => {
             gameActive = false;
-            gameStatus.innerText = score >= 8 ? "YOU ARE AN ANGEL" : "TRY AGAIN";
             gameContainer.style.display = 'none';
-            startGameBtn.style.display = 'inline-block';
-            if(score >= 8) alert("You caught " + score + " halos! Use code ANGEL10 at checkout.");
+            if (score >= 15) {
+                gameStatus.innerText = "MISSION ACCOMPLISHED";
+                winMessage.style.display = 'block';
+            } else {
+                gameStatus.innerText = "ALMOST AN ANGEL...";
+                startGameBtn.innerText = "Try Again";
+                startGameBtn.style.display = 'inline-block';
+            }
         }, 10000);
     });
   </script>
-
 </body>
 </html>
