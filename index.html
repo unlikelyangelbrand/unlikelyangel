@@ -6,9 +6,11 @@
   
   <title>Unlikely Angel Brand | by Gabby Binion</title>
   <meta name="description" content="A California-based brand by photographer Gabby Binion. Streetwear with a mission: Outreach for the unhoused and visibility for the overlooked.">
+  <meta name="keywords" content="Unlikely Angel, Gabby Binion, Streetwear, California Stylist, Outreach, Fashion for Good">
+  
   <meta property="og:title" content="Unlikely Angel Brand">
   <meta property="og:description" content="Be careful who you overlook... they might just be an angel.">
-  <meta property="og:image" content="logo.png">
+  <meta property="og:image" content="logo.png"> <meta property="og:url" content="https://unlikelyangelbrand.com">
 
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   
@@ -17,9 +19,11 @@
       --white: #f5f5f5; 
       --gray: #333; 
       --black: #050505; 
+      --cursor-size: 20px;
     }
-    html { scroll-behavior: smooth; cursor: none; }
+    html { scroll-behavior: smooth; cursor: none; } /* Hide default cursor */
     
+    /* THE BASEMENT: YOUR UPLOADED .PNG CRUMPLED PAPER */
     body {
       margin: 0; 
       font-family: 'Special Elite', serif; 
@@ -34,16 +38,16 @@
       position: relative;
     }
 
-    /* CUSTOM CURSOR */
+    /* CUSTOM CURSOR ELEMENT */
     #custom-cursor {
       position: fixed;
-      width: 20px;
-      height: 20px;
+      width: var(--cursor-size);
+      height: var(--cursor-size);
       background: white;
       border-radius: 50%;
       pointer-events: none;
       z-index: 100000;
-      mix-blend-mode: difference;
+      mix-blend-mode: difference; /* This makes the cursor change color based on background */
       transition: transform 0.15s ease-out;
       transform: translate(-50%, -50%);
     }
@@ -54,7 +58,9 @@
       position: fixed; 
       top: 0; left: 0; width: 100%; height: 100%;
       background-image: url("https://www.transparenttextures.com/patterns/film-grain.png");
-      opacity: 0.05; z-index: 9999; pointer-events: none; 
+      opacity: 0.05; 
+      z-index: 9999; 
+      pointer-events: none; 
       animation: grain 1.2s steps(6) infinite;
     }
 
@@ -83,7 +89,7 @@
     .hero h1 { font-size: clamp(1.8rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.1; letter-spacing: -2px; }
     .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
 
-    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; cursor: pointer; position: relative; z-index: 10000; }
+    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; }
     .btn:hover { background: var(--white); color: #000; }
 
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
@@ -91,38 +97,41 @@
     .product.visible { opacity: 1; transform: translateY(0); }
     .product img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--gray); filter: grayscale(20%); transition: 0.6s; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
     .product:hover img { transform: scale(1.02); filter: grayscale(0%); border-color: var(--white); }
+    .product p { font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
 
     .founder-section, .movement-content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
-    .image-box { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); background: #111; }
-    .image-box img { width: 100%; display: block; height: auto; object-fit: cover; }
+    .image-box { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); background: #111; position: relative; }
+    .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; }
     .text-box { flex: 1; text-align: left; }
-    .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; line-height: 1.2; }
+    .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; line-height: 1.2; }
+    
     .visionary-link { color: var(--white); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
     .visionary-link:hover { border-bottom: 1px solid var(--white); }
 
     .articles-section { padding: 100px 20px; text-align: center; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 40px auto; }
-    .article-card { border: 1px solid var(--gray); padding: 40px 30px; transition: 0.4s; text-decoration: none; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; background: rgba(0,0,0,0.5); }
-    .article-card:hover { border-color: var(--white); transform: translateY(-5px); }
+    .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .article-card { border: 1px solid var(--gray); padding: 40px 30px; transition: 0.4s; text-decoration: none; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; min-height: 200px; background: rgba(0,0,0,0.5); }
+    .article-card:hover { border-color: var(--white); background: rgba(20,20,20,0.8); transform: translateY(-5px); }
+    .article-source { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px; }
+    .article-title { font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; font-style: italic; opacity: 0.9; }
+    .read-more { font-size: 0.8rem; letter-spacing: 2px; text-decoration: underline; text-transform: uppercase; }
 
-    /* GAME SECTION */
-    #game-area { padding: 120px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
-    #game-container { 
-        width: 100%; max-width: 800px; height: 400px; background: rgba(255,255,255,0.03); 
-        border: 1px dashed var(--gray); margin: 40px auto; position: relative; overflow: hidden; display: none; 
-    }
-    #halo { position: absolute; font-size: 50px; cursor: pointer; user-select: none; z-index: 100; line-height: 1; }
+    .movement-stats { background: rgba(0,0,0,0.6); padding: 30px; border: 1px dashed var(--white); display: block; margin-top: 30px; width: 100%; box-sizing: border-box; }
+    .stat-item { font-size: 1.2rem; margin: 10px 0; letter-spacing: 1px; line-height: 1.4; }
 
-    .movement-stats { background: rgba(0,0,0,0.6); padding: 30px; border: 1px dashed var(--white); margin-top: 30px; }
-    .stat-item { font-size: 1.2rem; margin: 10px 0; }
+    .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); margin-top: 40px; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: contrast(110%); }
 
     footer { padding: 100px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.8); position: relative; z-index: 1000; }
-    .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6; }
+    .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
+    .copyright { margin-top: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; }
 
     @media (max-width: 768px) { 
       .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
-      .image-box { width: 100%; } 
-      #custom-cursor { display: none; }
+      .image-box { width: 100%; order: 2; } 
+      #custom-cursor { display: none; } /* Disable cursor on mobile */
       html { cursor: auto; }
     }
   </style>
@@ -130,6 +139,7 @@
 <body>
 
   <div id="custom-cursor"></div>
+
   <div class="announcement-bar">Limited Edition • Unlikely Angel Brand • Worldwide</div>
 
   <nav>
@@ -137,6 +147,7 @@
     <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
     <a href="#visionary">Visionary</a>
     <a href="#articles">Articles</a>
+    <a href="#story">Story</a>
     <a href="#movement">Movement</a>
   </nav>
 
@@ -149,23 +160,31 @@
 
   <section id="products" class="products">
     <div class="product">
-      <img src="vertical-stripe-shirt.PNG" alt="Product">
+      <img src="vertical-stripe-shirt.PNG" alt="Oversized Vertical Stripe Tee">
       <p>Oversized Vertical Stripe Tee</p>
       <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe">Buy</a>
     </div>
     <div class="product">
-      <img src="baseball-cap.JPG" alt="Product">
+      <img src="baseball-cap.JPG" alt="Mid Profile Baseball Cap">
       <p>Mid Profile Baseball Cap</p>
       <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap">Buy</a>
+    </div>
+    <div class="product">
+      <img src="her-tote-bag.JPG" alt="HER Tote Bag">
+      <p>HER Tote Bag</p>
+      <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag">Buy</a>
     </div>
   </section>
 
   <section id="visionary" class="founder-section">
-    <div class="image-box"><img src="visionary.jpg"></div>
+    <div class="image-box">
+      <img src="visionary.jpg" alt="Gabby Binion">
+    </div>
     <div class="text-box">
       <h2><a href="https://linktr.ee/deeintanet" target="_blank" class="visionary-link">Gabby Binion</a></h2>
-      <div style="font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 25px;">The Visionary</div>
-      <p>As a <strong>photographer</strong> and <strong>stylist</strong>, my life is defined by the visual. Unlikely Angel Brand is the combination of finding the perfect frame and highlighting the people society tries to keep out of focus.</p>
+      <div style="font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; padding-bottom: 5px;">The Visionary</div>
+      <p>As a <strong>photographer</strong> and <strong>personal stylist</strong> based in California, my life has always been defined by the visual—finding the perfect frame and the right silhouette.</p>
+      <p><strong>Unlikely Angel Brand</strong> is the raw combination of my two greatest loves. I realized that the same creative energy I use to style a client could be used to shine a light on the people society tries to keep out of focus.</p>
     </div>
   </section>
 
@@ -173,104 +192,89 @@
     <h2>FEATURED ARTICLES</h2>
     <div class="articles-grid">
       <a href="https://voyagela.com/interview/meet-gabby-binion-of-winnetka" target="_blank" class="article-card">
-        <div><div style="font-size:0.7rem; letter-spacing:4px; margin-bottom:15px;">VOYAGELA</div><div style="font-style:italic;">"Exploring Life & Business with Gabby Binion"</div></div>
-        <div style="margin-top:20px; font-size:0.8rem; text-decoration:underline;">READ MORE</div>
+        <div>
+          <div class="article-source">VoyageLA</div>
+          <div class="article-title">"Exploring Life & Business with Gabby Binion: A focus on the Winnetka creative scene."</div>
+        </div>
+        <div class="read-more">Read Full Story</div>
       </a>
       <a href="https://boldjourney.com/meet-gabby-binion-2/" target="_blank" class="article-card">
-        <div><div style="font-size:0.7rem; letter-spacing:4px; margin-bottom:15px;">BOLDJOURNEY</div><div style="font-style:italic;">"Resilience & Creative Purpose"</div></div>
-        <div style="margin-top:20px; font-size:0.8rem; text-decoration:underline;">READ MORE</div>
+        <div>
+          <div class="article-source">BoldJourney</div>
+          <div class="article-title">"Resilience & Creative Purpose: Navigating the mission behind Unlikely Angel Brand."</div>
+        </div>
+        <div class="read-more">Read Full Story</div>
       </a>
       <a href="https://boldjourney.com/meet-gabby-binion/" target="_blank" class="article-card">
-        <div><div style="font-size:0.7rem; letter-spacing:4px; margin-bottom:15px;">BOLDJOURNEY</div><div style="font-style:italic;">"The Heart of Style"</div></div>
-        <div style="margin-top:20px; font-size:0.8rem; text-decoration:underline;">READ MORE</div>
+        <div>
+          <div class="article-source">BoldJourney</div>
+          <div class="article-title">"The Heart of Style: Storytelling through fashion and community."</div>
+        </div>
+        <div class="read-more">Read Full Story</div>
       </a>
+    </div>
+  </section>
+
+  <section id="story" class="section">
+    <h2>OUR STORY</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/QN9gKIDo7XU" frameborder="0" allowfullscreen></iframe>
     </div>
   </section>
 
   <section id="movement" class="movement-content">
     <div class="text-box">
-      <h2>The Movement</h2>
-      <p>Fashion is the medium, but <strong>human connection</strong> is our mission.</p>
+      <h2>Unlikely Angel Outreach Days for the Unhoused</h2>
+      <p>Fashion is our medium, but <strong>human connection</strong> is our mission. We believe that everyone deserves to be seen, regardless of their circumstances.</p>
       <div class="movement-stats">
         <div class="stat-item">• 3 Outreach Days</div>
         <div class="stat-item">• $2000+ Raised</div>
-        <div class="stat-item">• 300 Care packages given in Venice Beach</div>
+        <div class="stat-item">• 300 care packages given to the unhoused at the Venice Beach boardwalk</div>
       </div>
     </div>
-    <div class="image-box"><img src="outreach.JPG"></div>
-  </section>
-
-  <section id="game-area">
-    <h2 id="game-status">THE HALO TEST</h2>
-    <p id="score-display">Halos Caught: 0</p>
-    <button id="start-game" class="btn">Start Game</button>
-    <div id="game-container"><div id="halo">😇</div></div>
+    <div class="image-box">
+      <img src="outreach.JPG" alt="Unlikely Angel Outreach Movement">
+    </div>
   </section>
 
   <footer>
     <div class="social-links">
       <a href="https://www.instagram.com/unlikelyangelbrand/" target="_blank">INSTAGRAM</a>
+      <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
       <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
     </div>
-    <div style="margin-top: 40px; opacity: 0.3; font-size: 0.7rem;">&copy; 2026 UNLIKELY ANGEL BRAND.</div>
+    <div class="copyright">&copy; 2026 UNLIKELY ANGEL BRAND.</div>
   </footer>
 
   <script>
-    // Cursor logic
+    // CURSOR LOGIC
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
 
-    // Game logic
-    const startGameBtn = document.getElementById('start-game');
-    const gameContainer = document.getElementById('game-container');
-    const halo = document.getElementById('halo');
-    const scoreDisplay = document.getElementById('score-display');
-    const gameStatus = document.getElementById('game-status');
-
-    let score = 0;
-    let gameActive = false;
-
-    function moveHalo() {
-        if (!gameActive) return;
-        const x = Math.random() * (gameContainer.offsetWidth - 60);
-        const y = Math.random() * (gameContainer.offsetHeight - 60);
-        halo.style.left = x + 'px';
-        halo.style.top = y + 'px';
-    }
-
-    halo.addEventListener('mousedown', () => {
-        if (!gameActive) return;
-        score++;
-        scoreDisplay.innerText = `Halos Caught: ${score}`;
-        moveHalo();
+    // GROW CURSOR ON LINKS
+    const links = document.querySelectorAll('a, .btn, .product');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(3)';
+      });
+      link.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
     });
 
-    startGameBtn.addEventListener('click', () => {
-        score = 0;
-        scoreDisplay.innerText = `Halos Caught: 0`;
-        gameActive = true;
-        gameStatus.innerText = "CATCH IT!";
-        gameContainer.style.display = 'block';
-        startGameBtn.style.display = 'none';
-        moveHalo();
-
-        setTimeout(() => {
-            gameActive = false;
-            gameStatus.innerText = score >= 8 ? "YOU ARE AN ANGEL" : "TRY AGAIN";
-            gameContainer.style.display = 'none';
-            startGameBtn.style.display = 'inline-block';
-            if(score >= 8) alert("Discount Unlocked: ANGEL10");
-        }, 10000);
-    });
-
-    // Observer for scroll animation
+    // SCROLL ANIMATION LOGIC
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
     }, { threshold: 0.1 });
     document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
   </script>
+
 </body>
 </html>
