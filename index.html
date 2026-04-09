@@ -10,7 +10,8 @@
   
   <meta property="og:title" content="Unlikely Angel Brand">
   <meta property="og:description" content="Be careful who you overlook... they might just be an angel.">
-  <meta property="og:image" content="logo.png"> <meta property="og:url" content="https://unlikelyangelbrand.com">
+  <meta property="og:image" content="logo.png"> 
+  <meta property="og:url" content="https://unlikelyangelbrand.com">
 
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   
@@ -23,7 +24,6 @@
     }
     html { scroll-behavior: smooth; cursor: none; } /* Hide default cursor */
     
-    /* THE BASEMENT: YOUR UPLOADED .PNG CRUMPLED PAPER */
     body {
       margin: 0; 
       font-family: 'Special Elite', serif; 
@@ -38,7 +38,6 @@
       position: relative;
     }
 
-    /* CUSTOM CURSOR ELEMENT */
     #custom-cursor {
       position: fixed;
       width: var(--cursor-size);
@@ -47,12 +46,11 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 100000;
-      mix-blend-mode: difference; /* This makes the cursor change color based on background */
+      mix-blend-mode: difference;
       transition: transform 0.15s ease-out;
       transform: translate(-50%, -50%);
     }
 
-    /* DIGITAL FILM GRAIN */
     body::before {
       content: "";
       position: fixed; 
@@ -89,7 +87,7 @@
     .hero h1 { font-size: clamp(1.8rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.1; letter-spacing: -2px; }
     .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
 
-    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; }
+    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; cursor: pointer; }
     .btn:hover { background: var(--white); color: #000; }
 
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
@@ -120,6 +118,14 @@
     .movement-stats { background: rgba(0,0,0,0.6); padding: 30px; border: 1px dashed var(--white); display: block; margin-top: 30px; width: 100%; box-sizing: border-box; }
     .stat-item { font-size: 1.2rem; margin: 10px 0; letter-spacing: 1px; line-height: 1.4; }
 
+    /* GAME SECTION STYLES */
+    #game-area { padding: 100px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
+    #game-container { 
+      width: 100%; max-width: 800px; height: 400px; background: rgba(255,255,255,0.03); 
+      border: 1px dashed var(--gray); margin: 40px auto; position: relative; overflow: hidden; display: none; 
+    }
+    #halo { position: absolute; font-size: 45px; cursor: pointer; user-select: none; z-index: 101; line-height: 1; }
+
     .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); margin-top: 40px; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: contrast(110%); }
@@ -131,8 +137,9 @@
     @media (max-width: 768px) { 
       .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
       .image-box { width: 100%; order: 2; } 
-      #custom-cursor { display: none; } /* Disable cursor on mobile */
+      #custom-cursor { display: none; } 
       html { cursor: auto; }
+      #game-container { height: 300px; }
     }
   </style>
 </head>
@@ -237,6 +244,15 @@
     </div>
   </section>
 
+  <section id="game-area">
+    <h2 id="game-status">THE HALO TEST</h2>
+    <p id="score-display">Halos Caught: 0</p>
+    <button id="start-game" class="btn">Start Game</button>
+    <div id="game-container">
+        <div id="halo">😇</div>
+    </div>
+  </section>
+
   <footer>
     <div class="social-links">
       <a href="https://www.instagram.com/unlikelyangelbrand/" target="_blank">INSTAGRAM</a>
@@ -254,8 +270,7 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    // GROW CURSOR ON LINKS
-    const links = document.querySelectorAll('a, .btn, .product');
+    const links = document.querySelectorAll('a, .btn, .product, #halo');
     links.forEach(link => {
       link.addEventListener('mouseenter', () => {
         cursor.style.transform = 'translate(-50%, -50%) scale(3)';
@@ -274,6 +289,58 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
+
+    // MINI GAME LOGIC
+    const startGameBtn = document.getElementById('start-game');
+    const gameContainer = document.getElementById('game-container');
+    const halo = document.getElementById('halo');
+    const scoreDisplay = document.getElementById('score-display');
+    const gameStatus = document.getElementById('game-status');
+
+    let score = 0;
+    let gameActive = false;
+
+    function moveHalo() {
+        if (!gameActive) return;
+        const x = Math.random() * (gameContainer.offsetWidth - 60);
+        const y = Math.random() * (gameContainer.offsetHeight - 60);
+        halo.style.left = x + 'px';
+        halo.style.top = y + 'px';
+    }
+
+    halo.addEventListener('mousedown', (e) => {
+        if (!gameActive) return;
+        score++;
+        scoreDisplay.innerText = `Halos Caught: ${score}`;
+        moveHalo();
+    });
+    
+    // For mobile tap
+    halo.addEventListener('touchstart', (e) => {
+        if (!gameActive) return;
+        score++;
+        scoreDisplay.innerText = `Halos Caught: ${score}`;
+        moveHalo();
+        e.preventDefault();
+    });
+
+    startGameBtn.addEventListener('click', () => {
+        score = 0;
+        scoreDisplay.innerText = `Halos Caught: 0`;
+        gameActive = true;
+        gameStatus.innerText = "CATCH IT!";
+        gameContainer.style.display = 'block';
+        startGameBtn.style.display = 'none';
+        moveHalo();
+
+        setTimeout(() => {
+            gameActive = false;
+            gameStatus.innerText = score >= 8 ? "YOU ARE AN ANGEL" : "TRY AGAIN";
+            gameContainer.style.display = 'none';
+            startGameBtn.style.display = 'inline-block';
+            if(score >= 8) alert("You caught " + score + " halos! Use code ANGEL10 at checkout.");
+        }, 10000);
+    });
   </script>
 
 </body>
