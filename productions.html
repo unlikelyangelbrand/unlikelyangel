@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlikely Angel Productions | Creative Services</title>
+    <title>Unlikely Angel Productions | Photography & Web Design</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --white: #f5f5f5;
-            --gray: #333;
+            --gray: #888;
             --black: #050505;
             --cursor-size: 20px;
         }
 
-        html { scroll-behavior: smooth; cursor: none; }
+        /* This hides the default mouse so the circle can take over */
+        html { 
+            scroll-behavior: smooth; 
+            cursor: none; 
+        }
 
         body {
             margin: 0;
@@ -28,19 +32,23 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
         }
 
-        /* Custom Cursor Style */
+        /* THE CIRCLE CURSOR STYLE */
         #custom-cursor {
             width: var(--cursor-size);
             height: var(--cursor-size);
             border: 2px solid var(--white);
             border-radius: 50%;
             position: fixed;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* Allows you to click 'through' the circle */
             z-index: 9999;
             transform: translate(-50%, -50%);
             transition: transform 0.1s ease-out;
+            display: block;
         }
 
         .announcement-bar {
@@ -51,6 +59,7 @@
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         nav {
@@ -58,8 +67,8 @@
             justify-content: center;
             padding: 30px;
             gap: 30px;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
         }
 
         nav a {
@@ -71,46 +80,51 @@
             transition: opacity 0.3s;
         }
 
-        nav a:hover { opacity: 0.6; }
+        nav a:hover { 
+            opacity: 0.5; 
+        }
 
         section {
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 20px;
             min-height: 60vh;
         }
 
         h1 {
             font-size: 3rem;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
         .service-text {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 15px auto;
             color: var(--white);
-            opacity: 0.8;
-            font-size: 1.1rem;
+            opacity: 0.9;
+            font-size: 1.2rem;
         }
 
         .coming-soon {
-            margin-top: 50px;
+            margin-top: 60px;
             font-style: italic;
             color: var(--white);
             opacity: 0.4;
+            letter-spacing: 1px;
         }
 
         footer {
             text-align: center;
-            padding: 40px;
-            font-size: 0.8rem;
+            padding: 60px 20px;
+            font-size: 0.7rem;
             color: var(--gray);
+            letter-spacing: 1px;
         }
 
+        /* Mobile Fix: If someone is on a phone, show the regular cursor */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            #custom-cursor { display: none; }
+            #custom-cursor { display: none !important; }
             html { cursor: auto; }
         }
     </style>
@@ -118,6 +132,7 @@
 <body>
 
     <div id="custom-cursor"></div>
+
     <div class="announcement-bar">Unlikely Angel Productions • Cinematic Excellence • Worldwide</div>
     
     <nav>
@@ -144,17 +159,22 @@
     <script>
         const cursor = document.getElementById('custom-cursor');
         
+        // Follow the mouse
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
+        // Shrink effect when clicking
         document.addEventListener('mousedown', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            cursor.style.transform = 'translate(-50%, -50%) scale(0.7)';
+            cursor.style.backgroundColor = 'rgba(245, 245, 245, 0.2)';
         });
 
+        // Back to normal size after click
         document.addEventListener('mouseup', () => {
             cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.backgroundColor = 'transparent';
         });
     </script>
 
