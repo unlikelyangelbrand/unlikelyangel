@@ -1,168 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Unlikely Angel Brand | by Gabby Binion</title>
-  <meta name="description" content="A California-based brand by photographer Gabby Binion. Streetwear with a mission: Outreach for the unhoused and visibility for the overlooked.">
-  <meta name="keywords" content="Unlikely Angel, Gabby Binion, Streetwear, California Stylist, Outreach, Fashion for Good">
-  
-  <meta property="og:title" content="Unlikely Angel Brand">
-  <meta property="og:description" content="Be careful who you overlook... they might just be an angel.">
-  <meta property="og:image" content="logo.png"> 
-  <meta property="og:url" content="https://unlikelyangelbrand.com">
-
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-  
-  <style>
-    :root { 
-      --white: #f5f5f5; 
-      --gray: #333; 
-      --black: #050505; 
-      --cursor-size: 20px;
-    }
-    html { scroll-behavior: smooth; cursor: none; } 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlikely Angel Productions | Creative Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     
-    body {
-      margin: 0; 
-      font-family: 'Special Elite', serif; 
-      background-color: var(--black);
-      background-image: url('paper.PNG'); 
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed; 
-      color: var(--white); 
-      line-height: 1.6; 
-      overflow-x: hidden;
-      position: relative;
-    }
+    <style>
+        :root {
+            --white: #f5f5f5;
+            --gray: #333;
+            --black: #050505;
+            --cursor-size: 20px;
+        }
 
-    #custom-cursor {
-      position: fixed;
-      width: var(--cursor-size);
-      height: var(--cursor-size);
-      background: white;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 100000;
-      mix-blend-mode: difference;
-      transition: transform 0.15s ease-out;
-      transform: translate(-50%, -50%);
-    }
+        html { scroll-behavior: smooth; cursor: none; }
 
-    body::before {
-      content: "";
-      position: fixed; 
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url("https://www.transparenttextures.com/patterns/film-grain.png");
-      opacity: 0.05; 
-      z-index: 9999; 
-      pointer-events: none; 
-      animation: grain 1.2s steps(6) infinite;
-    }
+        body {
+            margin: 0;
+            font-family: 'Special Elite', serif;
+            background-color: var(--black);
+            background-image: url('paper.PNG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    @keyframes grain {
-      0%, 100% { transform: translate(0, 0); }
-      10% { transform: translate(-1%, -1%); }
-      50% { transform: translate(-0.5%, 1.5%); }
-      90% { transform: translate(-1.5%, -1%); }
-    }
+        /* Custom Cursor Style */
+        #custom-cursor {
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
 
-    .announcement-bar { background: var(--white); color: #000; text-align: center; padding: 8px 0; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; border-bottom: 2px solid #555; position: relative; z-index: 10000; }
-    
-    nav { 
-      position: sticky; top: 0; background: rgba(5, 5, 5, 0.85); 
-      backdrop-filter: blur(10px); 
-      display: flex; justify-content: flex-start; padding: 15px 0; z-index: 10000; 
-      border-bottom: 1px solid var(--gray); overflow-x: auto; white-space: nowrap;
-    }
-    nav a { color: var(--white); text-decoration: none; margin: 0 18px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; flex: 0 0 auto; }
-    nav a:hover { opacity: 1; }
+        .announcement-bar {
+            background: var(--white);
+            color: var(--black);
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
-    .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url('hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px; }
-    .hero-logo { width: 100%; max-width: 450px; margin-bottom: 30px; }
-    .hero h1 { font-size: clamp(1.8rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.1; letter-spacing: -2px; }
-    .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+            gap: 30px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
 
-    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; cursor: pointer; }
-    .btn:hover { background: var(--white); color: #000; }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
 
-    .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
-    .product { text-align: center; opacity: 0; transform: translateY(30px); transition: 0.8s; }
-    .product.visible { opacity: 1; transform: translateY(0); }
-    .product img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--gray); filter: grayscale(20%); transition: 0.6s; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-    .product:hover img { transform: scale(1.02); filter: grayscale(0%); border-color: var(--white); }
-    .product p { font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
+        nav a:hover { opacity: 0.6; }
 
-    .founder-section, .movement-content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
-    .image-box { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); background: #111; position: relative; }
-    .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; }
-    .text-box { flex: 1; text-align: left; }
-    .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; line-height: 1.2; }
-    .visionary-link { color: var(--white); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
-    .visionary-link:hover { border-bottom: 1px solid var(--white); }
+        section {
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 60vh;
+        }
 
-    .articles-section { padding: 100px 20px; text-align: center; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
-    .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-    .article-card { border: 1px solid var(--gray); padding: 40px 30px; transition: 0.4s; text-decoration: none; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; min-height: 200px; background: rgba(0,0,0,0.5); }
-    .article-card:hover { border-color: var(--white); background: rgba(20,20,20,0.8); transform: translateY(-5px); }
-    .article-source { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px; }
-    .article-title { font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; font-style: italic; opacity: 0.9; }
-    .read-more { font-size: 0.8rem; letter-spacing: 2px; text-decoration: underline; text-transform: uppercase; }
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
 
-    .movement-stats { background: rgba(0,0,0,0.6); padding: 30px; border: 1px dashed var(--white); display: block; margin-top: 30px; width: 100%; box-sizing: border-box; }
-    .stat-item { font-size: 1.2rem; margin: 10px 0; letter-spacing: 1px; line-height: 1.4; }
+        .service-text {
+            max-width: 800px;
+            margin: 20px auto;
+            color: var(--white);
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
 
-    /* GAME STYLING */
-    #game-area { padding: 100px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
-    #game-container { 
-      width: 100%; max-width: 800px; height: 400px; background: rgba(255,255,255,0.03); 
-      border: 1px dashed var(--gray); margin: 40px auto; position: relative; overflow: hidden; display: none; 
-    }
-    #halo { position: absolute; font-size: 50px; cursor: pointer; user-select: none; z-index: 101; line-height: 1; }
+        .coming-soon {
+            margin-top: 50px;
+            font-style: italic;
+            color: var(--white);
+            opacity: 0.4;
+        }
 
-    .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); margin-top: 40px; }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: contrast(110%); }
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
 
-    footer { padding: 100px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.8); position: relative; z-index: 1000; }
-    .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
-    .copyright { margin-top: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; }
-
-    @media (max-width: 768px) { 
-      .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
-      .image-box { width: 100%; order: 2; } 
-      #custom-cursor { display: none; } 
-      html { cursor: auto; }
-      #game-container { height: 300px; }
-    }
-  </style>
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            #custom-cursor { display: none; }
+            html { cursor: auto; }
+        }
+    </style>
 </head>
 <body>
+
     <div id="custom-cursor"></div>
     <div class="announcement-bar">Unlikely Angel Productions • Cinematic Excellence • Worldwide</div>
     
     <nav>
         <a href="/">Home</a>
-        <a href="productions">Productions</a>
+        <a href="/productions">Productions</a>
         <a href="mailto:productions@unlikelyangelbrand.com">Contact</a>
     </nav>
     
-   <section style="text-align:center; padding:100px 20px; min-height: 60vh;">
-        <h1 style="font-size: 3rem; letter-spacing: 3px;">UNLIKELY ANGEL PRODUCTIONS</h1>
-        <p style="max-width: 800px; margin: 20px auto; color: var(--white); opacity: 0.8; font-size: 1.1rem;">
+    <section>
+        <h1>UNLIKELY ANGEL PRODUCTIONS</h1>
+        <p class="service-text">
             Specializing in photography, cinematography, post-production, and creative storytelling.
         </p>
-        <p style="max-width: 800px; margin: 10px auto; color: var(--white); opacity: 0.8; font-size: 1.1rem;">
+        <p class="service-text">
             Full-scale web design and digital infrastructure for businesses.
         </p>
-        <p style="margin-top: 50px; font-style: italic; color: var(--white); opacity: 0.4;">Portfolio gallery coming soon.</p>
+        <p class="coming-soon">Portfolio gallery coming soon.</p>
     </section>
 
-    <div style="text-align: center; padding: 40px; font-size: 0.8rem; color: var(--gray);">
+    <footer>
         &copy; 2026 Unlikely Angel Brand. All Rights Reserved.
-    </div>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+    </script>
+
 </body>
 </html>
