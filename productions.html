@@ -3,147 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlikely Angel Productions | Creative Agency</title>
+    <title>Unlikely Angel Productions | Services & Tiers</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --white: #f5f5f5;
-            --black: #050505;
-            --accent: #888;
-        }
-
+        :root { --white: #f5f5f5; --black: #050505; --gray: #888; }
         html { scroll-behavior: smooth; cursor: none; }
-
+        
         body {
-            margin: 0;
-            font-family: 'Special Elite', serif;
+            margin: 0; font-family: 'Special Elite', serif;
             background: var(--black) url('paper.PNG') center/cover fixed;
-            color: var(--white);
-            overflow-x: hidden;
+            color: var(--white); line-height: 1.6; overflow-x: hidden;
         }
 
-        /* CUSTOM CURSOR */
         #custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--white);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            display: block;
+            width: 20px; height: 20px; border: 2px solid var(--white);
+            border-radius: 50%; position: fixed; pointer-events: none;
+            z-index: 9999; transform: translate(-50%, -50%);
         }
 
-        .announcement-bar {
-            background: var(--white);
-            color: var(--black);
-            text-align: center;
-            padding: 8px;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        nav { display: flex; justify-content: center; padding: 30px; gap: 30px; background: rgba(0,0,0,0.4); }
+        nav a { color: var(--white); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+
+        /* HERO SECTION */
+        .hero { text-align: center; padding: 100px 20px; }
+        h1 { font-size: 3.5rem; letter-spacing: 5px; margin: 0; text-transform: uppercase; }
+        .hero p { max-width: 800px; margin: 20px auto; font-size: 1.2rem; opacity: 0.9; }
+
+        /* ORIGINAL SERVICES INFO */
+        .services-info {
+            max-width: 900px; margin: 0 auto; padding: 40px 20px;
+            display: grid; gap: 60px;
         }
+        .service-block h2 { border-bottom: 1px solid var(--white); padding-bottom: 10px; letter-spacing: 3px; }
+        .service-block p { color: var(--white); opacity: 0.8; }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            padding: 30px;
-            gap: 30px;
-            background: rgba(0,0,0,0.5);
+        /* THE TIERS (At the bottom) */
+        .tier-section { background: rgba(255,255,255,0.05); padding: 80px 20px; margin-top: 100px; }
+        .tier-section h2 { text-align: center; margin-bottom: 50px; letter-spacing: 4px; }
+        
+        .tier-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; max-width: 1200px; margin: 0 auto;
         }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+        .tier-card {
+            border: 1px solid rgba(255,255,255,0.1); padding: 30px;
+            background: rgba(0,0,0,0.3); transition: 0.3s;
         }
+        .tier-card h3 { margin-top: 0; color: var(--white); border-bottom: 1px solid var(--gray); padding-bottom: 10px; }
+        .price { font-size: 1.8rem; display: block; margin: 15px 0; }
+        .tier-features { list-style: none; padding: 0; font-size: 0.85rem; opacity: 0.7; }
+        .tier-features li { margin-bottom: 8px; }
 
-        header {
-            text-align: center;
-            padding: 80px 20px;
+        /* WEB & ADD-ONS */
+        .web-addons {
+            max-width: 1200px; margin: 40px auto; padding: 0 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
         }
+        .addon-box { background: rgba(255,255,255,0.02); padding: 30px; border: 1px solid rgba(255,255,255,0.05); }
 
-        h1 { font-size: 2.5rem; letter-spacing: 5px; margin-bottom: 10px; }
-        .subtitle { opacity: 0.6; font-style: italic; margin-bottom: 40px; }
-
-        /* PRICING GRID */
-        .pricing-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .package-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px 30px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        /* Mobile Interaction */
-        .package-card:active { transform: scale(0.98); background: rgba(255,255,255,0.07); }
-
-        .package-card h3 {
-            font-size: 1.4rem;
-            margin-top: 0;
-            letter-spacing: 2px;
-            border-bottom: 1px solid var(--white);
-            padding-bottom: 15px;
-        }
-
-        .price { font-size: 2rem; margin: 20px 0; display: block; }
-        .price small { font-size: 0.5em; opacity: 0.6; }
-
-        .features {
-            list-style: none;
-            padding: 0;
-            font-size: 0.9rem;
-            line-height: 2;
-        }
-
-        .features li::before { content: "• "; color: var(--accent); }
-
-        /* WEB INFRASTRUCTURE */
-        .web-section {
-            max-width: 1000px;
-            margin: 100px auto;
-            padding: 40px;
-            background: rgba(255,255,255,0.02);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-
-        .web-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .web-item h4 { margin-bottom: 5px; letter-spacing: 1px; }
-        .web-item p { opacity: 0.7; font-size: 0.9rem; }
-
-        .fine-print {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 20px;
-            font-size: 0.75rem;
-            opacity: 0.5;
-            text-align: center;
-            line-height: 1.8;
-        }
-
-        footer { text-align: center; padding: 60px; font-size: 0.7rem; opacity: 0.4; }
+        footer { text-align: center; padding: 60px; opacity: 0.4; font-size: 0.8rem; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
+            h1 { font-size: 2rem; }
+            .web-addons { grid-template-columns: 1fr; }
             #custom-cursor { display: none; }
             html { cursor: auto; }
         }
@@ -153,115 +75,97 @@
 
     <div id="custom-cursor"></div>
 
-    <div class="announcement-bar">Unlikely Angel Productions • Cinematic Excellence • Worldwide</div>
-    
     <nav>
         <a href="/">Home</a>
         <a href="/productions">Productions</a>
         <a href="mailto:productions@unlikelyangelbrand.com">Contact</a>
     </nav>
 
-    <header>
-        <h1>PRODUCTION TIERS</h1>
-        <p class="subtitle">High-end visual storytelling for the unlikely.</p>
-    </header>
+    <section class="hero">
+        <h1>UNLIKELY ANGEL PRODUCTIONS</h1>
+        <p>A full-scale creative agency specializing in photography, cinematography, and digital infrastructure.</p>
+    </section>
 
-    <div class="pricing-container">
-        <div class="package-card">
-            <h3>THE ESSENTIAL</h3>
-            <span class="price">$675</span>
-            <ul class="features">
-                <li>Single 6-Hour Production Session</li>
-                <li>100 High-Res Raw Captures</li>
-                <li><strong>10 Signature Photo Edits</strong></li>
-                <li>1 (16:9) Cinematic Feature</li>
-                <li>3 (9:16) Vertical Shorts</li>
-                <li>2 Rounds of Creative Revisions</li>
-            </ul>
+    <section class="services-info">
+        <div class="service-block">
+            <h2>CINEMATOGRAPHY & PHOTO</h2>
+            <p>We capture high-impact visual narratives tailored for brands that refuse to blend in. From 4K cinematic features to rapid-fire vertical content, our lens is focused on your legacy.</p>
         </div>
-
-        <div class="package-card">
-            <h3>THE BASIC</h3>
-            <span class="price">$1,575 <small>/ mo</small></span>
-            <ul class="features">
-                <li>Up to (3) 6-Hour Sessions / mo</li>
-                <li>100 High-Res Raw Captures per session</li>
-                <li><strong>10 Signature Photo Edits per session</strong></li>
-                <li>1 (16:9) Cinematic Feature per shoot</li>
-                <li>3 (9:16) Vertical Shorts per shoot</li>
-            </ul>
+        <div class="service-block">
+            <h2>WEB DESIGN & INFRASTRUCTURE</h2>
+            <p>Your digital home should be as cinematic as your content. We build custom websites, manage domains, and handle technical inventory systems for e-commerce growth.</p>
         </div>
-
-        <div class="package-card">
-            <h3>THE PROFESSIONAL</h3>
-            <span class="price">$2,800+ <small>/ mo</small></span>
-            <ul class="features">
-                <li>Up to (5) 6-Hour Sessions / mo</li>
-                <li>100 High-Res Raw Captures per session</li>
-                <li><strong>20 Signature Photo Edits per session</strong></li>
-                <li>2 (16:9) Cinematic Features per shoot</li>
-                <li>4 (9:16) Vertical Shorts per shoot</li>
-                <li>2 Rounds of Revisions per asset</li>
-            </ul>
+        <div class="service-block" style="opacity: 0.5;">
+            <p><i>Portfolio Gallery Coming Soon.</i></p>
         </div>
+    </section>
 
-        <div class="package-card" id="premium-card">
-            <h3>THE PREMIUM</h3>
-            <span class="price">$3,500+ <small>/ mo</small></span>
-            <ul class="features">
-                <li>Two Dedicated Videographers</li>
-                <li>Drone Cinematography Included</li>
-                <li>100 High-Res Raw Captures per session</li>
-                <li><strong>30 Signature Photo Edits per session</strong></li>
-                <li>3 (16:9) Cinematic Features per shoot</li>
-                <li>6 (9:16) Vertical Shorts per shoot</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="web-section">
-        <h3>DIGITAL INFRASTRUCTURE</h3>
-        <div class="web-grid">
-            <div class="web-item">
-                <h4>Base Design</h4>
-                <p>$250 (Includes Domain)</p>
+    <section class="tier-section">
+        <h2>PRODUCTION TIERS</h2>
+        <div class="tier-grid">
+            <div class="tier-card">
+                <h3>ESSENTIAL</h3>
+                <span class="price">$675</span>
+                <ul class="tier-features">
+                    <li>Single 6-Hour Session</li>
+                    <li>100 Raw Captures</li>
+                    <li>10 Signature Photo Edits</li>
+                    <li>1 Feature / 3 Vertical Shorts</li>
+                </ul>
             </div>
-            <div class="web-item">
-                <h4>Maintenance</h4>
-                <p>$50 / month</p>
+            <div class="tier-card">
+                <h3>BASIC</h3>
+                <span class="price">$1,575 <small>/mo</small></span>
+                <ul class="tier-features">
+                    <li>Up to (3) 6-Hour Sessions</li>
+                    <li>100 Raw Captures per session</li>
+                    <li>10 Signature Photo Edits per session</li>
+                    <li>1 Feature / 3 Shorts per session</li>
+                </ul>
             </div>
-            <div class="web-item">
-                <h4>Inventory</h4>
-                <p>$150 / mo (Clothing/Items)</p>
+            <div class="tier-card" id="premium-card">
+                <h3>PREMIUM</h3>
+                <span class="price">$3,500+ <small>/mo</small></span>
+                <ul class="tier-features">
+                    <li>Two Videographers + Drone</li>
+                    <li>100 Raw Captures per session</li>
+                    <li>30 Signature Photo Edits per session</li>
+                    <li>3 Features / 6 Shorts per session</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    <div class="fine-print">
-        <strong>TERMS:</strong> 50% non-refundable deposit required 14 days prior to engagement. 
-        <br><strong>TRAVEL:</strong> First 10 miles complimentary, $3/mile thereafter. 
-        <br><strong>EXTENSIONS:</strong> Planned: $60/hr (first 2), $120/hr after. Drone showing: $150 per flight.
-    </div>
+        <div class="web-addons">
+            <div class="addon-box">
+                <h3>WEB INFRASTRUCTURE</h3>
+                <p>Base Design: $250</p>
+                <p>Maintenance: $50/mo</p>
+                <p>Inventory Mgmt: $150/mo</p>
+            </div>
+            <div class="addon-box">
+                <h3>ADD-ONS</h3>
+                <p>Drone: $150/flight</p>
+                <p>Travel: $3/mile (after 10mi)</p>
+                <p>Extra Time: $60-$120/hr</p>
+            </div>
+        </div>
+    </section>
 
-    <footer>&copy; 2026 Unlikely Angel Brand. All Rights Reserved.</footer>
+    <footer>&copy; 2026 UNLIKELY ANGEL BRAND. ALL RIGHTS RESERVED.</footer>
 
     <script>
         const cursor = document.getElementById('custom-cursor');
-        
-        // Mouse movement
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // SECRET MOBILE REWARD: Tap Premium Card 5 times
+        // Secret tap reward on Premium card
         let taps = 0;
-        const premium = document.getElementById('premium-card');
-        
-        premium.addEventListener('click', () => {
+        document.getElementById('premium-card').addEventListener('click', () => {
             taps++;
             if(taps === 5) {
-                alert("SECRET UNLOCKED: Mention 'ANGEL-PRO' for a complimentary Drone add-on to your first Essential session.");
+                alert("ANGEL CODE: Mention 'PRO-SERIES' for a free Drone add-on.");
                 taps = 0;
             }
         });
