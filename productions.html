@@ -3,51 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlikely Angel Productions | Photography & Web Design</title>
+    <title>Unlikely Angel Productions | Creative Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --white: #f5f5f5;
-            --gray: #888;
             --black: #050505;
-            --cursor-size: 20px;
+            --accent: #888;
         }
 
-        /* This hides the default mouse so the circle can take over */
-        html { 
-            scroll-behavior: smooth; 
-            cursor: none; 
-        }
+        html { scroll-behavior: smooth; cursor: none; }
 
         body {
             margin: 0;
             font-family: 'Special Elite', serif;
-            background-color: var(--black);
-            background-image: url('paper.PNG');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: var(--black) url('paper.PNG') center/cover fixed;
             color: var(--white);
-            line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
         }
 
-        /* THE CIRCLE CURSOR STYLE */
+        /* CUSTOM CURSOR */
         #custom-cursor {
-            width: var(--cursor-size);
-            height: var(--cursor-size);
+            width: 20px;
+            height: 20px;
             border: 2px solid var(--white);
             border-radius: 50%;
             position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none; /* Allows you to click 'through' the circle */
+            pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
             display: block;
         }
 
@@ -55,11 +39,10 @@
             background: var(--white);
             color: var(--black);
             text-align: center;
-            padding: 8px 0;
-            font-size: 0.8rem;
+            padding: 8px;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: bold;
         }
 
         nav {
@@ -67,64 +50,101 @@
             justify-content: center;
             padding: 30px;
             gap: 30px;
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.5);
         }
 
         nav a {
             color: var(--white);
             text-decoration: none;
-            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        h1 { font-size: 2.5rem; letter-spacing: 5px; margin-bottom: 10px; }
+        .subtitle { opacity: 0.6; font-style: italic; margin-bottom: 40px; }
+
+        /* PRICING GRID */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Mobile Interaction */
+        .package-card:active { transform: scale(0.98); background: rgba(255,255,255,0.07); }
+
+        .package-card h3 {
+            font-size: 1.4rem;
+            margin-top: 0;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: opacity 0.3s;
+            border-bottom: 1px solid var(--white);
+            padding-bottom: 15px;
         }
 
-        nav a:hover { 
-            opacity: 0.5; 
+        .price { font-size: 2rem; margin: 20px 0; display: block; }
+        .price small { font-size: 0.5em; opacity: 0.6; }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            line-height: 2;
         }
 
-        section {
+        .features li::before { content: "• "; color: var(--accent); }
+
+        /* WEB INFRASTRUCTURE */
+        .web-section {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(255,255,255,0.1);
             text-align: center;
-            padding: 120px 20px;
-            min-height: 60vh;
         }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 4px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
+        .web-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
-        .service-text {
+        .web-item h4 { margin-bottom: 5px; letter-spacing: 1px; }
+        .web-item p { opacity: 0.7; font-size: 0.9rem; }
+
+        .fine-print {
             max-width: 800px;
-            margin: 15px auto;
-            color: var(--white);
-            opacity: 0.9;
-            font-size: 1.2rem;
-        }
-
-        .coming-soon {
-            margin-top: 60px;
-            font-style: italic;
-            color: var(--white);
-            opacity: 0.4;
-            letter-spacing: 1px;
-        }
-
-        footer {
+            margin: 60px auto;
+            padding: 20px;
+            font-size: 0.75rem;
+            opacity: 0.5;
             text-align: center;
-            padding: 60px 20px;
-            font-size: 0.7rem;
-            color: var(--gray);
-            letter-spacing: 1px;
+            line-height: 1.8;
         }
 
-        /* Mobile Fix: If someone is on a phone, show the regular cursor */
+        footer { text-align: center; padding: 60px; font-size: 0.7rem; opacity: 0.4; }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            #custom-cursor { display: none !important; }
+            h1 { font-size: 1.8rem; }
+            #custom-cursor { display: none; }
             html { cursor: auto; }
         }
     </style>
@@ -140,43 +160,111 @@
         <a href="/productions">Productions</a>
         <a href="mailto:productions@unlikelyangelbrand.com">Contact</a>
     </nav>
-    
-    <section>
-        <h1>UNLIKELY ANGEL PRODUCTIONS</h1>
-        <p class="service-text">
-            Specializing in photography, cinematography, post-production, and creative storytelling.
-        </p>
-        <p class="service-text">
-            Full-scale web design and digital infrastructure for businesses.
-        </p>
-        <p class="coming-soon">Portfolio gallery coming soon.</p>
-    </section>
 
-    <footer>
-        &copy; 2026 Unlikely Angel Brand. All Rights Reserved.
-    </footer>
+    <header>
+        <h1>PRODUCTION TIERS</h1>
+        <p class="subtitle">High-end visual storytelling for the unlikely.</p>
+    </header>
+
+    <div class="pricing-container">
+        <div class="package-card">
+            <h3>THE ESSENTIAL</h3>
+            <span class="price">$675</span>
+            <ul class="features">
+                <li>Single 6-Hour Production Session</li>
+                <li>100 High-Res Raw Captures</li>
+                <li><strong>10 Signature Photo Edits</strong></li>
+                <li>1 (16:9) Cinematic Feature</li>
+                <li>3 (9:16) Vertical Shorts</li>
+                <li>2 Rounds of Creative Revisions</li>
+            </ul>
+        </div>
+
+        <div class="package-card">
+            <h3>THE BASIC</h3>
+            <span class="price">$1,575 <small>/ mo</small></span>
+            <ul class="features">
+                <li>Up to (3) 6-Hour Sessions / mo</li>
+                <li>100 High-Res Raw Captures per session</li>
+                <li><strong>10 Signature Photo Edits per session</strong></li>
+                <li>1 (16:9) Cinematic Feature per shoot</li>
+                <li>3 (9:16) Vertical Shorts per shoot</li>
+            </ul>
+        </div>
+
+        <div class="package-card">
+            <h3>THE PROFESSIONAL</h3>
+            <span class="price">$2,800+ <small>/ mo</small></span>
+            <ul class="features">
+                <li>Up to (5) 6-Hour Sessions / mo</li>
+                <li>100 High-Res Raw Captures per session</li>
+                <li><strong>20 Signature Photo Edits per session</strong></li>
+                <li>2 (16:9) Cinematic Features per shoot</li>
+                <li>4 (9:16) Vertical Shorts per shoot</li>
+                <li>2 Rounds of Revisions per asset</li>
+            </ul>
+        </div>
+
+        <div class="package-card" id="premium-card">
+            <h3>THE PREMIUM</h3>
+            <span class="price">$3,500+ <small>/ mo</small></span>
+            <ul class="features">
+                <li>Two Dedicated Videographers</li>
+                <li>Drone Cinematography Included</li>
+                <li>100 High-Res Raw Captures per session</li>
+                <li><strong>30 Signature Photo Edits per session</strong></li>
+                <li>3 (16:9) Cinematic Features per shoot</li>
+                <li>6 (9:16) Vertical Shorts per shoot</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="web-section">
+        <h3>DIGITAL INFRASTRUCTURE</h3>
+        <div class="web-grid">
+            <div class="web-item">
+                <h4>Base Design</h4>
+                <p>$250 (Includes Domain)</p>
+            </div>
+            <div class="web-item">
+                <h4>Maintenance</h4>
+                <p>$50 / month</p>
+            </div>
+            <div class="web-item">
+                <h4>Inventory</h4>
+                <p>$150 / mo (Clothing/Items)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="fine-print">
+        <strong>TERMS:</strong> 50% non-refundable deposit required 14 days prior to engagement. 
+        <br><strong>TRAVEL:</strong> First 10 miles complimentary, $3/mile thereafter. 
+        <br><strong>EXTENSIONS:</strong> Planned: $60/hr (first 2), $120/hr after. Drone showing: $150 per flight.
+    </div>
+
+    <footer>&copy; 2026 Unlikely Angel Brand. All Rights Reserved.</footer>
 
     <script>
         const cursor = document.getElementById('custom-cursor');
         
-        // Follow the mouse
+        // Mouse movement
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Shrink effect when clicking
-        document.addEventListener('mousedown', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(0.7)';
-            cursor.style.backgroundColor = 'rgba(245, 245, 245, 0.2)';
-        });
-
-        // Back to normal size after click
-        document.addEventListener('mouseup', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursor.style.backgroundColor = 'transparent';
+        // SECRET MOBILE REWARD: Tap Premium Card 5 times
+        let taps = 0;
+        const premium = document.getElementById('premium-card');
+        
+        premium.addEventListener('click', () => {
+            taps++;
+            if(taps === 5) {
+                alert("SECRET UNLOCKED: Mention 'ANGEL-PRO' for a complimentary Drone add-on to your first Essential session.");
+                taps = 0;
+            }
         });
     </script>
-
 </body>
 </html>
