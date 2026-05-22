@@ -80,11 +80,11 @@
     nav a { color: var(--white); text-decoration: none; margin: 0 18px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; flex: 0 0 auto; }
     nav a:hover { opacity: 1; }
 
-    /* RESPONSIVE INTRO GIF WORKAROUND SCREEN AND ASPECT RATIOS */
+    /* RESPONSIVE INTRO GIF CONTAINER */
     .intro-gif-container {
         position: relative;
         width: 100vw;
-        height: calc(100vh - 65px);
+        height: calc(100vh - 65px); /* Mobile view: dynamic full screen fill */
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -109,6 +109,7 @@
         color: var(--white);
         opacity: 0.5;
         animation: pulse 2s infinite;
+        z-index: 105;
     }
 
     @keyframes pulse {
@@ -180,16 +181,14 @@
     /* RESPONSIVE MEDIA QUERIES */
     @media (min-width: 1025px) {
         .intro-gif-container {
-            width: 650px; 
-            height: 650px; 
-            margin: 40px auto; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+            width: 100vw; /* Spans completely across screen edge-to-edge */
+            height: 100vw; /* Forces 1:1 perfect square scaling relative to width */
+            margin: 0; 
+            border: none; 
         }
         .intro-gif {
-            object-fit: contain; 
-        }
-        .scroll-indicator {
-            bottom: -35px; 
+            object-fit: cover; /* Crops cleanly across the full 1:1 screen block */
+            object-position: center center; /* Focuses frame directly on subject area */
         }
     }
 
