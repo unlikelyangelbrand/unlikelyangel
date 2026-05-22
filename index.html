@@ -84,7 +84,7 @@
     .intro-gif-container {
         position: relative;
         width: 100vw;
-        height: calc(100vh - 65px); /* Mobile view: dynamic full screen fill */
+        height: calc(100vh - 65px); 
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -181,14 +181,15 @@
     /* RESPONSIVE MEDIA QUERIES */
     @media (min-width: 1025px) {
         .intro-gif-container {
-            width: 100vw; /* Spans completely across screen edge-to-edge */
-            height: 100vw; /* Forces 1:1 perfect square scaling relative to width */
+            width: 100vw; 
+            height: 100vw; 
             margin: 0; 
             border: none; 
         }
         .intro-gif {
-            object-fit: cover; /* Crops cleanly across the full 1:1 screen block */
-            object-position: center center; /* Focuses frame directly on subject area */
+            object-fit: cover; 
+            /* RECENTER ADJUSTMENT: Pushes framing slightly down (30%) to prioritize models and product visibility */
+            object-position: center 30%; 
         }
     }
 
