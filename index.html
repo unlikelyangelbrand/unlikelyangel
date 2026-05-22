@@ -9,7 +9,7 @@
         :root {
             --white: #f5f5f5;
             --black: #050505;
-            --accent-red: #9e1b1b; /* Adjusted for your red emblem theme */
+            --accent-red: #9e1b1b;
         }
 
         /* RESET & BASE STYLES */
@@ -86,10 +86,12 @@
             background: #000;
         }
 
+        /* RESPONSIVE GIF IMAGE HANDLING */
         .intro-gif {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center; /* Kept perfectly centered for mobile portrait screens */
             pointer-events: none;
         }
 
@@ -151,7 +153,7 @@
             color: var(--black);
         }
 
-        /* PLACEHOLDERS FOR YOUR SHOP / REVENUE SECTIONS */
+        /* PRODUCT SECTION AREA */
         .products-section {
             padding: 80px 20px;
             text-align: center;
@@ -207,12 +209,21 @@
             letter-spacing: 1px;
         }
 
+        /* === RESPONSIVE MEDIA QUERIES === */
+
+        /* DESKTOP STYLING WORKAROUND */
+        @media (min-width: 1025px) {
+            .intro-gif {
+                object-position: center 15%; /* Raises framing up to bring faces/clothes safely into desktop view */
+            }
+        }
+
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             #custom-cursor { display: none; }
             html { cursor: auto; }
-            .faq-item正式 summary { font-size: 1rem; }
+            .faq-item summary { font-size: 1rem; }
         }
     </style>
 </head>
