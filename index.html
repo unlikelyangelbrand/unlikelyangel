@@ -84,7 +84,7 @@
     .intro-gif-container {
         position: relative;
         width: 100vw;
-        height: calc(100vh - 65px); 
+        height: calc(100vh - 65px); /* Mobile view: dynamic full screen fill */
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -182,14 +182,16 @@
     @media (min-width: 1025px) {
         .intro-gif-container {
             width: 100vw; 
-            height: 100vw; 
+            height: 70vh; /* Balances beautifully across wide laptop viewports */
             margin: 0; 
-            border: none; 
+            border: none;
+            background: #000; /* Seamless transition blending directly into the layout background */
         }
         .intro-gif {
-            object-fit: cover; 
-            /* RECENTER ADJUSTMENT: Pushes framing slightly down (30%) to prioritize models and product visibility */
-            object-position: center 30%; 
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Prevents the browser from chopping off any part of your framing */
+            object-position: center center;
         }
     }
 
