@@ -133,6 +133,19 @@
     .product:hover img { transform: scale(1.02); filter: grayscale(0%); border-color: var(--white); }
     .product p { font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
 
+    /* NEW PRODUCTION SHOWCASE LAYOUT STYLES */
+    .productions-showcase-section {
+      padding: 120px 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      z-index: 100;
+    }
+    .productions-showcase-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 15px; font-size: 1.8rem; }
+    .productions-tagline { font-size: 1.3rem; font-style: italic; opacity: 0.85; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.4; letter-spacing: 1px; }
+
     .founder-section, .movement-content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     .image-box { flex: 1; max-width: 450px; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); background: #111; position: relative; }
     .image-box img { width: 100%; display: block; height: auto; min-height: 300px; object-fit: cover; }
@@ -216,7 +229,7 @@
   <nav>
     <a href="#">Home</a>
     <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
-    <a href="productions.html">Productions</a>
+    <a href="#productions">Productions</a>
     <a href="#faq">FAQs</a>
   </nav>
 
@@ -247,6 +260,18 @@
       <img src="her-tote-bag.JPG" alt="HER Tote Bag">
       <p>HER Tote Bag</p>
       <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag">Buy</a>
+    </div>
+  </section>
+
+  <section id="productions" class="productions-showcase-section">
+    <h2>UNLIKELY ANGEL PRODUCTION</h2>
+    <div class="productions-tagline">Timeless & real photography for the wild and free.</div>
+    <p style="letter-spacing: 1px; font-size: 0.95rem; max-width: 600px; margin: 0 auto 35px auto; opacity: 0.7;">
+      View our styling options, package rates, and full raw editorial client galleries.
+    </p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="productions.html" class="btn" style="font-size: 0.8rem;">View Price List</a>
+      <a href="https://unlikelyangelproductions.mypixieset.com/" target="_blank" class="btn" style="background: var(--white); color: #000; font-size: 0.8rem;">Explore Full Galleries</a>
     </div>
   </section>
 
