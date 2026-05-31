@@ -188,13 +188,17 @@
             height: 70vh; 
             margin: 0; 
             border: none;
-            background: #000; 
+            background: transparent; /* Removes black sidebars completely */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .intro-gif {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
-            object-position: center center;
+            width: auto;             /* Prevents stretching out horizontally */
+            height: 100%;            /* Fits cleanly to container height */
+            max-width: 100%;         /* Safe fallback scaling */
+            object-fit: contain;     /* Preserves accurate aspect ratio */
+            pointer-events: none;
         }
     }
 
@@ -216,7 +220,7 @@
   <nav>
     <a href="#">Home</a>
     <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
-    <a href="https://unlikelyangelproductions.mypixieset.com/" target="_blank">Productions</a>
+    <a href="https://unlikelyangelproductions.mypixieset.com/" target="_blank" rel="noopener noreferrer">Productions</a>
     <a href="#faq">FAQs</a>
   </nav>
 
