@@ -96,8 +96,6 @@
     .intro-gif {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: center center;
         pointer-events: none;
     }
 
@@ -125,6 +123,21 @@
 
     .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; cursor: pointer; }
     .btn:hover { background: var(--white); color: #000; }
+
+    .section-header {
+      text-align: center;
+      padding-top: 120px;
+      margin-bottom: -60px;
+      position: relative;
+      z-index: 100;
+    }
+    .section-header h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin: 0;
+      opacity: 0.95;
+    }
 
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
     .product { text-align: center; opacity: 0; transform: translateY(30px); transition: 0.8s; }
@@ -188,17 +201,17 @@
             height: 70vh; 
             margin: 0; 
             border: none;
-            background: transparent; /* Removes black sidebars completely */
+            background: transparent; 
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .intro-gif {
-            width: auto;             /* Prevents stretching out horizontally */
-            height: 100%;            /* Fits cleanly to container height */
-            max-width: 100%;         /* Safe fallback scaling */
-            object-fit: contain;     /* Preserves accurate aspect ratio */
-            pointer-events: none;
+            width: auto;             
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain; 
+            object-position: center center;
         }
     }
 
@@ -209,6 +222,7 @@
       html { cursor: auto; }
       #game-container { height: 300px; }
       .faq-item summary { font-size: 1rem; }
+      .section-header { padding-top: 60px; margin-bottom: -30px; }
     }
   </style>
 </head>
@@ -236,21 +250,25 @@
     <a class="btn" href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop Collection</a>
   </section>
 
+  <div class="section-header">
+    <h2>GET READY FOR JUNETEENTH</h2>
+  </div>
+
   <section id="products" class="products">
     <div class="product">
-      <img src="vertical-stripe-shirt.PNG" alt="Oversized Vertical Stripe Tee">
-      <p>Oversized Vertical Stripe Tee</p>
-      <a class="btn" href="https://www.etsy.com/listing/4450658452/unlikely-angel-oversized-vertical-stripe">Buy</a>
+      <img src="Unlikely Angel Boxy T-Shirt (Founder).jpg.webp" alt="Unlikely Angel Boxy T-Shirt Founder Edition">
+      <p>Unlikely Angel Boxy Tee (Founder Edition)</p>
+      <a class="btn" href="https://www.etsy.com/listing/4468712505/unlikely-angel-boxy-t-shirt-founder" target="_blank">Buy</a>
     </div>
     <div class="product">
-      <img src="baseball-cap.JPG" alt="Mid Profile Baseball Cap">
-      <p>Mid Profile Baseball Cap</p>
-      <a class="btn" href="https://www.etsy.com/listing/4450657290/mid-profile-baseball-cap">Buy</a>
+      <img src="Unlikely Angel GRILLZ Leopard Print Boxy T-Shirt.jpg.webp" alt="Unlikely Angel Grillz Leopard Print Boxy Tee">
+      <p>Grillz Leopard Print Boxy Tee</p>
+      <a class="btn" href="https://www.etsy.com/listing/4514356765/unlikely-angel-grillz-leopard-print-boxy" target="_blank">Buy</a>
     </div>
     <div class="product">
       <img src="her-tote-bag.JPG" alt="HER Tote Bag">
       <p>HER Tote Bag</p>
-      <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag">Buy</a>
+      <a class="btn" href="https://www.etsy.com/listing/4475381373/her-tote-bag" target="_blank">Buy</a>
     </div>
   </section>
 
