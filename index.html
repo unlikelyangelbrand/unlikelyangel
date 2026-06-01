@@ -413,7 +413,7 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
 
-    // GAME LOGIC
+   // GAME LOGIC (MOBILE-OPTIMIZED CHALLENGE)
     const startGameBtn = document.getElementById('start-game');
     const gameContainer = document.getElementById('game-container');
     const halo = document.getElementById('halo');
@@ -424,24 +424,37 @@
     let score = 0;
     let gameActive = false;
 
+    // Shrink emoji slightly on mobile to increase difficulty
+    if (window.innerWidth <= 768) {
+        halo.style.fontSize = '38px';
+    }
+
     function moveHalo() {
         if (!gameActive) return;
-        const x = Math.random() * (gameContainer.offsetWidth - 60);
-        const y = Math.random() * (gameContainer.offsetHeight - 60);
+        // Gives a padding buffer so it stays inside the borders
+        const x = Math.random() * (gameContainer.offsetWidth - 50);
+        const y = Math.random() * (gameContainer.offsetHeight - 50);
         halo.style.left = x + 'px';
         halo.style.top = y + 'px';
     }
 
     const handleHit = (e) => {
         if (!gameActive) return;
+        
+        // Prevent default touch behavior to stop ghost taps/double clicks on mobile
+        e.preventDefault(); 
+        e.stopPropagation();
+
         score++;
         scoreDisplay.innerText = `Halos Caught: ${score}`;
+        
+        // Instantly teleport so they can't sneak in a second click
         moveHalo();
-        if (e.type === 'touchstart') e.preventDefault();
     };
 
+    // Use touchstart for instantaneous mobile reaction time
+    halo.addEventListener('touchstart', handleHit, { passive: false });
     halo.addEventListener('mousedown', handleHit);
-    halo.addEventListener('touchstart', handleHit);
 
     startGameBtn.addEventListener('click', () => {
         score = 0;
@@ -453,6 +466,7 @@
         startGameBtn.style.display = 'none';
         moveHalo();
 
+        // 10 second countdown timer
         setTimeout(() => {
             gameActive = false;
             gameContainer.style.display = 'none';
