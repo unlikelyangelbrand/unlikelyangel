@@ -271,15 +271,23 @@
     }
 
     @media (max-width: 768px) { 
-      .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
-      .image-box { width: 100%; height: 380px; order: 2; background: #000000; } 
-      #visionary-video { width: 100% !important; height: 100% !important; transform: scale(1.02) !important; }
-      #custom-cursor { display: none; } 
-      html { cursor: auto; }
-      #game-container { height: 300px; }
-      .faq-item summary { font-size: 1rem; }
-      .section-header { padding-top: 60px; margin-bottom: -30px; }
-    }
+  .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
+  .image-box { width: 100%; height: 380px; order: 2; background: #000000; } 
+  
+  /* Hides the white box border completely if there is no video or image showing */
+  .image-box[style*="display: none"], 
+  .image-box:has(#visionary-img[style*="display: none"]):has(#visionary-video[style*="display: none"]) {
+    border: none !important;
+    height: 0 !important;
+  }
+
+  #visionary-video { width: 100% !important; height: 100% !important; transform: scale(1.02) !important; }
+  #custom-cursor { display: none; } 
+  html { cursor: auto; }
+  #game-container { height: 300px; }
+  .faq-item summary { font-size: 1rem; }
+  .section-header { padding-top: 60px; margin-bottom: -30px; }
+}
   </style>
 </head>
 <body>
