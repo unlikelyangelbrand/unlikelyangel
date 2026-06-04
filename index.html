@@ -159,7 +159,7 @@
       height: 480px; 
       border: 1px solid var(--white); 
       box-shadow: 20px 20px 0px rgba(0,0,0,0.9); 
-      background: #111; 
+      background: #000000; /* Forced pitch black fallback background */
       position: relative;
       overflow: hidden;
     }
@@ -180,6 +180,7 @@
       object-fit: cover; 
       display: none;
       z-index: 101;
+      transform: scale(1.01); /* Micro-scale fixes sub-pixel borders rendering gaps */
     }
 
     /* Floating "click here" Box */
@@ -271,9 +272,8 @@
 
     @media (max-width: 768px) { 
       .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
-      .image-box { width: 100%; height: 380px; order: 2; } 
-      /* Added mobile style layout preservation rule to force video height constraints */
-      #visionary-video { width: 100% !important; height: 100% !important; }
+      .image-box { width: 100%; height: 380px; order: 2; background: #000000; } 
+      #visionary-video { width: 100% !important; height: 100% !important; transform: scale(1.02) !important; }
       #custom-cursor { display: none; } 
       html { cursor: auto; }
       #game-container { height: 300px; }
