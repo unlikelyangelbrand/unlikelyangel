@@ -151,7 +151,7 @@
 
     .founder-section, .movement-content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     
-    /* ENHANCED INTERACTIVE CONTAINER BOX */
+    /* INTERACTIVE CONTAINER BOX */
     .image-box { 
       flex: 1; 
       width: 100%;
@@ -162,6 +162,7 @@
       background: #000000; 
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     .image-box img { 
       width: 100%; 
@@ -170,7 +171,7 @@
       object-fit: cover; 
     }
     
-    /* Fixed Video Layout Properties */
+    /* Video Properties */
     #visionary-video {
       position: absolute;
       top: 0;
@@ -181,6 +182,11 @@
       display: none;
       z-index: 101;
     }
+
+    /* Toggle visibility cleanly via class state */
+    .image-box.playing img { display: none !important; }
+    .image-box.playing #visionary-video { display: block !important; }
+    .image-box.playing .easter-egg-hint { display: none !important; }
 
     /* Floating "click here" Box */
     .easter-egg-hint {
@@ -272,27 +278,12 @@
     @media (max-width: 768px) { 
       .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
       
-      /* Mobile override layout: sets box frame up to scale safely */
       .image-box { 
         width: 100%; 
         height: auto !important; 
         aspect-ratio: 450 / 480;
         order: 2; 
-        background: #000000; 
       } 
-      
-      #visionary-video { 
-        position: relative !important; 
-        display: block !important; /* Always display natively on phones to bypass touch-block rules */
-        width: 100% !important; 
-        height: auto !important; 
-        aspect-ratio: 450 / 480;
-        object-fit: cover !important;
-        z-index: 101;
-      }
-      
-      /* Hide the desktop static layout image & text clue on phones */
-      #visionary-img, .easter-egg-hint { display: none !important; }
       
       #custom-cursor { display: none; } 
       html { cursor: auto; }
@@ -510,47 +501,26 @@
     document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
 
     function playEasterEgg() {
-      // Desktop behavior remains completely unchanged
-      if (window.innerWidth > 768) {
-        const img = document.getElementById('visionary-img');
-        const video = document.getElementById('visionary-video');
-        const hint = document.querySelector('.easter-egg-hint');
-        const box = document.getElementById('visionary-box');
+      const box = document.getElementById('visionary-box');
+      const video = document.getElementById('visionary-video');
 
-        if (img.style.display !== 'none') {
-          img.style.display = 'none';
-          if(hint) hint.style.display = 'none';
+      // Only execute if we aren't already playing the video
+      if (!box.classList.contains('playing')) {
+        box.classList.add('playing');
+        video.muted = false;
 
-          if(box) box.style.border = '1px solid var(--white)';
-
-          video.style.display = 'block';
-          video.muted = false; 
-          
-          video.play().catch(error => {
-            console.log("Autoplay context note:", error);
-          });
-          
-          if(box) box.style.cursor = 'default';
-        }
+        video.play().catch(error => {
+          console.log("Playback context note:", error);
+        });
       }
     }
 
     const visionaryVideoElement = document.getElementById('visionary-video');
     visionaryVideoElement.addEventListener('ended', () => {
-      const img = document.getElementById('visionary-img');
-      const hint = document.querySelector('.easter-egg-hint');
       const box = document.getElementById('visionary-box');
       
-      // On desktop, swap back automatically when finished
-      if (window.innerWidth > 768) {
-        visionaryVideoElement.style.display = 'none';
-        img.style.display = 'block';
-        if(hint) hint.style.display = 'block';
-        if(box) box.style.cursor = 'pointer';
-      } else {
-        // Structural mobile end rule: Wipes out the collapsed border container when playback ends
-        if(box) box.style.border = 'none';
-      }
+      // Instantly remove playing class to transition smoothly back to the original photo setup
+      box.classList.remove('playing');
     });
 
     const startGameBtn = document.getElementById('start-game');
