@@ -271,8 +271,29 @@
 
     @media (max-width: 768px) { 
       .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
-      .image-box { width: 100%; height: 380px; order: 2; background: #000000; } 
-      #visionary-video { width: 100% !important; height: 100% !important; }
+      
+      /* Mobile override layout: sets box frame up to scale safely */
+      .image-box { 
+        width: 100%; 
+        height: auto !important; 
+        aspect-ratio: 450 / 480;
+        order: 2; 
+        background: #000000; 
+      } 
+      
+      #visionary-video { 
+        position: relative !important; 
+        display: block !important; /* Always display natively on phones to bypass touch-block rules */
+        width: 100% !important; 
+        height: auto !important; 
+        aspect-ratio: 450 / 480;
+        object-fit: cover !important;
+        z-index: 101;
+      }
+      
+      /* Hide the desktop static layout image & text clue on phones */
+      #visionary-img, .easter-egg-hint { display: none !important; }
+      
       #custom-cursor { display: none; } 
       html { cursor: auto; }
       #game-container { height: 300px; }
@@ -489,31 +510,28 @@
     document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
 
     function playEasterEgg() {
-      const img = document.getElementById('visionary-img');
-      const video = document.getElementById('visionary-video');
-      const hint = document.querySelector('.easter-egg-hint');
-      const box = document.getElementById('visionary-box');
+      // Desktop behavior remains completely unchanged
+      if (window.innerWidth > 768) {
+        const img = document.getElementById('visionary-img');
+        const video = document.getElementById('visionary-video');
+        const hint = document.querySelector('.easter-egg-hint');
+        const box = document.getElementById('visionary-box');
 
-      if (img.style.display !== 'none') {
-        img.style.display = 'none';
-        if(hint) hint.style.display = 'none';
+        if (img.style.display !== 'none') {
+          img.style.display = 'none';
+          if(hint) hint.style.display = 'none';
 
-        // EXPLICIT HEIGHT CORRECTION FOR PLAYING VIDEO ON MOBILE
-        if (window.innerWidth <= 768 && box) {
-          box.style.height = '380px';
+          if(box) box.style.border = '1px solid var(--white)';
+
+          video.style.display = 'block';
+          video.muted = false; 
+          
+          video.play().catch(error => {
+            console.log("Autoplay context note:", error);
+          });
+          
+          if(box) box.style.cursor = 'default';
         }
-        
-        // Restore border styling when video plays
-        if(box) box.style.border = '1px solid var(--white)';
-
-        video.style.display = 'block';
-        video.muted = false; 
-        
-        video.play().catch(error => {
-          console.log("Autoplay context note:", error);
-        });
-        
-        if(box) box.style.cursor = 'default';
       }
     }
 
@@ -523,18 +541,15 @@
       const hint = document.querySelector('.easter-egg-hint');
       const box = document.getElementById('visionary-box');
       
-      visionaryVideoElement.style.display = 'none';
-      
-      img.style.display = 'block';
-      if(hint) hint.style.display = 'block';
-      
-      // EXPLICIT CLEANUP FOR MOBILE END STATE: Clears height and layout line artifacts completely
-      if(box) {
-        box.style.cursor = 'pointer';
-        box.style.border = 'none';
-        if (window.innerWidth <= 768) {
-          box.style.height = '0px';
-        }
+      // On desktop, swap back automatically when finished
+      if (window.innerWidth > 768) {
+        visionaryVideoElement.style.display = 'none';
+        img.style.display = 'block';
+        if(hint) hint.style.display = 'block';
+        if(box) box.style.cursor = 'pointer';
+      } else {
+        // Structural mobile end rule: Wipes out the collapsed border container when playback ends
+        if(box) box.style.border = 'none';
       }
     });
 
