@@ -498,7 +498,12 @@
         img.style.display = 'none';
         if(hint) hint.style.display = 'none';
 
-        // Reapply the full border style if someone plays the asset again
+        // EXPLICIT HEIGHT CORRECTION FOR PLAYING VIDEO ON MOBILE
+        if (window.innerWidth <= 768 && box) {
+          box.style.height = '380px';
+        }
+        
+        // Restore border styling when video plays
         if(box) box.style.border = '1px solid var(--white)';
 
         video.style.display = 'block';
@@ -523,10 +528,13 @@
       img.style.display = 'block';
       if(hint) hint.style.display = 'block';
       
-      // Remove container layout border strictly when video player finishes
+      // EXPLICIT CLEANUP FOR MOBILE END STATE: Clears height and layout line artifacts completely
       if(box) {
         box.style.cursor = 'pointer';
         box.style.border = 'none';
+        if (window.innerWidth <= 768) {
+          box.style.height = '0px';
+        }
       }
     });
 
