@@ -159,7 +159,7 @@
       height: 480px; 
       border: 1px solid var(--white); 
       box-shadow: 20px 20px 0px rgba(0,0,0,0.9); 
-      background: #000000; /* Forced pitch black fallback background */
+      background: #000000; 
       position: relative;
       overflow: hidden;
     }
@@ -180,7 +180,6 @@
       object-fit: cover; 
       display: none;
       z-index: 101;
-      transform: scale(1.01); /* Micro-scale fixes sub-pixel borders rendering gaps */
     }
 
     /* Floating "click here" Box */
@@ -271,23 +270,15 @@
     }
 
     @media (max-width: 768px) { 
-  .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
-  .image-box { width: 100%; height: 380px; order: 2; background: #000000; } 
-  
-  /* Hides the white box border completely if there is no video or image showing */
-  .image-box[style*="display: none"], 
-  .image-box:has(#visionary-img[style*="display: none"]):has(#visionary-video[style*="display: none"]) {
-    border: none !important;
-    height: 0 !important;
-  }
-
-  #visionary-video { width: 100% !important; height: 100% !important; transform: scale(1.02) !important; }
-  #custom-cursor { display: none; } 
-  html { cursor: auto; }
-  #game-container { height: 300px; }
-  .faq-item summary { font-size: 1rem; }
-  .section-header { padding-top: 60px; margin-bottom: -30px; }
-}
+      .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
+      .image-box { width: 100%; height: 380px; order: 2; background: #000000; } 
+      #visionary-video { width: 100% !important; height: 100% !important; }
+      #custom-cursor { display: none; } 
+      html { cursor: auto; }
+      #game-container { height: 300px; }
+      .faq-item summary { font-size: 1rem; }
+      .section-header { padding-top: 60px; margin-bottom: -30px; }
+    }
   </style>
 </head>
 <body>
@@ -501,10 +492,14 @@
       const img = document.getElementById('visionary-img');
       const video = document.getElementById('visionary-video');
       const hint = document.querySelector('.easter-egg-hint');
+      const box = document.getElementById('visionary-box');
 
       if (img.style.display !== 'none') {
         img.style.display = 'none';
         if(hint) hint.style.display = 'none';
+
+        // Reapply the full border style if someone plays the asset again
+        if(box) box.style.border = '1px solid var(--white)';
 
         video.style.display = 'block';
         video.muted = false; 
@@ -513,7 +508,7 @@
           console.log("Autoplay context note:", error);
         });
         
-        document.getElementById('visionary-box').style.cursor = 'default';
+        if(box) box.style.cursor = 'default';
       }
     }
 
@@ -521,13 +516,18 @@
     visionaryVideoElement.addEventListener('ended', () => {
       const img = document.getElementById('visionary-img');
       const hint = document.querySelector('.easter-egg-hint');
+      const box = document.getElementById('visionary-box');
       
       visionaryVideoElement.style.display = 'none';
       
       img.style.display = 'block';
       if(hint) hint.style.display = 'block';
       
-      document.getElementById('visionary-box').style.cursor = 'pointer';
+      // Remove container layout border strictly when video player finishes
+      if(box) {
+        box.style.cursor = 'pointer';
+        box.style.border = 'none';
+      }
     });
 
     const startGameBtn = document.getElementById('start-game');
