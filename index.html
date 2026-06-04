@@ -170,6 +170,12 @@
       display: block; 
       object-fit: cover; 
     }
+
+    /* SPECIFIC UNHOUSED OUTREACH IMAGE FIX: Prevents photo cropping */
+    .outreach-box-fix img {
+      object-fit: contain !important;
+      background-color: #000000;
+    }
     
     /* Video Properties */
     #visionary-video {
@@ -397,7 +403,7 @@
         <strong>Get Involved:</strong> If you want to connect, collaborate, or join us on our next outreach day, reach out to <a href="mailto:outreach@unlikelyangelbrand.com">outreach@unlikelyangelbrand.com</a>. Let’s make a difference together.
       </div>
     </div>
-    <div class="image-box"><img src="outreach.JPG" alt="Unlikely Angel Outreach"></div>
+    <div class="image-box outreach-box-fix"><img src="outreach.JPG" alt="Unlikely Angel Outreach"></div>
   </section>
 
   <section id="aau-experience" class="section" style="border-top: 1px solid rgba(255,255,255,0.1); padding: 100px 20px; text-align: center;">
@@ -504,7 +510,6 @@
       const box = document.getElementById('visionary-box');
       const video = document.getElementById('visionary-video');
 
-      // Only execute if we aren't already playing the video
       if (!box.classList.contains('playing')) {
         box.classList.add('playing');
         video.muted = false;
@@ -518,8 +523,6 @@
     const visionaryVideoElement = document.getElementById('visionary-video');
     visionaryVideoElement.addEventListener('ended', () => {
       const box = document.getElementById('visionary-box');
-      
-      // Instantly remove playing class to transition smoothly back to the original photo setup
       box.classList.remove('playing');
     });
 
