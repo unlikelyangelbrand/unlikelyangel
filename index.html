@@ -290,19 +290,24 @@
     }
     .modal-close {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
       background: transparent;
       border: none;
-      color: var(--white);
+      color: #ffffff;
       font-family: 'Special Elite', serif;
-      font-size: 1rem;
+      font-size: 1.4rem;
+      font-weight: bold;
       letter-spacing: 1px;
       cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.3s;
+      opacity: 0.9;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 200005;
     }
-    .modal-close:hover { opacity: 1; }
+    .modal-close:hover { 
+      opacity: 1;
+      transform: scale(1.1);
+    }
     .modal-frame h3 {
       font-size: 1.8rem;
       letter-spacing: 3px;
