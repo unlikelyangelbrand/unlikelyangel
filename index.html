@@ -296,16 +296,16 @@
       border: none;
       color: #ffffff;
       font-family: 'Special Elite', serif;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: bold;
       letter-spacing: 1px;
       cursor: pointer;
-      opacity: 0.9;
-      transition: opacity 0.3s, transform 0.3s;
-      z-index: 200005;
+      opacity: 1;
+      z-index: 200010;
+      line-height: 1;
+      padding: 5px;
     }
     .modal-close:hover { 
-      opacity: 1;
       transform: scale(1.1);
     }
     .modal-frame h3 {
@@ -540,7 +540,7 @@
     <div id="game-container"><div id="halo">😇</div></div>
     <div id="win-message" style="display:none; margin-top: 30px;">
         <h3 style="color: gold; letter-spacing: 4px;">YOU ARE AN ANGEL</h3>
-        <p>15 Halos caught. Your 10% discount is applied.</p>
+        <p>25 Halos caught. Your 10% discount is applied.</p>
         <a href="https://unlikelyangelbrand.etsy.com?coupon=ANGEL10" target="_blank" class="btn" style="background: white; color: black; border:none;">Claim Reward on Etsy</a>
     </div>
   </section>
@@ -589,7 +589,7 @@
   <div class="modal-overlay" id="ambassador-modal" onclick="closeAmbassadorModal(event)">
     <div class="modal-frame">
       <button class="modal-close" onclick="closeAmbassadorModal(event, true)">[ X ]</button>
-      <h3>Join the Movement</h3>
+      <h3 style="padding-right: 40px;">Join the Movement</h3>
       <p>Ambassador Application — Value isn't defined by numbers.</p>
       
       <form action="https://formsubmit.co/info@unlikelyangelbrand.com" method="POST" target="_blank">
@@ -733,7 +733,7 @@
         scoreDisplay.innerText = `Halos Caught: 0`;
         winMessage.style.display = 'none';
         gameActive = true;
-        gameStatus.innerText = "CATCH 15!";
+        gameStatus.innerText = "CATCH 25!";
         gameContainer.style.display = 'block';
         startGameBtn.style.display = 'none';
         moveHalo();
@@ -741,8 +741,9 @@
         setTimeout(() => {
             gameActive = false;
             gameContainer.style.display = 'none';
-            if (score >= 15) {
+            if (score >= 25) {
                 gameStatus.innerText = "MISSION ACCOMPLISHED";
+                winMessage.querySelector('p').innerText = `25 Halos caught. Your 10% discount is applied.`;
                 winMessage.style.display = 'block';
             } else {
                 gameStatus.innerText = "ALMOST AN ANGEL...";
