@@ -144,19 +144,25 @@
 
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
     
-    /* SPECIFIC DYNAMIC BOUNCY POP FOR THE TILES WHEN SCROLLED TO */
+    /* RE-SCOPED ANIMATIONS FOR PRODUCTS AND ARTICLES */
     .product, .article-card { 
+      text-align: center;
       opacity: 0; 
       transform: scale(0.85) translateY(40px);
       transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                   transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .product.visible, .article-card.visible { 
-      opacity: 1; 
-      transform: scale(1) translateY(0);
+    
+    /* Make sure content elements inside are explicitly visible */
+    .product img, .product p, .product .btn {
+      opacity: 1 !important;
     }
 
-    .product { text-align: center; }
+    .product.visible, .article-card.visible { 
+      opacity: 1 !important; 
+      transform: scale(1) translateY(0) !important;
+    }
+
     .product img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--gray); filter: grayscale(20%); transition: 0.6s; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
     .product:hover img { transform: scale(1.02); filter: grayscale(0%); border-color: var(--white); }
     .product p { font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
@@ -514,7 +520,7 @@
       </div>
       
       <div style="margin: 35px 0; text-align: center; width: 100%;">
-        <a class="btn" href="http://PayPal.me/unlikelyangelbrand" target="_blank" style="font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to Our Efforts</a>
+        <a class="btn" href="http://PayPal.me/unlikelyangelbrand" target="_blank; font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to Our Efforts</a>
       </div>
 
       <div class="movement-connect">
@@ -664,7 +670,7 @@
       link.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     });
 
-    // SCROLL ANIMATION CONFIGURATION — ONLY Target Specific Cards
+    // SCROLL ANIMATION CONFIGURATION — Fires exactly when cards cross into view
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { 
         if (entry.isIntersecting) {
@@ -672,8 +678,8 @@
         }
       });
     }, { 
-      threshold: 0.1,
-      rootMargin: "0px 0px -30px 0px"
+      threshold: 0.05,
+      rootMargin: "0px 0px -10px 0px"
     });
     document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
 
