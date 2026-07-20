@@ -143,8 +143,8 @@
     }
 
     .products { padding: 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
-    .product { text-align: center; opacity: 0; transform: translateY(30px); transition: 0.8s; }
-    .product.visible { opacity: 1; transform: translateY(0); }
+    
+    .product { text-align: center; }
     .product img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--gray); filter: grayscale(20%); transition: 0.6s; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
     .product:hover img { transform: scale(1.02); filter: grayscale(0%); border-color: var(--white); }
     .product p { font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
@@ -223,8 +223,8 @@
     .articles-section { padding: 100px 20px; text-align: center; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
     .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
     .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-    .article-card { border: 1px solid var(--gray); padding: 40px 30px; transition: 0.4s; text-decoration: none; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; min-height: 200px; background: rgba(0,0,0,0.5); }
-    .article-card:hover { border-color: var(--white); background: rgba(20,20,20,0.8); transform: translateY(-5px); }
+    .article-card { border: 1px solid var(--gray); padding: 40px 30px; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; min-height: 200px; background: rgba(0,0,0,0.5); text-decoration: none; }
+    .article-card:hover { border-color: var(--white); background: rgba(20,20,20,0.8); transform: translateY(-5px) scale(1.02); }
     .article-source { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px; }
     .article-title { font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; font-style: italic; opacity: 0.9; }
     .read-more { font-size: 0.8rem; letter-spacing: 2px; text-decoration: underline; text-transform: uppercase; }
@@ -413,6 +413,7 @@
   <nav>
     <a href="#">Home</a>
     <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
+    <a href="https://gofund.me/e01de7e1e" target="_blank" rel="noopener noreferrer" style="color: gold;">Angels Among Us</a>
     <a href="https://unlikelyangelproductions.mypixieset.com/" target="_blank" rel="noopener noreferrer">Productions</a>
     <a href="#" onclick="toggleAmbassadorModal(event)">Ambassador</a>
     <a href="#faq">FAQs</a>
@@ -502,7 +503,7 @@
       </div>
       
       <div style="margin: 35px 0; text-align: center; width: 100%;">
-        <a class="btn" href="https://gofund.me/1c9532bc4" target="_blank" style="font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to Our Efforts</a>
+        <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to Our Efforts</a>
       </div>
 
       <div class="movement-connect">
@@ -527,7 +528,7 @@
       </p>
 
       <div style="text-align: center; width: 100%;">
-        <a class="btn" href="https://gofund.me/1c9532bc4" target="_blank" style="font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to the Experience</a>
+        <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to the Experience</a>
       </div>
     </div>
   </section>
@@ -651,11 +652,6 @@
       link.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(3)');
       link.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.product, .article-card').forEach(p => observer.observe(p));
 
     function playEasterEgg() {
       const box = document.getElementById('visionary-box');
