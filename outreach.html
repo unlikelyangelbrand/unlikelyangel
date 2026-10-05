@@ -135,6 +135,39 @@
     .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; cursor: pointer; }
     .btn:hover { background: var(--white); color: #000; }
 
+    /* YOUTUBE VIDEO SECTION */
+    .video-section {
+      max-width: 900px;
+      margin: 0 auto 80px auto;
+      padding: 0 20px;
+      text-align: center;
+      position: relative;
+      z-index: 100;
+    }
+    .video-section h2 {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 2rem;
+      margin-bottom: 25px;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border: 1px solid var(--white);
+      box-shadow: 20px 20px 0px rgba(0,0,0,0.9);
+      background: #000;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     .outreach-section {
       padding: 80px 20px;
       max-width: 1100px;
@@ -261,6 +294,19 @@
     <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="border-color: gold; color: gold;">Support the Movement</a>
   </header>
 
+  <!-- PAST WORK YOUTUBE VIDEO -->
+  <section class="video-section">
+    <h2>See Our Work in Action</h2>
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/xUVOzynAcW4" 
+        title="Unlikely Angel Brand Outreach Day 3 | Venice Beach" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
   <!-- ANGELS AMONG US EXPERIENCE SECTION -->
   <section class="aau-experience-card">
     <h2 style="letter-spacing: 6px; text-transform: uppercase; margin-bottom: 10px; font-size: 2.2rem;">Angels Among Us</h2>
@@ -297,15 +343,15 @@
     </div>
     <div class="text-box">
       <h2>Venice Beach & LA Outreach Days</h2>
-      <p>Our street-level initiative delivers vital supplies, apparel, and direct presence to unsheltered individuals across Southern California.</p>
+      <p>Our street-level initiative delivers vital supplies, apparel, and direct presence to unsheltered individuals across Southern California[span_2](start_span)[span_2](end_span).</p>
       
       <div class="movement-stats">
-        <div class="stat-item">• 3 Outreach Days Conducted</div>
-        <div class="stat-item">• $2,000+ Directly Raised</div>
-        <div class="stat-item">• 300+ Care Packages Hand-Delivered</div>
+        <div class="stat-item">• 3 Outreach Days Conducted[span_3](start_span)[span_3](end_span)</div>
+        <div class="stat-item">• $2,000+ Directly Raised[span_4](start_span)[span_4](end_span)</div>
+        <div class="stat-item">• 300+ Care Packages Hand-Delivered[span_5](start_span)[span_5](end_span)</div>
       </div>
 
-      <p style="font-size: 0.95rem; opacity: 0.8;">Every piece of merchandise purchased from Unlikely Angel Brand helps fund logistics, supplies, and preparation for future outreach initiatives.</p>
+      <p style="font-size: 0.95rem; opacity: 0.8;">Every piece of merchandise purchased from Unlikely Angel Brand helps fund logistics, supplies, and preparation for future outreach initiatives[span_6](start_span)[span_6](end_span).</p>
     </div>
   </section>
 
