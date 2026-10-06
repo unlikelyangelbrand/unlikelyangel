@@ -127,6 +127,754 @@
     .section-header {
       text-align: center;
       padding-top: 120px;
+      margin-bottom: -40px;
+      position: relative;
+      z-index: 100;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      opacity: 0.95;
+      line-height: 1.4;
+    }
+    .section-header p {
+      font-size: 1rem;
+      color: gold;
+      letter-spacing: 2px;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .products { padding: 80px 20px 120px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 100; justify-content: center; }
+    
+    .product { text-align: center; background: rgba(0,0,0,0.5); border: 1px solid var(--gray); padding: 20px; box-shadow: 10px 10px 0px rgba(0,0,0,0.8); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
+    .product:hover { border-color: var(--white); transform: translateY(-5px); }
+    .product img { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #000; border: 1px solid rgba(255,255,255,0.1); filter: grayscale(10%); transition: 0.6s; margin-bottom: 15px; }
+    .product:hover img { filter: grayscale(0%); }
+    .product p { font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
+    .product .btn { border-color: gold; color: gold; font-size: 0.8rem; padding: 10px 20px; }
+    .product .btn:hover { background: gold; color: #000; }
+
+    .founder-section, .movement-content { padding: 120px 20px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
+    
+    /* INTERACTIVE CONTAINER BOX */
+    .image-box { 
+      flex: 1; 
+      width: 100%;
+      max-width: 450px; 
+      height: 480px; 
+      border: 1px solid var(--white); 
+      box-shadow: 20px 20px 0px rgba(0,0,0,0.9); 
+      background: #000000; 
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .image-box img { 
+      width: 100%; 
+      height: 100%; 
+      display: block; 
+      object-fit: cover; 
+    }
+
+    /* SPECIFIC UNHOUSED OUTREACH IMAGE FIX */
+    .outreach-box-fix img {
+      object-fit: contain !important;
+      background-color: #000000;
+    }
+    
+    /* Video Properties */
+    #visionary-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      display: none;
+      z-index: 101;
+    }
+
+    /* Toggle visibility cleanly via class state */
+    .image-box.playing img { display: none !important; }
+    .image-box.playing #visionary-video { display: block !important; }
+    .image-box.playing .easter-egg-hint { display: none !important; }
+
+    /* Floating "click here" Box */
+    .easter-egg-hint {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 5px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      opacity: 0.5;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      z-index: 102;
+    }
+    .image-box:hover .easter-egg-hint {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .text-box { flex: 1; text-align: left; }
+    .text-box h2 { letter-spacing: 4px; text-transform: uppercase; font-size: 2.2rem; margin-bottom: 10px; display: block; line-height: 1.2; }
+    .visionary-link { color: var(--white); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
+    .visionary-link:hover { border-bottom: 1px solid var(--white); }
+
+    .articles-section { padding: 100px 20px; text-align: center; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
+    .articles-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .article-card { border: 1px solid var(--gray); padding: 40px 30px; color: var(--white); display: flex; flex-direction: column; justify-content: space-between; text-align: left; min-height: 200px; background: rgba(0,0,0,0.5); text-decoration: none; }
+    .article-card:hover { border-color: var(--white); background: rgba(20,20,20,0.8); transform: translateY(-5px) scale(1.02); }
+    .article-source { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; margin-bottom: 15px; }
+    .article-title { font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; font-style: italic; opacity: 0.9; }
+    .read-more { font-size: 0.8rem; letter-spacing: 2px; text-decoration: underline; text-transform: uppercase; }
+
+    .movement-stats { background: rgba(0,0,0,0.6); padding: 30px; border: 1px dashed var(--white); display: block; margin-top: 30px; width: 100%; box-sizing: border-box; }
+    .stat-item { font-size: 1.2rem; margin: 10px 0; letter-spacing: 1px; line-height: 1.4; }
+    .movement-connect { margin-top: 25px; font-size: 1rem; opacity: 0.9; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+    .movement-connect a { color: var(--white); text-decoration: underline; transition: 0.3s; }
+    .movement-connect a:hover { opacity: 0.7; }
+
+    /* GAME STYLING */
+    #game-area { padding: 100px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
+    #game-container { 
+      width: 100%; max-width: 800px; height: 400px; background: rgba(255,255,255,0.03); 
+      border: 1px dashed var(--gray); margin: 40px auto; position: relative; overflow: hidden; display: none; 
+    }
+    #halo { position: absolute; font-size: 50px; cursor: pointer; user-select: none; z-index: 101; line-height: 1; }
+
+    .section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid var(--white); box-shadow: 20px 20px 0px rgba(0,0,0,0.9); margin-top: 40px; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: contrast(110%); }
+
+    /* CORE BRAND ACCORDION FAQ STYLING */
+    .faq-section { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 100; }
+    .faq-section h2 { letter-spacing: 8px; text-transform: uppercase; margin-bottom: 60px; font-size: 1.8rem; }
+    .faq-container { text-align: left; }
+    .faq-item { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 25px; }
+    .faq-item details summary { font-size: 1.2rem; cursor: pointer; list-style: none; text-transform: uppercase; letter-spacing: 2px; outline: none; }
+    .faq-item details summary::-webkit-details-marker { display: none; }
+    .faq-item p { margin-top: 15px; opacity: 0.8; font-size: 1rem; line-height: 1.6; padding-left: 10px; }
+
+    /* BRAND AMBASSADOR MODAL STYLING */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 200000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-frame {
+      background: #000000;
+      border: 1px solid var(--white);
+      box-shadow: 20px 20px 0px rgba(0,0,0,0.9);
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 40px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-family: 'Special Elite', serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      cursor: pointer;
+      opacity: 1;
+      z-index: 200010;
+      line-height: 1;
+      padding: 5px;
+    }
+    .modal-close:hover { 
+      transform: scale(1.1);
+    }
+    .modal-frame h3 {
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .modal-frame p {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 30px;
+    }
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .form-group label span {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: none;
+      letter-spacing: 0px;
+      opacity: 0.5;
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--gray);
+      color: var(--white);
+      font-family: 'Special Elite', serif;
+      padding: 12px;
+      box-sizing: border-box;
+      outline: none;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--white);
+    }
+    .form-group textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    footer { padding: 100px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.8); position: relative; z-index: 1000; }
+    .social-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
+    .copyright { margin-top: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (min-width: 1025px) {
+        .intro-gif-container {
+            width: 100vw; 
+            height: 70vh; 
+            margin: 0; 
+            border: none;
+            background: transparent; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .intro-gif {
+            width: auto;             
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain; 
+            object-position: center center;
+        }
+    }
+
+    @media (max-width: 768px) { 
+      .founder-section, .movement-content { flex-direction: column; text-align: center; gap: 40px;} 
+      .products { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+      
+      .image-box { 
+        width: 100%; 
+        height: auto !important; 
+        aspect-ratio: 450 / 480;
+        order: 2; 
+      } 
+      
+      #custom-cursor { display: none; } 
+      html { cursor: auto; }
+      #game-container { height: 300px; }
+      .faq-item summary { font-size: 1rem; }
+      .section-header { padding-top: 60px; margin-bottom: -20px; }
+      .modal-frame { padding: 30px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .products { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="custom-cursor"></div>
+  <div class="announcement-bar">Limited Edition • Unlikely Angel Brand • Worldwide</div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
+    <a href="/outreach">Outreach</a>
+    <a href="https://gofund.me/e01de7e1e" target="_blank" rel="noopener noreferrer" style="color: gold;">Angels Among Us</a>
+    <a href="https://unlikelyangelproductions.mypixieset.com/" target="_blank" rel="noopener noreferrer">Productions</a>
+    <a href="#" onclick="toggleAmbassadorModal(event)">Ambassador</a>
+    <a href="#faq">FAQs</a>
+  </nav>
+
+  <div class="intro-gif-container">
+      <img src="IMG_7665.gif" alt="Unlikely Angel Intro Texture" class="intro-gif">
+      <div class="scroll-indicator">SCROLL TO ENTER</div>
+  </div>
+
+  <section class="hero">
+    <img src="logo.png" class="hero-logo" alt="Unlikely Angel">
+    <h1>Be careful who you overlook...</h1>
+    <p>They might just be an angel.</p>
+    <a class="btn" href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop Collection</a>
+  </section>
+
+  <!-- UPDATED SUPPORT ANGELS AMONG US SECTION -->
+  <div class="section-header">
+    <h2>SUPPORT ANGELS AMONG US</h2>
+    <p>50% of the proceeds go directly to the Angels Among Us event, supporting the unhoused in Skid Row on December 19th.</p>
+  </div>
+
+  <section id="products" class="products">
+    
+    <!-- ITEM 1: WHITE TEE -->
+    <div class="product">
+      <div>
+        <img src="IMG_1856.png" alt="Angels Among Us Cotton T-Shirt White">
+        <p>Cotton T-Shirt (White)</p>
+      </div>
+      <a class="btn" href="https://www.etsy.com/listing/4589322803/angels-among-us-cotton-t-shirt-white" target="_blank">Shop on Etsy</a>
+    </div>
+
+    <!-- ITEM 2: GREY HOODIE -->
+    <div class="product">
+      <div>
+        <img src="IMG_1872.png" alt="Angels Among Us Fleece Hoodie Black">
+        <p>Fleece Hoodie</p>
+      </div>
+      <a class="btn" href="https://www.etsy.com/listing/4589324225/angels-among-us-fleece-hoodie-black" target="_blank">Shop on Etsy</a>
+    </div>
+
+    <!-- ITEM 3: HAT -->
+    <div class="product">
+      <div>
+        <img src="il_1588xN.8677712841_fl2p.jpg.webp" alt="Angels Among Us Cap Embroidered Halo">
+        <p>Embroidered Halo Cap</p>
+      </div>
+      <a class="btn" href="https://www.etsy.com/listing/4589337424/angels-among-us-cap-embroidered-halo" target="_blank">Shop on Etsy</a>
+    </div>
+
+    <!-- ITEM 4: TOTE BAG -->
+    <div class="product">
+      <div>
+        <img src="IMG_2416.jpeg" alt="Angels Among Us Tote Bag Red">
+        <p>Halo Tote Bag</p>
+      </div>
+      <a class="btn" href="https://www.etsy.com/listing/4589332503/angels-among-us-tote-bag-red-halo-stick" target="_blank">Shop on Etsy</a>
+    </div>
+
+  </section>
+
+  <section id="visionary" class="founder-section">
+    <div class="image-box" id="visionary-box" onclick="playEasterEgg()">
+      <img src="visionary.jpg" id="visionary-img" alt="Gabby Binion">
+      <video id="visionary-video" playsinline controls src="ua promo.mp4"></video>
+      <div class="easter-egg-hint">click here</div>
+    </div>
+    <div class="text-box">
+      <h2><a href="https://linktr.ee/deeintanet" target="_blank" class="visionary-link">Gabby Binion</a></h2>
+      <div style="font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 25px; border-bottom: 1px solid var(--white); display: inline-block; padding-bottom: 5px;">The Visionary</div>
+      <p>As a <strong>photographer</strong> and <strong>personal stylist</strong> based in California, my life has always been defined by the visual—finding the perfect frame and the right silhouette.</p>
+      <p><strong>Unlikely Angel Brand</strong> is the raw combination of my two greatest loves. I realized that the same creative energy I use to style a client could be used to shine a light on the people society tries to keep out of focus.</p>
+    </div>
+  </section>
+
+  <section id="articles" class="articles-section">
+    <h2>FEATURED ARTICLES</h2>
+    <div class="articles-grid">
+      <a href="https://voyagela.com/interview/meet-gabby-binion-of-winnetka" target="_blank" class="article-card">
+        <div><div class="article-source">VoyageLA</div><div class="article-title">"Exploring Life & Business with Gabby Binion: A focus on the Winnetka creative scene."</div></div>
+        <div class="read-more">Read Full Story</div>
+      </a>
+      <a href="https://boldjourney.com/meet-gabby-binion-2/" target="_blank" class="article-card">
+        <div><div class="article-source">BoldJourney</div><div class="article-title">"Resilience & Creative Purpose: Navigating the mission behind Unlikely Angel Brand."</div></div>
+        <div class="read-more">Read Full Story</div>
+      </a>
+      <a href="https://boldjourney.com/meet-gabby-binion/" target="_blank" class="article-card">
+        <div><div class="article-source">BoldJourney</div><div class="article-title">"The Heart of Style: Storytelling through fashion and community."</div></div>
+        <div class="read-more">Read Full Story</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="story" class="section">
+    <h2>OUR STORY</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/QN9gKIDo7XU" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="movement" class="movement-content">
+    <div class="text-box">
+      <h2>Unlikely Angel Outreach Days for the Unhoused</h2>
+      <p>Fashion is our medium, but <strong>human connection</strong> is our mission. We believe that everyone deserves to be seen.</p>
+      <div class="movement-stats">
+        <div class="stat-item">• 3 Outreach Days</div>
+        <div class="stat-item">• $2000+ Raised</div>
+        <div class="stat-item">• 300 care packages given to the unhoused at Venice Beach</div>
+      </div>
+      
+      <div style="margin: 35px 0; text-align: center; width: 100%;">
+        <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to Our Efforts</a>
+      </div>
+
+      <div class="movement-connect">
+        <strong>Get Involved:</strong> If you want to connect, collaborate, or join us on our next outreach day, reach out to <a href="mailto:outreach@unlikelyangelbrand.com">outreach@unlikelyangelbrand.com</a>. Let’s make a difference together.
+      </div>
+    </div>
+    <div class="image-box outreach-box-fix"><img src="outreach.JPG" alt="Unlikely Angel Outreach"></div>
+  </section>
+
+  <section id="aau-experience" class="section" style="border-top: 1px solid rgba(255,255,255,0.1); padding: 100px 20px; text-align: center;">
+    <h2 style="letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; font-size: 2.2rem;">Angels Among Us</h2>
+    <div style="font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: gold; margin-bottom: 35px; border-bottom: 1px solid var(--white); display: inline-block; padding-bottom: 5px;">A Community Wellness Experience • Dec 19, 2026</div>
+    
+    <p style="max-width: 800px; margin: 0 auto 40px auto; font-size: 1.1rem; opacity: 0.9; line-height: 1.8;">
+      This winter, we are moving from outreach days to a full block-party-style experience in Downtown LA (5th & San Pedro). Our goal is to serve 100–150 unhoused guests through a holistic approach that treats people like they matter—addressing the <strong>Body</strong> (hot meals & care packs), the <strong>Mind/Dignity</strong> (haircuts & showers), and the <strong>Spirit</strong> (prayer & community connection).
+    </p>
+
+    <div style="max-width: 700px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.02); border: 1px dashed var(--white); padding: 30px; box-sizing: border-box;">
+      <h3 style="text-align: center; letter-spacing: 2px; text-transform: uppercase; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; color: gold;">How to Back the Movement</h3>
+      <p style="font-size: 0.95rem; opacity: 0.85; line-height: 1.6; margin-bottom: 25px;">
+        To make this massive vision safe, legal, and organized, we need collective support. We are actively seeking <strong>Funding & Sponsorships</strong>, a <strong>Safety/Security Team</strong>, <strong>Medical & Wellness Partners</strong>, and <strong>Volunteer Coordinators</strong>. 
+      </p>
+
+      <div style="text-align: center; width: 100%;">
+        <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="font-size: 0.85rem; padding: 14px 28px; border-color: gold; color: gold; display: inline-block;">Donate to the Experience</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="game-area">
+    <h2 id="game-status">THE HALO TEST</h2>
+    <p id="score-display">Halos Caught: 0</p>
+    <button id="start-game" class="btn">Start Game</button>
+    <div id="game-container"><div id="halo">😇</div></div>
+    <div id="win-message" style="display:none; margin-top: 30px;">
+        <h3 style="color: gold; letter-spacing: 4px;">YOU ARE AN ANGEL</h3>
+        <p>25 Halos caught. Your 10% discount is applied.</p>
+        <a href="https://unlikelyangelbrand.etsy.com?coupon=ANGEL10" target="_blank" class="btn" style="background: white; color: black; border:none;">Claim Reward on Etsy</a>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>FAQs</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <details>
+                <summary>+ THE MEANING BEHIND THE NAME</summary>
+                <p>
+                    "Unlikely Angel" is a reminder to look closer. We believe that the people society often overlooks are the ones with the most to offer. Our brand is a tribute to the overlooked, the underestimated, and the divine found in the everyday.
+                </p>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>+ SHIPPING & ORDER TRACKING</summary>
+                <p>
+                    All physical products are handled through our Etsy storefront to ensure secure transactions and reliable tracking. Typical processing time is 3-5 business days. You will receive an automated tracking number the moment your order ships.
+                </p>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>+ HOW WE GIVE BACK (THE MOVEMENT)</summary>
+                <p>
+                    A portion of every purchase goes directly toward our Outreach Days. We hand-deliver care packages, clothing, and resources to the unhoused community in Venice Beach and beyond. We aren't just a brand; we are a mission in motion.
+                </p>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>+ RESTOCKS & LIMITED EDITIONS</summary>
+                <p>
+                    To maintain the quality and exclusivity of our pieces, most drops are limited edition. Once a specific design sells out, it rarely returns in the same format. Follow our updates for early access to upcoming releases.
+                </p>
+            </details>
+        </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="ambassador-modal" onclick="closeAmbassadorModal(event)">
+    <div class="modal-frame">
+      <button class="modal-close" onclick="closeAmbassadorModal(event, true)">[ X ]</button>
+      <h3 style="padding-right: 40px;">Join the Movement</h3>
+      <p>Ambassador Application — Value isn't defined by numbers.</p>
+      
+      <form action="https://formsubmit.co/info@unlikelyangelbrand.com" method="POST" target="_blank">
+        <input type="hidden" name="_subject" value="New UA Brand Ambassador Application!">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="form-group">
+          <label for="ambassador-name">Full Name</label>
+          <input type="text" id="ambassador-name" name="name" required placeholder="Typewriter signature...">
+        </div>
+
+        <div class="form-group">
+          <label for="ambassador-email">Email Address</label>
+          <input type="email" id="ambassador-email" name="email" required placeholder="Where we can reach you...">
+        </div>
+
+        <div class="form-group">
+          <label for="ambassador-social">Social Handle / Links</label>
+          <input type="text" id="ambassador-social" name="social_links" required placeholder="@instagram, @tiktok, portfolio...">
+        </div>
+
+        <div class="form-group">
+          <label for="ambassador-why">Why Unlikely Angel?</label>
+          <textarea id="ambassador-why" name="why_unlikely_angel" required placeholder="What parts of our message speak to you directly?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="ambassador-bring">What can you bring to Unlikely Angel?
+            <span>Follower count doesn't define an angel. Tell us about your passion for community outreach, photography, styling, or how you show up for others.</span>
+          </label>
+          <textarea id="ambassador-bring" name="value_brought_to_unlikely_angel" required placeholder="Tell us your raw story and unique skillset..."></textarea>
+        </div>
+
+        <div style="text-align: center; margin-top: 35px;">
+          <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/unlikelyangelbrand/" target="_blank">INSTAGRAM</a>
+      <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
+      <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
+    </div>
+    <div class="copyright">&copy; 2026 UNLIKELY ANGEL BRAND.</div>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    const links = document.querySelectorAll('a, .btn, .product, #halo, #visionary-box, .modal-close');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(3)');
+      link.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+    });
+
+    function playEasterEgg() {
+      const box = document.getElementById('visionary-box');
+      const video = document.getElementById('visionary-video');
+
+      if (!box.classList.contains('playing')) {
+        box.classList.add('playing');
+        video.muted = false;
+
+        video.play().catch(error => {
+          console.log("Playback context note:", error);
+        });
+      }
+    }
+
+    const visionaryVideoElement = document.getElementById('visionary-video');
+    visionaryVideoElement.addEventListener('ended', () => {
+      const box = document.getElementById('visionary-box');
+      box.classList.remove('playing');
+    });
+
+    // AMBASSADOR MODAL ACTIONS
+    function toggleAmbassadorModal(event) {
+      event.preventDefault();
+      document.getElementById('ambassador-modal').classList.add('active');
+    }
+
+    function closeAmbassadorModal(event, force = false) {
+      if (force || event.target.id === 'ambassador-modal') {
+        if(event) event.preventDefault();
+        document.getElementById('ambassador-modal').classList.remove('active');
+      }
+    }
+
+    const startGameBtn = document.getElementById('start-game');
+    const gameContainer = document.getElementById('game-container');
+    const halo = document.getElementById('halo');
+    const scoreDisplay = document.getElementById('score-display');
+    const gameStatus = document.getElementById('game-status');
+    const winMessage = document.getElementById('win-message');
+
+    let score = 0;
+    let gameActive = false;
+
+    if (window.innerWidth <= 768) {
+        halo.style.fontSize = '38px';
+    }
+
+    function moveHalo() {
+        if (!gameActive) return;
+        const x = Math.random() * (gameContainer.offsetWidth - 50);
+        const y = Math.random() * (gameContainer.offsetHeight - 50);
+        halo.style.left = x + 'px';
+        halo.style.top = y + 'px';
+    }
+
+    const handleHit = (e) => {
+        if (!gameActive) return;
+        
+        e.preventDefault(); 
+        e.stopPropagation();
+
+        score++;
+        scoreDisplay.innerText = `Halos Caught: ${score}`;
+
+        if (score >= 25) {
+            gameActive = false;
+            halo.style.display = 'none';
+            winMessage.style.display = 'block';
+            gameStatus.innerText = 'HALO TEST COMPLETED';
+        } else {
+            moveHalo();
+        }
+    };
+
+    halo.addEventListener('touchstart', handleHit, { passive: false });
+    halo.addEventListener('mousedown', handleHit);
+
+    startGameBtn.addEventListener('click', () => {
+        score = 0;
+        scoreDisplay.innerText = `Halos Caught: 0`;
+        winMessage.style.display = 'none';
+        halo.style.display = 'block';
+        gameContainer.style.display = 'block';
+        gameActive = true;
+        moveHalo();
+    });
+  </script>
+</body>
+</html>      overflow-x: hidden;
+      position: relative;
+    }
+
+    #custom-cursor {
+      position: fixed;
+      width: var(--cursor-size);
+      height: var(--cursor-size);
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 100000;
+      mix-blend-mode: difference;
+      transition: transform 0.15s ease-out;
+      transform: translate(-50%, -50%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed; 
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url("https://www.transparenttextures.com/patterns/film-grain.png");
+      opacity: 0.05; 
+      z-index: 9999; 
+      pointer-events: none; 
+      animation: grain 1.2s steps(6) infinite;
+    }
+
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-1%, -1%); }
+      50% { transform: translate(-0.5%, 1.5%); }
+      90% { transform: translate(-1.5%, -1%); }
+    }
+
+    .announcement-bar { background: var(--white); color: #000; text-align: center; padding: 8px 0; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; border-bottom: 2px solid #555; position: relative; z-index: 10000; }
+    
+    nav { 
+      position: sticky; top: 0; background: rgba(5, 5, 5, 0.85); 
+      backdrop-filter: blur(10px); 
+      display: flex; justify-content: center; padding: 15px 0; z-index: 10000; 
+      border-bottom: 1px solid var(--gray); overflow-x: auto; white-space: nowrap;
+    }
+    nav a { color: var(--white); text-decoration: none; margin: 0 18px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; flex: 0 0 auto; }
+    nav a:hover { opacity: 1; }
+
+    /* RESPONSIVE INTRO GIF CONTAINER */
+    .intro-gif-container {
+        position: relative;
+        width: 100vw;
+        height: calc(100vh - 65px); 
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        z-index: 100;
+    }
+
+    .intro-gif {
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        font-size: 0.8rem;
+        letter-spacing: 4px;
+        color: var(--white);
+        opacity: 0.5;
+        animation: pulse 2s infinite;
+        z-index: 105;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 0.2; }
+        50% { opacity: 0.7; }
+        100% { opacity: 0.2; }
+    }
+
+    .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url('hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px; }
+    .hero-logo { width: 100%; max-width: 450px; margin-bottom: 30px; }
+    .hero h1 { font-size: clamp(1.8rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 10px; line-height: 1.1; letter-spacing: -2px; }
+    .hero p { font-size: 1.4rem; margin-bottom: 40px; font-style: italic; opacity: 0.9; }
+
+    .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; cursor: pointer; }
+    .btn:hover { background: var(--white); color: #000; }
+
+    .section-header {
+      text-align: center;
+      padding-top: 120px;
       margin-bottom: -60px;
       position: relative;
       z-index: 100;
