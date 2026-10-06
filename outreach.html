@@ -152,7 +152,7 @@
     }
     .video-wrapper {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border: 1px solid var(--white);
@@ -166,6 +166,113 @@
       width: 100%;
       height: 100%;
       border: 0;
+    }
+
+    .aau-experience-card {
+      max-width: 1000px;
+      margin: 0 auto 80px auto;
+      padding: 60px 30px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--white);
+      box-shadow: 20px 20px 0px rgba(0,0,0,0.9);
+      text-align: center;
+      position: relative;
+      z-index: 100;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+      text-align: left;
+    }
+    .pillar-box {
+      border: 1px dashed rgba(255,255,255,0.3);
+      padding: 25px;
+      background: rgba(255,255,255,0.02);
+    }
+    .pillar-box h4 {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 0;
+      color: gold;
+      font-size: 1.1rem;
+    }
+
+    /* ANGELS AMONG US MERCH SECTION STYLING */
+    .aau-merch-section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto 80px auto;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      z-index: 100;
+    }
+    .aau-merch-section h2 {
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+    .aau-merch-section .subheading {
+      font-size: 1rem;
+      color: gold;
+      letter-spacing: 2px;
+      max-width: 850px;
+      margin: 0 auto 50px auto;
+      line-height: 1.6;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+    .product-card {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--white);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 10px 10px 0px rgba(0,0,0,0.8);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-image-container {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.2);
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .product-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .product-title {
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 10px 0 5px 0;
+    }
+    .product-card .btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 0.75rem;
+      border-color: gold;
+      color: gold;
+    }
+    .product-card .btn:hover {
+      background: gold;
+      color: #000;
     }
 
     .outreach-section {
@@ -213,38 +320,6 @@
     }
     .stat-item { font-size: 1.1rem; margin: 10px 0; letter-spacing: 1px; }
 
-    .aau-experience-card {
-      max-width: 1000px;
-      margin: 0 auto 80px auto;
-      padding: 60px 30px;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid var(--white);
-      box-shadow: 20px 20px 0px rgba(0,0,0,0.9);
-      text-align: center;
-      position: relative;
-      z-index: 100;
-    }
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-      text-align: left;
-    }
-    .pillar-box {
-      border: 1px dashed rgba(255,255,255,0.3);
-      padding: 25px;
-      background: rgba(255,255,255,0.02);
-    }
-    .pillar-box h4 {
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 0;
-      color: gold;
-      font-size: 1.1rem;
-    }
-
     .get-involved-section {
       padding: 80px 20px;
       text-align: center;
@@ -263,9 +338,14 @@
       .outreach-section { flex-direction: column; text-align: center; gap: 40px; } 
       .text-box { text-align: center; }
       .image-box { width: 100%; height: auto !important; aspect-ratio: 450 / 480; } 
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+      .product-card { padding: 12px; }
       #custom-cursor { display: none; } 
       html { cursor: auto; }
       .aau-experience-card { padding: 30px 15px; }
+    }
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -291,7 +371,10 @@
   <header class="hero-outreach">
     <h1>Human Connection First</h1>
     <p>"Fashion is our medium, but human connection is our mission. We believe that everyone deserves to be seen."</p>
-    <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="border-color: gold; color: gold;">Support the Movement</a>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="border-color: gold; color: gold;">Support GoFundMe</a>
+      <a class="btn" href="YOUR_GOOGLE_FORM_URL_HERE" target="_blank">Become a Volunteer</a>
+    </div>
   </header>
 
   <!-- PAST WORK YOUTUBE VIDEO -->
@@ -307,7 +390,7 @@
     </div>
   </section>
 
-  <!-- ANGELS AMONG US EXPERIENCE SECTION -->
+  <!-- 1. ANGELS AMONG US EXPERIENCE SECTION -->
   <section class="aau-experience-card">
     <h2 style="letter-spacing: 6px; text-transform: uppercase; margin-bottom: 10px; font-size: 2.2rem;">Angels Among Us</h2>
     <div style="font-size: 0.95rem; letter-spacing: 3px; text-transform: uppercase; color: gold; margin-bottom: 30px;">A Community Wellness Experience • Dec 19, 2026 • Downtown LA</div>
@@ -331,12 +414,67 @@
       </div>
     </div>
 
-    <div style="margin-top: 40px;">
+    <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
       <a class="btn" href="https://gofund.me/e01de7e1e" target="_blank" style="border-color: gold; color: gold; padding: 16px 36px;">Back the GoFundMe Campaign</a>
+      <a class="btn" href="YOUR_GOOGLE_FORM_URL_HERE" target="_blank" style="padding: 16px 36px;">Sign Up to Volunteer</a>
     </div>
   </section>
 
-  <!-- PAST OUTREACH EFFORTS -->
+  <!-- 2. SUPPORT ANGELS AMONG US MERCH SECTION -->
+  <section class="aau-merch-section">
+    <h2>Support Angels Among Us</h2>
+    <div class="subheading">50% of the proceeds go directly to the Angels Among Us event, supporting the unhoused in Skid Row on December 19th.</div>
+
+    <div class="product-grid">
+      
+      <!-- ITEM 1: WHITE TEE -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-container">
+            <img src="IMG_1856.png" alt="Angels Among Us Cotton T-Shirt White">
+          </div>
+          <div class="product-title">Cotton T-Shirt (White)</div>
+        </div>
+        <a class="btn" href="https://www.etsy.com/listing/4589322803/angels-among-us-cotton-t-shirt-white" target="_blank">Shop on Etsy</a>
+      </div>
+
+      <!-- ITEM 2: GREY HOODIE -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-container">
+            <img src="IMG_1872.png" alt="Angels Among Us Fleece Hoodie Black">
+          </div>
+          <div class="product-title">Fleece Hoodie</div>
+        </div>
+        <a class="btn" href="https://www.etsy.com/listing/4589324225/angels-among-us-fleece-hoodie-black" target="_blank">Shop on Etsy</a>
+      </div>
+
+      <!-- ITEM 3: HAT -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-container">
+            <img src="il_1588xN.8677712841_fl2p.jpg.webp" alt="Angels Among Us Cap Embroidered Halo">
+          </div>
+          <div class="product-title">Embroidered Halo Cap</div>
+        </div>
+        <a class="btn" href="https://www.etsy.com/listing/4589337424/angels-among-us-cap-embroidered-halo" target="_blank">Shop on Etsy</a>
+      </div>
+
+      <!-- ITEM 4: TOTE BAG -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-container">
+            <img src="IMG_2416.jpeg" alt="Angels Among Us Tote Bag Red">
+          </div>
+          <div class="product-title">Halo Tote Bag</div>
+        </div>
+        <a class="btn" href="https://www.etsy.com/listing/4589332503/angels-among-us-tote-bag-red-halo-stick" target="_blank">Shop on Etsy</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. PAST VENICE BEACH & LA OUTREACH EFFORTS -->
   <section class="outreach-section">
     <div class="image-box">
       <img src="outreach.JPG" alt="Unlikely Angel Venice Beach Outreach">
@@ -357,11 +495,14 @@
 
   <!-- GET INVOLVED / PARTNER SECTION -->
   <section class="get-involved-section">
-    <h2 style="letter-spacing: 4px; text-transform: uppercase; font-size: 2rem; margin-bottom: 20px;">Partner With Us</h2>
+    <h2 style="letter-spacing: 4px; text-transform: uppercase; font-size: 2rem; margin-bottom: 20px;">Join the Movement</h2>
     <p style="font-size: 1.1rem; opacity: 0.85; margin-bottom: 35px;">
-      We are actively seeking safety teams, licensed medical/wellness professionals, hair stylists, and corporate partners for our upcoming outreach operations.
+      We are actively seeking volunteers, safety teams, licensed medical/wellness professionals, hair stylists, and community partners for our upcoming outreach operations.
     </p>
-    <a class="btn" href="mailto:outreach@unlikelyangelbrand.com">Email Outreach Team</a>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a class="btn" href="YOUR_GOOGLE_FORM_URL_HERE" target="_blank" style="border-color: gold; color: gold;">Volunteer Application Form</a>
+      <a class="btn" href="mailto:outreach@unlikelyangelbrand.com">Email Outreach Team</a>
+    </div>
   </section>
 
   <footer>
