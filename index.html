@@ -86,7 +86,7 @@
     nav a:hover { opacity: 1; }
 
     .hero {
-      padding: 100px 20px 60px 20px;
+      padding: 120px 20px 80px 20px;
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
@@ -109,6 +109,29 @@
 
     .btn { display: inline-block; padding: 16px 32px; border: 2px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; background: transparent; position: relative; z-index: 10000; cursor: pointer; }
     .btn:hover { background: var(--white); color: #000; }
+
+    /* MISSION & ABOUT SECTION */
+    .about-section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      z-index: 100;
+    }
+    .about-section h2 {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .about-section p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
 
     /* ANGELS AMONG US MERCH SECTION */
     .aau-merch-section {
@@ -219,8 +242,19 @@
   <header class="hero">
     <h1>Unlikely Angel</h1>
     <p>"Be careful who you overlook... they might just be an angel."</p>
-    <a class="btn" href="/outreach">Explore Outreach</a>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a class="btn" href="/outreach">Explore Outreach</a>
+      <a class="btn" href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank" style="border-color: gold; color: gold;">Shop All Gear</a>
+    </div>
   </header>
+
+  <!-- MISSION STATEMENT SECTION -->
+  <section class="about-section">
+    <h2>Our Purpose</h2>
+    <p>
+      Unlikely Angel Brand is more than a label. We build community through street-level outreach, high-quality purposeful design, and direct action. Every order directly funds care packages, hot meals, and wellness resources for unsheltered communities in Los Angeles.
+    </p>
+  </section>
 
   <!-- ANGELS AMONG US MERCH SECTION -->
   <section class="aau-merch-section">
