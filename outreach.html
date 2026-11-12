@@ -109,10 +109,57 @@
       }
     }
 
+    /* COUNTDOWN STYLING */
+    .countdown-container {
+      max-width: 800px;
+      margin: 40px auto 10px auto;
+      padding: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px dashed rgba(255, 255, 255, 0.3);
+      position: relative;
+      z-index: 100;
+    }
+    .countdown-label {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: gold;
+      margin-bottom: 15px;
+    }
+    #countdown-timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    .time-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 50px;
+    }
+    .time-box span:first-child {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .time-unit {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .separator {
+      font-size: 1.5rem;
+      opacity: 0.4;
+      margin-top: -10px;
+    }
+
     /* POSTER BANNER AT TOP */
     .hero-poster-container {
       max-width: 800px;
-      margin: 40px auto 20px auto;
+      margin: 20px auto 20px auto;
       padding: 0 20px;
       text-align: center;
       position: relative;
@@ -379,6 +426,20 @@
     <a href="mailto:outreach@unlikelyangelbrand.com">Contact</a>
   </nav>
 
+  <!-- COUNTDOWN TO DECEMBER 19, 2026 -->
+  <div class="countdown-container">
+    <div class="countdown-label">Countdown to Angels Among Us • December 19, 2026</div>
+    <div id="countdown-timer">
+      <div class="time-box"><span id="days">00</span><span class="time-unit">Days</span></div>
+      <span class="separator">:</span>
+      <div class="time-box"><span id="hours">00</span><span class="time-unit">Hours</span></div>
+      <span class="separator">:</span>
+      <div class="time-box"><span id="minutes">00</span><span class="time-unit">Mins</span></div>
+      <span class="separator">:</span>
+      <div class="time-box"><span id="seconds">00</span><span class="time-unit">Secs</span></div>
+    </div>
+  </div>
+
   <!-- POSTER DISPLAY AT THE TOP -->
   <div class="hero-poster-container">
     <img src="Angels-Among-Us-Poster.png" alt="Angels Among Us Poster">
@@ -531,6 +592,7 @@
   </footer>
 
   <script>
+    // CUSTOM CURSOR
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
@@ -542,6 +604,32 @@
       link.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(3)');
       link.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     });
+
+    // COUNTDOWN SCRIPT
+    const eventDate = new Date("December 19, 2026 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown-timer").innerHTML = "<div style='letter-spacing: 3px; font-size: 1rem; color: gold;'>THE EVENT IS TODAY</div>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
