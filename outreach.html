@@ -10,7 +10,7 @@
   
   <meta property="og:title" content="Outreach & Angels Among Us | Unlikely Angel Brand">
   <meta property="og:description" content="Be careful who you overlook... they might just be an angel. Support our outreach efforts.">
-  <meta property="og:image" content="Angels Among Us poster final.png"> 
+  <meta property="og:image" content="Angels Among Us no qr code.jpg"> 
   <meta property="og:url" content="https://unlikelyangelbrand.com/outreach">
 
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
@@ -91,6 +91,23 @@
     }
     nav a { color: var(--white); text-decoration: none; margin: 0 18px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: 0.3s; flex: 0 0 auto; }
     nav a:hover { opacity: 1; }
+
+    /* GLOWING ANGELS AMONG US MENU LINK */
+    nav a.aau-glow-link {
+      color: gold !important;
+      opacity: 1 !important;
+      font-weight: bold;
+      animation: aau-glow 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes aau-glow {
+      0% {
+        text-shadow: 0 0 4px rgba(255, 215, 0, 0.4), 0 0 8px rgba(255, 215, 0, 0.2);
+      }
+      100% {
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.9), 0 0 22px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+      }
+    }
 
     /* POSTER BANNER AT TOP */
     .hero-poster-container {
@@ -357,15 +374,14 @@
   <nav>
     <a href="/">Home</a>
     <a href="https://www.etsy.com/shop/UnlikelyAngelBrand" target="_blank">Shop</a>
-    <a href="/outreach" style="color: gold;">Outreach</a>
-    <a href="https://gofund.me/e01de7e1e" target="_blank" rel="noopener noreferrer" style="color: gold;">Angels Among Us</a>
+    <a href="/outreach" class="aau-glow-link">Angels Among Us</a>
     <a href="https://unlikelyangelproductions.mypixieset.com/" target="_blank" rel="noopener noreferrer">Productions</a>
     <a href="mailto:outreach@unlikelyangelbrand.com">Contact</a>
   </nav>
 
   <!-- POSTER DISPLAY AT THE TOP -->
   <div class="hero-poster-container">
-    <img src="Angels Among Us poster final.png" alt="Angels Among Us Poster">
+    <img src="Angels Among Us no qr code.jpg" alt="Angels Among Us Poster">
   </div>
 
   <header class="hero-outreach">
@@ -511,7 +527,7 @@
       <a href="https://www.tiktok.com/@unlikelyangelbrand" target="_blank">TIKTOK</a>
       <a href="mailto:unlikelyangelbrand@gmail.com">CONTACT</a>
     </div>
-    <div class="copyright">&copy; 2026 UNLIKELY ANGEL BRAND.</div>
+    <div class="copyright">© 2026 UNLIKELY ANGEL BRAND.</div>
   </footer>
 
   <script>
