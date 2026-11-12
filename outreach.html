@@ -384,6 +384,78 @@
     }
     .stat-item { font-size: 1.1rem; margin: 10px 0; letter-spacing: 1px; }
 
+    /* ITEM PLEDGE STYLING */
+    .pledge-section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      text-align: center;
+      position: relative;
+      z-index: 100;
+    }
+    .pledge-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      box-shadow: 10px 10px 0px rgba(0,0,0,0.8);
+    }
+    .pledge-card h2 {
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .pledge-dropdown {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .pledge-dropdown summary {
+      cursor: pointer;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: gold;
+      text-align: center;
+      padding: 12px;
+      border: 1px dashed rgba(255, 215, 0, 0.4);
+      background: rgba(255, 215, 0, 0.03);
+      transition: 0.3s;
+      list-style: none;
+    }
+    .pledge-dropdown summary::-webkit-details-marker {
+      display: none;
+    }
+    .pledge-dropdown summary:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+    .pledge-content {
+      padding: 20px 10px 10px 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 15px;
+      text-align: center;
+    }
+    .pledge-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 500px;
+      text-align: left;
+    }
+    .pledge-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .pledge-list li em {
+      font-size: 0.75rem;
+      color: gold;
+      font-style: normal;
+      letter-spacing: 1px;
+      align-self: center;
+    }
+
     .get-involved-section {
       padding: 80px 20px;
       text-align: center;
@@ -567,6 +639,33 @@
       </div>
 
       <p style="font-size: 0.95rem; opacity: 0.8;">Every piece of merchandise purchased from Unlikely Angel Brand helps fund logistics, supplies, and preparation for future outreach initiatives.</p>
+    </div>
+  </section>
+
+  <!-- ITEM PLEDGE DIRECTORY -->
+  <section class="pledge-section">
+    <div class="pledge-card">
+      <h2>Care Package & Supply Needs</h2>
+      <p style="font-size: 0.95rem; opacity: 0.85; max-width: 600px; margin: 0 auto 20px auto;">
+        Preparing for 100–150 individuals in Skid Row on December 19. Click below to view our specific item needs and pledge a contribution.
+      </p>
+      
+      <details class="pledge-dropdown">
+        <summary>View Needed Items & Pledge Form</summary>
+        <div class="pledge-content">
+          <ul class="pledge-list">
+            <li><span>Bottled Water & Electrolyte Packets</span> <em>(High Priority)</em></li>
+            <li><span>New White Athletic Socks</span> <em>(High Priority)</em></li>
+            <li><span>Toothbrushes, Toothpaste & Deodorant</span></li>
+            <li><span>Travel-size Wet Wipes & Hand Sanitizer</span></li>
+            <li><span>Beanies, Gloves & Warm Blankets</span></li>
+            <li><span>Non-Perishable Snacks & Granola Bars</span></li>
+          </ul>
+          <div style="margin-top: 25px;">
+            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc8J_mX5pgKZ5sqNCjDHHj-yJr9LJsykhnEtt4jRhzPaoSVHA/viewform" target="_blank" style="padding: 12px 24px; font-size: 0.8rem; border-color: gold; color: gold;">Fill Out Item Pledge Form</a>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
