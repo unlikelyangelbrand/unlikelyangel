@@ -387,7 +387,7 @@
     /* ITEM PLEDGE STYLING */
     .pledge-section {
       padding: 40px 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto 40px auto;
       text-align: center;
       position: relative;
@@ -432,28 +432,44 @@
       padding: 20px 10px 10px 10px;
       border-top: 1px solid rgba(255,255,255,0.1);
       margin-top: 15px;
-      text-align: center;
     }
-    .pledge-list {
+    .pledge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      text-align: left;
+      margin-bottom: 25px;
+    }
+    .pledge-category {
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.2);
+      padding: 15px;
+    }
+    .pledge-category h4 {
+      color: gold;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 5px;
+    }
+    .pledge-category ul {
       list-style: none;
       padding: 0;
-      margin: 0 auto;
-      max-width: 500px;
-      text-align: left;
+      margin: 0;
+      font-size: 0.85srem;
+      opacity: 0.85;
     }
-    .pledge-list li {
-      padding: 8px 0;
-      border-bottom: 1px dashed rgba(255,255,255,0.1);
-      font-size: 0.95rem;
+    .pledge-category li {
+      padding: 4px 0;
       display: flex;
       justify-content: space-between;
     }
-    .pledge-list li em {
+    .pledge-category li span:last-child {
+      opacity: 0.6;
       font-size: 0.75rem;
-      color: gold;
-      font-style: normal;
-      letter-spacing: 1px;
-      align-self: center;
     }
 
     .get-involved-section {
@@ -642,27 +658,78 @@
     </div>
   </section>
 
-  <!-- ITEM PLEDGE DIRECTORY -->
+  <!-- ITEM PLEDGE DIRECTORY (TARGETING 150 PEOPLE) -->
   <section class="pledge-section">
     <div class="pledge-card">
-      <h2>Care Package & Supply Needs</h2>
-      <p style="font-size: 0.95rem; opacity: 0.85; max-width: 600px; margin: 0 auto 20px auto;">
-        Preparing for 100–150 individuals in Skid Row on December 19. Click below to view our specific item needs and pledge a contribution.
+      <h2>Care Package & Supply Targets</h2>
+      <p style="font-size: 0.95rem; opacity: 0.85; max-width: 650px; margin: 0 auto 20px auto;">
+        We are preparing essentials for 150 individuals in Skid Row. Please provide new, unused items and unopened hygiene products. Click below to view the full supply list and coordinate your contribution.
       </p>
       
       <details class="pledge-dropdown">
-        <summary>View Needed Items & Pledge Form</summary>
+        <summary>View Complete Item Target List</summary>
         <div class="pledge-content">
-          <ul class="pledge-list">
-            <li><span>Bottled Water & Electrolyte Packets</span> <em>(High Priority)</em></li>
-            <li><span>New White Athletic Socks</span> <em>(High Priority)</em></li>
-            <li><span>Toothbrushes, Toothpaste & Deodorant</span></li>
-            <li><span>Travel-size Wet Wipes & Hand Sanitizer</span></li>
-            <li><span>Beanies, Gloves & Warm Blankets</span></li>
-            <li><span>Non-Perishable Snacks & Granola Bars</span></li>
-          </ul>
+          
+          <div class="pledge-grid">
+            <!-- BAGS & CLOTHING -->
+            <div class="pledge-category">
+              <h4>Bags & Clothing (150 Target)</h4>
+              <ul>
+                <li><span>Care Bags (Drawstring/Reusable)</span> <span>150</span></li>
+                <li><span>Beanies</span> <span>150</span></li>
+                <li><span>Scarves</span> <span>150</span></li>
+                <li><span>Gloves</span> <span>150 pr</span></li>
+                <li><span>Socks</span> <span>150 pr</span></li>
+                <li><span>Rain Ponchos</span> <span>150</span></li>
+              </ul>
+            </div>
+
+            <!-- FOOTWEAR & DENTAL -->
+            <div class="pledge-category">
+              <h4>Footwear & Dental</h4>
+              <ul>
+                <li><span>Flip Flops (Assorted Adult Sizes)</span> <span>150 pr</span></li>
+                <li><span>Toothbrushes</span> <span>150</span></li>
+                <li><span>Travel Toothpaste</span> <span>150</span></li>
+                <li><span>Floss / Floss-Picks</span> <span>150 pk</span></li>
+              </ul>
+            </div>
+
+            <!-- HYGIENE -->
+            <div class="pledge-category">
+              <h4>Hygiene Essentials</h4>
+              <ul>
+                <li><span>Deodorant</span> <span>150</span></li>
+                <li><span>Body / Cleansing Wipes</span> <span>150 pk</span></li>
+                <li><span>Hand Sanitizer</span> <span>150</span></li>
+                <li><span>Bar Soap / Body Wash</span> <span>150</span></li>
+                <li><span>Travel Lotion & Lip Balm</span> <span>150</span></li>
+                <li><span>Pocket Tissues & Washcloths</span> <span>150</span></li>
+                <li><span>Combs & Disposable Razors</span> <span>150</span></li>
+              </ul>
+            </div>
+
+            <!-- FOOD & FIRST AID -->
+            <div class="pledge-category">
+              <h4>Food & First Aid</h4>
+              <ul>
+                <li><span>Granola / Protein Bars</span> <span>150</span></li>
+                <li><span>Crackers / Chips / Snacks</span> <span>150</span></li>
+                <li><span>Fruit Snacks / Applesauce</span> <span>150</span></li>
+                <li><span>Shelf-Stable Protein Snacks</span> <span>150</span></li>
+                <li><span>Bottled Water</span> <span>150 bot</span></li>
+                <li><span>Electrolyte Drink Mix</span> <span>150 pk</span></li>
+                <li><span>Small Bandage Packs</span> <span>150 pk</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8; font-style: italic;">
+            * Note: Flip flops are sorted by size for guests to choose. Menstrual pads/liners are also supplied as needed.
+          </div>
+
           <div style="margin-top: 25px;">
-            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc8J_mX5pgKZ5sqNCjDHHj-yJr9LJsykhnEtt4jRhzPaoSVHA/viewform" target="_blank" style="padding: 12px 24px; font-size: 0.8rem; border-color: gold; color: gold;">Fill Out Item Pledge Form</a>
+            <a class="btn" href="mailto:outreach@unlikelyangelbrand.com?subject=Item%20Pledge%20Contribution" style="padding: 12px 24px; font-size: 0.8rem; border-color: gold; color: gold;">Coordinate Item Donation via Email</a>
           </div>
         </div>
       </details>
